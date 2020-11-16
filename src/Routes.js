@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Footer from '../src/Components/Footer/Footer';
 import Nav from '../src/Components/Nav/Nav';
 import Main from '../src/Pages/donghakim/Main/Main';
-import ProductDetail from '../src/Pages/donghakim/ProductDetail/ProductDetail';
 import SignUp from '../src/Pages/donghakim/SignUp/SignUp';
 import Login from '../src/Pages/youngjoonpark/Login/Login';
 import ProductList from '../src/Pages/youngjoonpark/ProductList/ProductList';
+import ProductDetail from '../src/Pages/donghakim/ProductDetail/ProductDetail';
 
 // import 한 컴포넌트에 대한 경로를 각각 설정해줍니다.
 
@@ -16,15 +16,18 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          {/* <Route exact path='/Footer' component={Footer} /> */}
-          {/* <Route exact path='/Nav' component={Nav} /> */}
+          <Route exact path='/Footer' component={Footer} />
+          <Route exact path='/Nav' component={Nav} />
           <Route exact path='/' component={Main} />
-          {/* <Route exact path='/SignUp' component={SignUp} /> */}
-          {/* <Route exact path='/Login' component={Login} /> */}
+          <Route exact path='/SignUp' component={SignUp} />
+          <Route exact path='/Login' component={Login} />
+          <Route exact path='/ProductDetail' component={ProductDetail} />
+          <Route exact path='/ProductList' component={ProductList} />
         </Switch>
       </Router>
     );
   }
 }
+git branch feature/기능이름
 
 export default Routes;
