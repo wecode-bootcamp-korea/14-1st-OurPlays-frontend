@@ -9,8 +9,6 @@ import Login from '../src/Pages/Login/Login';
 import ProductList from '../src/Pages/ProductList/ProductList';
 import ProductDetail from '../src/Pages/ProductDetail/ProductDetail';
 
-// import 한 컴포넌트에 대한 경로를 각각 설정해줍니다.
-
 class Routes extends React.Component {
   render() {
     return (
@@ -28,6 +26,5 @@ class Routes extends React.Component {
     );
   }
 }
-git branch feature/기능이름
 
 export default Routes;
