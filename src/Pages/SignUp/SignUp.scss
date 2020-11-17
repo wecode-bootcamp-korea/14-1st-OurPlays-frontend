@@ -1,0 +1,227 @@
+$main-font: 'Nanum Gothic Coding',
+monospace;
+$logo-color: #0095f6;
+$theme-color: rgb(0, 106, 213);
+.SignUp {
+    font-family: $main-font;
+    .sign-up-container {
+        width: 1024px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding-top: 200px;
+        h1 {
+            width: 100%;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 120px;
+            font-size: 35px;
+        }
+        .sign-up-form-wrap {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 100px;
+            .sign-up-form {
+                width: 620px;
+                div {
+                    display: flex;
+                }
+                input {
+                    outline: none;
+                }
+                .authenfication-wrap {
+                    position: relative;
+                    .checked-bg {
+                        position: absolute;
+                        background-color: green;
+                        width: 18px;
+                        height: 15px;
+                        right: 2%;
+                        bottom: 53%;
+                        border-radius: 50%;
+                        .checked {
+                            position: absolute;
+                            font-size: 10px;
+                            top: 20%;
+                            right: 20%;
+                            color: white;
+                        }
+                    }
+                }
+                .authenfication-wrap,
+                .email-input-wrap,
+                .password-input-wrap,
+                .password-re-input-wrap,
+                .recommend-code-input-wrap {
+                    padding-bottom: 20px;
+                    label {
+                        width: 100%;
+                        font-size: 14px;
+                        font-weight: bold;
+                        padding-top: 20px;
+                        span {
+                            width: 180px;
+                        }
+                    }
+                    span {
+                        width: 100%;
+                        input {
+                            width: 460px;
+                            padding: 15px;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+                .register-path-wrap {
+                    .register-path-title {
+                        width: 100%;
+                        font-size: 14px;
+                        font-weight: bold;
+                        div {
+                            padding-top: 40px;
+                        }
+                    }
+                    .register-path-input-wrap {
+                        width: 100%;
+                        padding-bottom: 20px;
+                        ul {
+                            display: grid;
+                            grid-template-columns: repeat(4, 120px);
+                            grid-template-rows: repeat(3, 30px);
+                            width: 460px;
+                            padding: 10px 15px;
+                            li {
+                                position: relative;
+                                width: 100%;
+                                font-size: 12px;
+                                margin: 0 auto;
+                                span {
+                                    text-align: center;
+                                    input {
+                                        padding-left: 10px;
+                                    }
+                                    span {
+                                        position: absolute;
+                                        top: 3px;
+                                        left: 25px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .register-path-self-input-wrap {
+                    padding-left: 160px;
+                    span {
+                        width: 100%;
+                        padding-bottom: 15px;
+                        input {
+                            width: 460px;
+                            padding: 15px;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+                .recommend-code-input-wrap {
+                    label {
+                        width: 100%;
+                        font-size: 14px;
+                        font-weight: bold;
+                        padding-top: 20px;
+                        span {
+                            width: 180px;
+                        }
+                    }
+                    .recommend-code-user-input-wrap {
+                        display: flex;
+                        flex-direction: column;
+                        .recommend-code-user-input {
+                            width: 100%;
+                            input {
+                                width: 460px;
+                                padding: 15px;
+                                border: 1px solid rgba(0, 0, 0, 0.2);
+                            }
+                        }
+                        .recommend-code-desc {
+                            color: rgba(0, 0, 0, 0.5);
+                            font-weight: 700;
+                            padding-top: 10px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .terms-agree-wrap {
+                    width: 100%;
+                    margin-bottom: 60px;
+                    label {
+                        display: flex;
+                        padding-left: 130px;
+                        div {
+                            font-size: 13px;
+                            &:nth-child(1) {
+                                padding-right: 30px;
+                            }
+                            input {
+                                margin-right: 10px;
+                            }
+                            div {
+                                padding-top: 3px;
+                            }
+                        }
+                    }
+                }
+                .divider {
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: rgba(0, 0, 0, 0.3)
+                }
+                .bottom-button-wrap {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 60px;
+                    padding-bottom: 40px;
+                    input {
+                        width: 100%;
+                        border: 1px solid rgba(0, 0, 0, 0.2);
+                        background-color: transparent;
+                        padding: 15px 70px;
+                        color: white;
+                        &:nth-child(1) {
+                            background-color: #292c47;
+                            margin-right: 60px;
+                        }
+                        &:nth-child(2) {
+                            background-color: $theme-color;
+                        }
+                    }
+                }
+                .back-to-login {
+                    width: 100%;
+                    display: flex;
+                    position: relative;
+                    justify-content: center;
+                    outline: none;
+                    padding-bottom: 40px;
+                    color: black;
+                    text-decoration: none;
+                    div {
+                        font-size: 13px;
+                        color: $theme-color;
+                    }
+                    i {
+                        position: absolute;
+                        right: 36%;
+                        top: -4%;
+                    }
+                }
+            }
+        }
+    }
+}

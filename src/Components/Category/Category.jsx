@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
+import "./Category.scss";
 class Category extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
+      <section className="Category">
+        <h1>asdasda</h1>
+      </section>
     );
   }
 }
