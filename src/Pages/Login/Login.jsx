@@ -22,8 +22,8 @@ class Login extends Component {
     const checkId = idValue.includes('@');
     const checkPw = pwValue.length >= 4;
     if (checkId && checkPw) {
-      return this.props.history.push('../Main/Main');
       alert('로그인 성공');
+      return this.props.history.push('../Main/Main');
     }
 
     if (!checkId) {
