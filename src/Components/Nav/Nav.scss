@@ -1,0 +1,25 @@
+.Nav {
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: dodgerblue;
+    opacity: 0.3;
+    height: 123px;
+
+    .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .side-nav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: orange;
+      height: 43px;
+    }
+  }
+}
