@@ -26,6 +26,10 @@
         img {
           width: 108px;
           height: 27px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
 
@@ -51,6 +55,10 @@
           right: 60px;
           width: 20px;
           height: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
 
         .search-icon {
@@ -59,6 +67,10 @@
           right: 15px;
           width: 20px;
           height: 20px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
 
@@ -103,6 +115,8 @@
 
     .home {
       margin-right: 15px;
+      text-decoration: none;
+      color: gray;
     }
 
     img {
@@ -113,6 +127,12 @@
     }
 
     .route {
+      text-decoration: none;
+      color: gray;
+
+      &:visited {
+        text-decoration: none;
+      }
     }
   }
 }

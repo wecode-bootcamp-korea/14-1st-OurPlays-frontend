@@ -3,13 +3,19 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends Component {
+  constructor() {
+    super();
+  }
+
   render() {
     return (
       <div className='Nav'>
         <section className='nav-background'>
           <section className='main-nav'>
             <div className='logo-icon'>
-              <img src='../images/youngjoonpark/hourplace-logo.svg' alt='logo-img' />
+              <Link to='/'>
+                <img src='../images/youngjoonpark/hourplace-logo.svg' alt='logo-img' />
+              </Link>
             </div>
             <div className='search-input'>
               <input type='text' placeholder='촬영의 모든 장소' />
@@ -34,10 +40,10 @@ class Nav extends Component {
               <Link className='nav-icon' to=''>
                 이용방법
               </Link>
-              <Link className='nav-icon' to=''>
+              <Link className='nav-icon' to='/SignUp'>
                 회원가입
               </Link>
-              <Link className='nav-icon' to=''>
+              <Link className='nav-icon' to='/Login'>
                 로그인
               </Link>
             </div>
@@ -45,9 +51,13 @@ class Nav extends Component {
         </section>
         <section className='side-nav'>
           <div className='direction'>
-            <span className='home'>Home</span>
+            <Link to='/' className='home'>
+              Home
+            </Link>
             <img src='../images/youngjoonpark/arrow-img.png' alt='' />
-            <span className='route'>route</span>
+            <Link to='현재경로' className='route'>
+              route
+            </Link>
           </div>
         </section>
       </div>
