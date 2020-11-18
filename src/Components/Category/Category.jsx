@@ -3,7 +3,11 @@ import './Category.scss';
 
 class Category extends Component {
   render() {
-    return <div className='Category'></div>;
+    return (
+      <div className='Category'>
+        <div>asdfasdfds</div>
+      </div>
+    );
   }
 }
 
