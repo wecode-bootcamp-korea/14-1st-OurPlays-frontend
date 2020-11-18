@@ -50,6 +50,7 @@ class Nav extends Component {
             </div>
           </section>
         </section>
+        <div className='border-without-side'></div>
         <section className='side-nav'>
           <div className='direction'>
             <Link to='/' className='home'>
