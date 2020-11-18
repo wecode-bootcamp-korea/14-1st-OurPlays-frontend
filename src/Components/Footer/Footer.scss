@@ -1,3 +1,7 @@
+* {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
 .Footer {
   position: relative;
 
@@ -21,15 +25,25 @@
       }
     }
 
-    .footer-info {
+    .footer-informations {
       margin-top: 25px;
+      font-size: 12px;
+      color: #cad0d8;
+      display: flex;
 
-      ul {
-        display: flex;
+      .footer-info {
+        border-right: 1px solid #5f6370;
+        padding: 0 25px;
+        text-decoration: none;
+        color: #cad0d8;
 
-        li {
-          border-right: 1px solid white;
-          padding: 10px;
+        &:last-child {
+          border: none;
+        }
+
+        &:visited {
+          text-decoration: none;
+          color: #cad0d8;
         }
       }
     }
@@ -39,6 +53,7 @@
       margin-top: 25px;
 
       .footer-icon {
+        padding: 0 7px;
         img {
           width: 44px;
           height: 44px;
