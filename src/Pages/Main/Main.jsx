@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Slider from "./components/Slider";
+import Sliders from "./components/Sliders";
 import LandingPage from "./components/LandingPage";
 import Category from "../../Components/Category/Category";
 import "./Main.scss";
@@ -15,7 +15,7 @@ class Main extends Component {
         </div>
         <LandingPage />
         <Category />
-        <Slider />
+        <Sliders />
       </section>
     );
   }

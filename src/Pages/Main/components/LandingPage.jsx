@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import "./LandingPage.scss";
 
@@ -26,11 +25,10 @@ class LandingPage extends Component {
             className="register-btn"
             value="촬영 장소 등록하기"
           />
-        </div>
+        </div>{" "}
       </section>
     );
   }
 }
 
 export default LandingPage;
-

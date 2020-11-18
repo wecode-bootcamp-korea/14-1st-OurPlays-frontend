@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import "./Nav.scss"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./Nav.scss";
 
 class Nav extends Component {
   render() {
-    return <div className="Nav"></div>;
+    return <div></div>;
   }
 }
 
