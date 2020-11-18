@@ -1,0 +1,121 @@
+* {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
+.ProductList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .product-list {
+    margin: 123px 0 200px 0;
+    width: 1024px;
+
+    .header {
+      .title {
+        height: 67px;
+        padding-top: 33.5px;
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+      }
+      .filter {
+        width: 100%;
+        height: 44px;
+        margin-top: 40px;
+        // position: relative;
+
+        .control-buttons {
+          font-size: 12px;
+          // position: fixed;
+          // right: 0;
+          // botton: 0;
+
+          .control-button {
+            padding: 0 16px;
+            border: 1px solid black;
+          }
+        }
+      }
+    }
+
+    .main {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      .room-lists {
+        width: 244px;
+        height: 274px;
+        margin: 0 16px 40px 0;
+
+        .room-list-link {
+          text-decoration: none;
+
+          &:visited {
+            text-decoration: none;
+          }
+
+          .room-list-img {
+            width: 100%;
+            height: 168px;
+          }
+
+          .room-list-text {
+            width: 100%;
+            height: 97px;
+            padding-top: 10px;
+
+            .room-list-region {
+              font-size: 13px;
+              font-weight: bold;
+              color: rgb(0, 106, 213);
+            }
+
+            .room-list-title {
+              height: 24px;
+              margin-top: 8px;
+              font-size: 14px;
+              font-weight: bold;
+              color: #3b3e4d;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+
+            .room-list-price {
+              margin-top: 8px;
+              font-size: 14px;
+              color: black;
+
+              .big-text {
+                font-weight: bold;
+              }
+
+              .small-text {
+                font-size: 11px;
+                font-weight: 400px;
+              }
+            }
+
+            .room-list-grade {
+              margin-top: 3px;
+              color: black;
+
+              img {
+                width: 17px;
+              }
+
+              span {
+                margin-left: 2px;
+                font-size: 13px;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
