@@ -23,17 +23,39 @@
         width: 100%;
         height: 44px;
         margin-top: 40px;
-        // position: relative;
+        position: relative;
 
         .control-buttons {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          width: 321px;
+          height: 44px;
           font-size: 12px;
-          // position: fixed;
-          // right: 0;
-          // botton: 0;
 
-          .control-button {
-            padding: 0 16px;
-            border: 1px solid black;
+          .button-box {
+            position: relative;
+            &:last-child {
+              border-right: 1px solid lightgray;
+            }
+
+            .control-button {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 107px;
+              height: 44px;
+              padding: 0 16px;
+              border: 1px solid lightgray;
+              border-right: none;
+              font-size: 12px;
+              background-color: white;
+
+              img {
+                width: 17px;
+              }
+            }
           }
         }
       }
@@ -56,9 +78,25 @@
             text-decoration: none;
           }
 
-          .room-list-img {
-            width: 100%;
-            height: 168px;
+          .room-list-imgs {
+            position: relative;
+
+            .room-list-img {
+              width: 100%;
+              height: 168px;
+            }
+
+            .bookmark-empty {
+              position: absolute;
+              right: 17px;
+              bottom: 20px;
+              width: 24px;
+              height: 24px;
+            }
+
+            .bookmark-filled {
+              display: none;
+            }
           }
 
           .room-list-text {
