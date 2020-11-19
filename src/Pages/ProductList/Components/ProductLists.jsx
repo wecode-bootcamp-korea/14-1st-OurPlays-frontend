@@ -13,22 +13,24 @@ const PRODUCTLISTS = [
 class ProductLists extends Component {
   render() {
     return (
-      <div className='product-list'>
-        {PRODUCTLISTS.map((productList) => {
-          return (
-            <>
-              <section className='header'>
-                <div className='title'>{productList.category}</div>
-                <div className='filter'>
-                  <ControlButtons />
-                </div>
-              </section>
-              <section className='main'>
-                <RoomLists category={productList.category} />
-              </section>
-            </>
-          );
-        })}
+      <div className='ProductLists'>
+        <div className='product-list'>
+          {PRODUCTLISTS.map((productList) => {
+            return (
+              <div key={productList.id}>
+                <section className='header'>
+                  <div className='title'>{productList.category}</div>
+                  <div className='filter'>
+                    <ControlButtons />
+                  </div>
+                </section>
+                <section className='main'>
+                  <RoomLists category={productList.category} />
+                </section>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -25,17 +25,19 @@ const ROOMLISTIMAGES = [
 class RoomListImages extends Component {
   render() {
     return (
-      <div className='room-list-imgs'>
-        {ROOMLISTIMAGES.map((roomListImage) => {
-          return (
-            <img
-              key={roomListImage.id}
-              className={roomListImage.className}
-              src={roomListImage.src}
-              alt={roomListImage.alt}
-            />
-          );
-        })}
+      <div className='RoomListImages'>
+        <div className='room-list-imgs'>
+          {ROOMLISTIMAGES.map((roomListImage) => {
+            return (
+              <img
+                key={roomListImage.id}
+                className={roomListImage.className}
+                src={roomListImage.src}
+                alt={roomListImage.alt}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

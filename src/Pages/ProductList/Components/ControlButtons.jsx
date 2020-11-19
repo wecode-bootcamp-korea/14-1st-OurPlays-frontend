@@ -25,17 +25,19 @@ const CONTROLBUTTONS = [
 class ControlButtons extends Component {
   render() {
     return (
-      <div className='control-buttons'>
-        {CONTROLBUTTONS.map((controlButton) => {
-          return (
-            <div key={controlButton.id} className='button-box'>
-              <button className='control-button'>
-                <span>{controlButton.category}</span>
-                <img src={controlButton.src} alt={controlButton.alt} />
-              </button>
-            </div>
-          );
-        })}
+      <div className='ControlButtons'>
+        <div className='control-buttons'>
+          {CONTROLBUTTONS.map((controlButton) => {
+            return (
+              <div key={controlButton.id} className='button-box'>
+                <button className='control-button'>
+                  <span>{controlButton.category}</span>
+                  <img src={controlButton.src} alt={controlButton.alt} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
