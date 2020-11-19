@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NAVICONS from './NavIcons';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
 
@@ -31,23 +32,7 @@ class Nav extends Component {
                 alt='search-icon'
               />
             </div>
-            <div className='nav-icons'>
-              <Link className='nav-icon' to=''>
-                아워플레이스 소개
-              </Link>
-              <Link className='nav-icon' to=''>
-                촬영장소 등록하기
-              </Link>
-              <Link className='nav-icon' to=''>
-                이용방법
-              </Link>
-              <Link className='nav-icon' to='/SignUp'>
-                회원가입
-              </Link>
-              <Link className='nav-icon' to='/Login'>
-                로그인
-              </Link>
-            </div>
+            <NAVICONS Link='Link' />
           </section>
         </section>
         <div className='border-without-side'></div>
