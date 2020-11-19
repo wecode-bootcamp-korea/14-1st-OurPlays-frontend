@@ -34,7 +34,7 @@ class FooterIcons extends Component {
       <div className='footer-icons'>
         {FOOTERICONS.map((footerIcons) => {
           return (
-            <div className='footer-icon'>
+            <div key={footerIcons.id} className='footer-icon'>
               <a target='_blank' href={footerIcons.href}>
                 <img src={footerIcons.src} alt={footerIcons.alt} />
               </a>
