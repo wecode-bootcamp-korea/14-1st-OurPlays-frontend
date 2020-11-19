@@ -3,10 +3,19 @@
         display: flex;
         .DateInput_input {
             width: 120px;
+            text-align: center;
+            right: 21px;
         }
         .DateInput .DateInput_1 {
             padding-right: 10px;
         }
+        .DateRangePickerInput_arrow {
+            padding-top: 13px;
+            left: 2px;
+        }
     }
-    .CalendarDay {}
+    .CalendarDay {
+        padding-top: 10px;
+        font-weight: bold;
+    }
 }

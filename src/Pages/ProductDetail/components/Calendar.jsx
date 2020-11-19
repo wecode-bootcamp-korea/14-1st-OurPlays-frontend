@@ -25,8 +25,8 @@ class Calendar extends Component {
   }
 
   render() {
+    console.log("Start", this.state.startDate, "end", this.state.endDate);
     moment.locale("ko", koLocale);
-    console.log(this.state.startDate, this.state.endDate);
     return (
       <div className="Calendar">
         <DateRangePicker
@@ -36,6 +36,7 @@ class Calendar extends Component {
           endDateId="endDate"
           onDatesChange={({ startDate, endDate }) => {
             this.setState({ startDate, endDate });
+            this.props.userDateHandler(startDate, endDate);
           }}
           focusedInput={this.state.focusedInput}
           onFocusChange={(focusedInput) => this.setState({ focusedInput })}

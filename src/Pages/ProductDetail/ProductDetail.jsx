@@ -1,15 +1,45 @@
 import React, { Component } from "react";
 import DetailSlider from "./components/DetailSlider";
 import Calendar from "./components/Calendar";
+import SelectDropdown from "./components/SelectDropdown";
+import Modal from "./components/Modal";
 import Slider from "react-slick";
+import Select from "react-select";
+
 import "./ProductDetail.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  className: "slides",
+};
+const people_options = [
+  { value: "1 명", label: "1명" },
+  { value: "2 명", label: "2명" },
+  { value: "3 명", label: "3명" },
+];
+const time_options = [
+  { value: "1 시간", label: "1시간" },
+  { value: "2 시간", label: "2시간" },
+  { value: "3 시간", label: "3시간" },
+];
 
 class ProductDetail extends Component {
   state = {
     imageData: [],
     target: "",
+    startDate: "",
+    endDate: "",
+    peopelVal: "",
+    timeVal: "",
+    isShowModal: false,
   };
   componentDidMount() {
     fetch("/Data/DetailImage.json")
@@ -22,17 +52,31 @@ class ProductDetail extends Component {
       );
   }
 
+  userDateHandler = (_startDate, _endDate) => {
+    this.setState({
+      startDate: _startDate,
+      endDate: _endDate,
+    });
+  };
+  handlePeopleChange = (e) => {
+    this.setState({
+      peopleVal: e.value,
+    });
+  };
+
+  handleTimeChange = (e) => {
+    this.setState({
+      timeVal: e.value,
+    });
+  };
+  submitHandleChange = (e) => {
+    console.log(e);
+  };
+
+  showModal = () => {};
   render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      className: "slides",
-    };
+    console.log(this.state.startDate, this.state.endDate);
+
     const { imageData, target } = this.state;
     console.log(imageData, target.id);
     return (
@@ -185,22 +229,22 @@ class ProductDetail extends Component {
                     <div className="right-user-select-date-wrap">
                       <div className="date-wrap">
                         <div className="date-start">
-                          {/* <input type="text" value="" placeholder="시작일" />
-                           */}
-                          <Calendar />
-                        </div>
-                        <div className="time-start">
-                          {/* <input type="text" value="" placeholder="시간" /> */}
+                          <Calendar userDateHandler={this.userDateHandler} />
                         </div>
                       </div>
-                      {/* <i className="fas fa-angle-right"></i> */}
                       <div className="date-wrap">
-                        <div className="date-end">
-                          {/* <input type="text" value="" placeholder="종료일" /> */}
-                          {/* <Calendar /> */}
-                        </div>
                         <div className="time-end">
-                          {/* <input type="text" value="" placeholder="시간" /> */}
+                          <Select
+                            options={time_options}
+                            placeholder={"시간을 선택해주세요."}
+                            onChange={this.handleTimeChange}
+                          />
+                          {/* <input
+                            type="number"
+                            value=""
+                            placeholder="시간"
+                            onSubmit={this.submitHandleChange()}
+                          /> */}
                         </div>
                       </div>
                     </div>
@@ -210,33 +254,41 @@ class ProductDetail extends Component {
                       촬영 인원 선택
                     </div>
                     <div className="right-user-select-ppl-wrap">
-                      <button type="button" className="ppl-select"></button>
-                      <span className="ppl-select-span">
-                        인원을 선택해주세요.
-                      </span>
+                      <Select
+                        options={people_options}
+                        onChange={this.handlePeopleChange}
+                        placeholder={"인원수를 선택해주세요."}
+                      />
                     </div>
                   </div>
                   <div className="right-user-select-result">
                     <div className="result-col">
                       <div className="result-col-title">촬영 스케쥴</div>
                       <div className="result-col-period">
-                        <div className="result-start">2020.11.18 22:00</div>~
-                        <div className="result-end">2020.11.18 22:00</div>
+                        <div className="result-start">
+                          {this.state.startDate &&
+                            this.state.startDate.format("YYYY.MM.DD")}
+                        </div>
+                        ~
+                        <div className="result-end">
+                          {this.state.endDate &&
+                            this.state.endDate.format("YYYY.MM.DD")}
+                        </div>
                       </div>
                     </div>
                     <div className="result-col">
                       <div className="result-col-hours">
                         <div className="title">촬영 시간</div>
-                        <div className="hours">12 시간</div>
+                        <div className="hours">{this.state.timeVal}</div>
                       </div>
                       <div className="result-col-total-hours">
-                        12 x 50,000원
+                        {this.state.timeVal.slice(0, 1)} x 50,000원
                       </div>
                     </div>
                     <div className="result-col">
                       <div className="result-col-ppl">
                         <div className="title">촬영 인원</div>
-                        <div className="hours">1 명</div>
+                        <div className="hours">{this.state.peopleVal}</div>
                       </div>
                       <div className="result-col-total-ppl">추가금액 0원</div>
                     </div>
@@ -252,13 +304,121 @@ class ProductDetail extends Component {
               </div>
             </div>
             <div className="product-detail-info-another">
-              <div className="product-detail-map"></div>
+              <div className="product-detail-map">
+                <img src="../images/donghakim/map.png" alt="" />
+              </div>
               <div className="product-detail-another-place">
                 <div className="product-detail-another-place-header">
                   주변 촬영장소
                 </div>
-                <div className="product-detail-another-place-content"></div>
+                <div className="product-detail-another-place-content">
+                  <img
+                    src="
+                ../images/donghakim/another.png"
+                    alt=""
+                  />
+                </div>
               </div>
+              <div className="product-detail-review-container">
+                <div className="product-detail-review-header">
+                  <h2>사용자 후기</h2>
+                </div>
+                <div className="product-detail-review-reviews">
+                  <div className="review-rows">
+                    <div className="review-row">
+                      <div className="review-title">청결도</div>
+                      <div className="review-rate">
+                        <div class="stars-outer">
+                          <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating">5,0</span>
+                      </div>
+                    </div>
+                    <div className="review-row">
+                      <div className="review-title">정확도</div>
+                      <div className="review-rate">
+                        <div class="stars-outer">
+                          <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating">5,0</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="review-rows">
+                    <div className="review-row">
+                      <div className="review-title">접근성</div>
+                      <div className="review-rate">
+                        <div class="stars-outer">
+                          <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating">5,0</span>
+                      </div>
+                    </div>{" "}
+                    <div className="review-row">
+                      <div className="review-title">가격</div>
+                      <div className="review-rate">
+                        <div class="stars-outer">
+                          <div class="stars-inner"></div>
+                        </div>
+                        <span class="number-rating">5,0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="product-detail-review-contents">
+                  <div className="product-detail-review-content">
+                    <div className="card-wrap">
+                      <div className="card-header">
+                        <div className="card-img">
+                          <img src="../images/donghakim/img1.jpeg" alt="" />
+                        </div>
+                        <div className="card-user-info">
+                          <span className="name">Kim</span>
+                          <span className="time">November 2020</span>
+                        </div>
+                      </div>
+                      <div className="card-content">
+                        테스트 테스트 테스트테스트 테스트 테스트테스트 테스트
+                        테스트
+                      </div>
+                    </div>
+                    <div className="card-wrap">
+                      <div className="card-header">
+                        <div className="card-img">
+                          <img src="../images/donghakim/img1.jpeg" alt="" />
+                        </div>
+                        <div className="card-user-info">
+                          <span className="name">Kim</span>
+                          <span className="time">November 2020</span>
+                        </div>
+                      </div>
+                      <div className="card-content">
+                        테스트 테스트 테스트테스트 테스트 테스트테스트 테스트
+                        테스트
+                      </div>
+                    </div>
+                    <div className="card-wrap">
+                      <div className="card-header">
+                        <div className="card-img">
+                          <img src="../images/donghakim/img1.jpeg" alt="" />
+                        </div>
+                        <div className="card-user-info">
+                          <span className="name">Kim</span>
+                          <span className="time">November 2020</span>
+                        </div>
+                      </div>
+                      <div className="card-content">
+                        테스트 테스트 테스트테스트 테스트 테스트테스트 테스트
+                        테스트
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="show-review-modal">
+                <input type="button" />
+              </div>
+              <Modal onClick={this.showModal} />
             </div>
           </section>
         </div>
