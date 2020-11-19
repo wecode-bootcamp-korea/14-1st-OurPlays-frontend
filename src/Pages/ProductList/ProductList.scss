@@ -138,14 +138,19 @@
             }
 
             .room-list-grade {
+              display: flex;
               margin-top: 3px;
               color: black;
 
-              img {
-                width: 17px;
+              .star-icons {
+                img {
+                  width: 17px;
+                }
               }
 
-              span {
+              .review-number {
+                display: flex;
+                align-items: center;
                 margin-left: 2px;
                 font-size: 13px;
                 font-weight: bold;
