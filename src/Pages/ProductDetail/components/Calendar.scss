@@ -1,0 +1,12 @@
+.Calendar {
+    .DateRangePickerInput {
+        display: flex;
+        .DateInput_input {
+            width: 120px;
+        }
+        .DateInput .DateInput_1 {
+            padding-right: 10px;
+        }
+    }
+    .CalendarDay {}
+}
