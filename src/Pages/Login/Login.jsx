@@ -8,6 +8,7 @@ class Login extends Component {
     this.state = {
       idValue: '',
       pwValue: '',
+      showShadow: false,
     };
   }
 
@@ -20,7 +21,7 @@ class Login extends Component {
   checkValidation = () => {
     const { idValue, pwValue } = this.state;
     const checkId = idValue.includes('@');
-    const checkPw = pwValue.length >= 4;
+    const checkPw = pwValue.length >= 8;
     if (checkId && checkPw) {
       alert('로그인 성공');
       return this.props.history.push('/Main');
@@ -41,11 +42,13 @@ class Login extends Component {
     }
   };
 
-  makeShadow = (e) => {};
+  handleOnClick = () => {
+    return this.state.showShadow;
+  };
 
   render() {
     const { idValue, pwValue } = this.state;
-    const makeShadow = idValue;
+    const activateEmail = this.state.idValue.length > 0;
     return (
       <div className='Login'>
         <section className='login-header'>
@@ -56,11 +59,12 @@ class Login extends Component {
             <div className='email-label'>
               <span>이메일 주소</span>
               <input
+                // className={activateEmail ? 'email-activate' : 'email-deactivate'}
                 className='email-activate'
                 type='text'
                 placeholder='이메일 주소를 입력해 주세요.'
                 onChange={this.handleChangeInput}
-                onClick={makeShadow}
+                onClick={this.handleOnClick}
               />
             </div>
             <div className='password-label'>
