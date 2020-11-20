@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../Nav.scss';
 
+class NavIcons extends Component {
+  render() {
+    return (
+      <div className='nav-icons'>
+        {NAVICONS.map((navIcon) => {
+          return (
+            <Link key={navIcon.id} className='nav-icon' to={navIcon.linkTo}>
+              {navIcon.name}
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
+export default NavIcons;
+
 const NAVICONS = [
   {
     id: 0,
@@ -29,21 +47,3 @@ const NAVICONS = [
     linkTo: '/Login',
   },
 ];
-
-class NavIcons extends Component {
-  render() {
-    return (
-      <div className='nav-icons'>
-        {NAVICONS.map((navIcon) => {
-          return (
-            <Link key={navIcon.id} className='nav-icon' to={navIcon.linkTo}>
-              {navIcon.name}
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-export default NavIcons;

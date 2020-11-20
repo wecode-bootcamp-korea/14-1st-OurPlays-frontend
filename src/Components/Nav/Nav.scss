@@ -2,7 +2,7 @@
   font-family: 'Nanum Gothic Coding', monospace;
 }
 
-.Nav {
+nav {
   display: flex;
   justify-content: center;
   position: relative;
@@ -37,7 +37,7 @@
 
       .search-input {
         position: relative;
-        // margin-right: 60px;
+
         input {
           width: 400px;
           height: 56px;
@@ -83,7 +83,6 @@
           text-decoration: none;
           color: #3b3e4d;
           font-size: 15px;
-          font-family: 'Nanum Gothic Coding', monospace;
           font-weight: bold;
           padding: 8px;
 
@@ -101,7 +100,6 @@
   position: absolute;
   display: block;
   background-color: rgba(0, 0, 0, 0.1);
-  width: 100%;
   height: 1px;
   left: 0px;
   top: 80px;
@@ -146,10 +144,6 @@
     .route {
       text-decoration: none;
       color: gray;
-
-      &:visited {
-        text-decoration: none;
-      }
     }
   }
 }

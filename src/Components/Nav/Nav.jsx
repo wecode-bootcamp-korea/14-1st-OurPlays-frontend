@@ -11,7 +11,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <div className='Nav'>
+      <nav>
         <section className='nav-background'>
           <section className='main-nav'>
             <div className='logo-icon'>
@@ -41,13 +41,13 @@ class Nav extends Component {
             <Link to='/' className='home'>
               Home
             </Link>
-            <img src='../images/youngjoonpark/arrow-img.png' alt='' />
+            <img src='../images/youngjoonpark/arrow-img.png' alt='arrow-img' />
             <Link to='현재경로' className='route'>
               route
             </Link>
           </div>
         </section>
-      </div>
+      </nav>
     );
   }
 }
