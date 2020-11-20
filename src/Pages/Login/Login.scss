@@ -23,6 +23,7 @@
     height: 290px;
     width: 1024px;
     border-bottom: 1px solid lightgray;
+
     font-size: 13px;
 
     .label {
@@ -58,7 +59,6 @@
           border: 1px solid lightgray;
           border-radius: 7px;
           padding: 15px 8px;
-          // box-shadow: 0 1px 6px rgba(50, 50, 93, 0.5), 0 1px 3px rgba(0, 0, 0, 0.08);
           outline-style: none;
 
           &::placeholder {
@@ -74,7 +74,21 @@
         height: 48px;
         font-weight: bold;
 
-        .password-input {
+        .password-activate {
+          width: 494px;
+          height: 100%;
+          border: 1px solid lightgray;
+          border-radius: 7px;
+          padding: 15px 8px;
+          outline-style: none;
+          box-shadow: 0 1px 6px rgba(50, 50, 93, 0.5), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+          &::placeholder {
+            color: lightgray;
+          }
+        }
+
+        .password-deactivate {
           width: 494px;
           height: 100%;
           border: 1px solid lightgray;

@@ -8,14 +8,15 @@ class Login extends Component {
     this.state = {
       idValue: '',
       pwValue: '',
-      showShadow: false,
     };
   }
 
-  handleChangeInput = (e) => {
-    e.target.className === 'email-input'
-      ? this.setState({ idValue: e.target.value })
-      : this.setState({ pwValue: e.target.value });
+  handleChangeEmail = (e) => {
+    this.setState({ idValue: e.target.value });
+  };
+
+  handleChangePw = (e) => {
+    this.setState({ pwValue: e.target.value });
   };
 
   checkValidation = () => {
@@ -32,7 +33,7 @@ class Login extends Component {
     }
 
     if (!checkPw) {
-      alert('비밀번호는 4자리 이상입니다.');
+      alert('비밀번호는 8자리 이상입니다.');
     }
   };
 
@@ -42,13 +43,13 @@ class Login extends Component {
     }
   };
 
-  handleOnClick = () => {
-    return this.state.showShadow;
-  };
-
   render() {
     const { idValue, pwValue } = this.state;
-    const activateEmail = this.state.idValue.length > 0;
+    const activateEmail = idValue.length >= 1 ? 'email-activate' : 'email-deactivate';
+    const activatePw = pwValue.length >= 1 ? 'password-activate' : 'password-deactivate';
+    console.log(activateEmail);
+    console.log(activatePw);
+
     return (
       <div className='Login'>
         <section className='login-header'>
@@ -59,21 +60,20 @@ class Login extends Component {
             <div className='email-label'>
               <span>이메일 주소</span>
               <input
-                // className={activateEmail ? 'email-activate' : 'email-deactivate'}
-                className='email-activate'
+                className={activateEmail}
                 type='text'
                 placeholder='이메일 주소를 입력해 주세요.'
-                onChange={this.handleChangeInput}
-                onClick={this.handleOnClick}
+                onChange={(e) => this.handleChangeEmail(e)}
+                onKeyPress={this.handleKeyPress}
               />
             </div>
             <div className='password-label'>
               <span>비밀번호</span>
               <input
-                className='password-input'
+                className={activatePw}
                 type='password'
                 placeholder='비밀번호를 입력해 주세요.'
-                onChange={this.handleChangeInput}
+                onChange={this.handleChangePw}
                 onKeyPress={this.handleKeyPress}
               />
             </div>
