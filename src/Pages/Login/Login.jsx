@@ -12,11 +12,13 @@ class Login extends Component {
   }
 
   handleChangeEmail = (e) => {
-    this.setState({ idValue: e.target.value });
+    const { value } = e.target;
+    this.setState({ idValue: value });
   };
 
   handleChangePw = (e) => {
-    this.setState({ pwValue: e.target.value });
+    const { value } = e.target;
+    this.setState({ pwValue: value });
   };
 
   checkValidation = () => {
@@ -47,8 +49,6 @@ class Login extends Component {
     const { idValue, pwValue } = this.state;
     const activateEmail = idValue.length >= 1 ? 'email-activate' : 'email-deactivate';
     const activatePw = pwValue.length >= 1 ? 'password-activate' : 'password-deactivate';
-    console.log(activateEmail);
-    console.log(activatePw);
 
     return (
       <div className='Login'>
