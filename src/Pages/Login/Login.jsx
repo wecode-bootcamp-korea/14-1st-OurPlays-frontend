@@ -23,7 +23,7 @@ class Login extends Component {
     const checkPw = pwValue.length >= 4;
     if (checkId && checkPw) {
       alert('로그인 성공');
-      return this.props.history.push('../Main/Main');
+      return this.props.history.push('/Main');
     }
 
     if (!checkId) {
@@ -41,9 +41,11 @@ class Login extends Component {
     }
   };
 
+  makeShadow = (e) => {};
+
   render() {
     const { idValue, pwValue } = this.state;
-    console.log(this.state.idValue);
+    const makeShadow = idValue;
     return (
       <div className='Login'>
         <section className='login-header'>
@@ -54,10 +56,11 @@ class Login extends Component {
             <div className='email-label'>
               <span>이메일 주소</span>
               <input
-                className='email-input'
+                className='email-activate'
                 type='text'
                 placeholder='이메일 주소를 입력해 주세요.'
                 onChange={this.handleChangeInput}
+                onClick={makeShadow}
               />
             </div>
             <div className='password-label'>

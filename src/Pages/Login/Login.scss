@@ -39,11 +39,26 @@
         height: 48px;
         font-weight: bold;
 
-        .email-input {
+        .email-activate {
           width: 494px;
           height: 100%;
           border: 1px solid lightgray;
+          border-radius: 7px;
           padding: 15px 8px;
+          // box-shadow: 0 1px 6px rgba(50, 50, 93, 0.5), 0 1px 3px rgba(0, 0, 0, 0.08);
+          outline-style: none;
+
+          &::placeholder {
+            color: lightgray;
+          }
+        }
+        .email-deactivate {
+          width: 494px;
+          height: 100%;
+          border: 1px solid lightgray;
+          border-radius: 7px;
+          padding: 15px 8px;
+          box-shadow: 0 1px 6px rgba(50, 50, 93, 0.5), 0 1px 3px rgba(0, 0, 0, 0.08);
           outline-style: none;
 
           &::placeholder {
@@ -63,6 +78,7 @@
           width: 494px;
           height: 100%;
           border: 1px solid lightgray;
+          border-radius: 7px;
           padding: 15px 8px;
           outline-style: none;
 
@@ -103,6 +119,7 @@
         color: white;
         background-color: #0095f6;
         border: none;
+        border-radius: 10px;
         font-size: 17px;
 
         &:hover {
