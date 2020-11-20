@@ -364,11 +364,14 @@
             .product-detail-info-another {
                 display: flex;
                 flex-direction: column;
+                position: relative;
                 width: 100%;
                 .product-detail-map {
                     width: 1024px;
-                    img {
+                    height: 550px;
+                    .Map {
                         width: 100%;
+                        height: 100%;
                     }
                     ;
                 }
@@ -463,27 +466,41 @@
                                 .card-content {
                                     padding-top: 20px;
                                 }
+                                .delete-comment {
+                                    padding-left: 250px;
+                                }
                             }
                         }
                     }
-                    .show-review-modal {
-                        width: 300px;
-                        background-color: #f8ce0b;
-                        input {
-                            width: 100%;
-                            padding: 50px;
-                            border: none;
-                        }
+                }
+                .show-review-modal {
+                    position: relative;
+                    display: flex;
+                    width: 350px;
+                    left: 38%;
+                    top: -250px;
+                    outline: none;
+                    input {
+                        background-color: rgb(0, 106, 213);
+                        width: 100%;
+                        padding: 20px;
+                        border: none;
+                        font-size: 40px;
+                        border-radius: 40px;
+                        color: white;
+                        border: none;
+                        outline: none;
+                        text-decoration: none;
                     }
                 }
                 .modal-review-form {
-                    position: relative;
+                    position: absolute;
                     width: 300px;
                     height: 300px;
                     display: flex;
                     flex-direction: column;
                     left: 40%;
-                    top: -200px;
+                    bottom: 20%;
                     h2 {
                         text-align: center;
                         font-size: 30px;
@@ -563,3 +580,13 @@
     color: #f8ce0b;
     font-weight: 900;
 }
+
+// .modal-Mode {
+//     height: 100%;
+//     width: 100%;
+//     background-color: rgba(0, 0, 0, 0.9);
+//     position: fixed;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }

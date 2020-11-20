@@ -5,6 +5,12 @@ import SelectDropdown from "./components/SelectDropdown";
 import Modal from "./components/Modal";
 import Slider from "react-slick";
 import Select from "react-select";
+import ReviewList from "./components/ReviewList";
+import ReviewElement from "./components/ReviewElement";
+import MapContanier from "./components/MapContainer";
+import MapElement from "./components/MapElement";
+
+import uuid from "react-uuid";
 
 import "./ProductDetail.scss";
 import "slick-carousel/slick/slick.css";
@@ -19,6 +25,9 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 3000,
   className: "slides",
+  comments: [],
+  comment: "",
+  id: 0,
 };
 const people_options = [
   { value: "1 명", label: "1명" },
@@ -40,6 +49,10 @@ class ProductDetail extends Component {
     peopelVal: "",
     timeVal: "",
     isShowModal: false,
+    name: "user-data-name",
+    comments: [],
+    id: uuid(),
+    comment: "",
   };
   componentDidMount() {
     fetch("/Data/DetailImage.json")
@@ -73,14 +86,40 @@ class ProductDetail extends Component {
     console.log(e);
   };
 
-  showModal = () => {};
-  render() {
-    console.log(this.state.startDate, this.state.endDate);
+  showModal = () => {
+    console.log("dd");
+    this.setState({
+      isShowModal: !this.state.isShowModal,
+    });
+  };
+  handleSubmit = (_comment) => {
+    const createdComment = {
+      name: this.state.name,
+      id: this.state.id,
+      comment: _comment,
+    };
+    const addedComment = [...this.state.comments, createdComment];
+    this.setState({
+      comments: addedComment,
+      id: uuid(),
+      comment: "",
+    });
+  };
 
+  handleDelete = (id) => {
+    console.log(id);
+    const filteredComments = this.state.comments.filter(
+      (comment) => comment.id !== id
+    );
+    this.setState({
+      comments: filteredComments,
+    });
+  };
+  render() {
     const { imageData, target } = this.state;
-    console.log(imageData, target.id);
+    console.log(this.state.comments);
     return (
-      <article className="ProductDetail">
+      <article className="ProductDetail modal-Mode">
         <div className="product-datail-container">
           <div className="product-image-slider">
             <Slider {...settings}>
@@ -305,7 +344,8 @@ class ProductDetail extends Component {
             </div>
             <div className="product-detail-info-another">
               <div className="product-detail-map">
-                <img src="../images/donghakim/map.png" alt="" />
+                <MapContanier />
+                {/* <img src="../images/donghakim/map.png" alt="" /> */}
               </div>
               <div className="product-detail-another-place">
                 <div className="product-detail-another-place-header">
@@ -365,60 +405,25 @@ class ProductDetail extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="product-detail-review-contents">
-                  <div className="product-detail-review-content">
-                    <div className="card-wrap">
-                      <div className="card-header">
-                        <div className="card-img">
-                          <img src="../images/donghakim/img1.jpeg" alt="" />
-                        </div>
-                        <div className="card-user-info">
-                          <span className="name">Kim</span>
-                          <span className="time">November 2020</span>
-                        </div>
-                      </div>
-                      <div className="card-content">
-                        테스트 테스트 테스트테스트 테스트 테스트테스트 테스트
-                        테스트
-                      </div>
-                    </div>
-                    <div className="card-wrap">
-                      <div className="card-header">
-                        <div className="card-img">
-                          <img src="../images/donghakim/img1.jpeg" alt="" />
-                        </div>
-                        <div className="card-user-info">
-                          <span className="name">Kim</span>
-                          <span className="time">November 2020</span>
-                        </div>
-                      </div>
-                      <div className="card-content">
-                        테스트 테스트 테스트테스트 테스트 테스트테스트 테스트
-                        테스트
-                      </div>
-                    </div>
-                    <div className="card-wrap">
-                      <div className="card-header">
-                        <div className="card-img">
-                          <img src="../images/donghakim/img1.jpeg" alt="" />
-                        </div>
-                        <div className="card-user-info">
-                          <span className="name">Kim</span>
-                          <span className="time">November 2020</span>
-                        </div>
-                      </div>
-                      <div className="card-content">
-                        테스트 테스트 테스트테스트 테스트 테스트테스트 테스트
-                        테스트
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <ReviewList
+                  comments={this.state.comments}
+                  handleDelete={this.handleDelete}
+                />
               </div>
               <div className="show-review-modal">
-                <input type="button" />
+                <input
+                  type="button"
+                  onClick={this.showModal}
+                  value="후기 작성"
+                />
               </div>
-              <Modal onClick={this.showModal} />
+              <Modal
+                isShowModal={this.state.isShowModal}
+                showModal={this.showModal}
+                handleSubmit={(_comment) => {
+                  this.handleSubmit(_comment);
+                }}
+              />
             </div>
           </section>
         </div>
