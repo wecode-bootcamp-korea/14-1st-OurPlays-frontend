@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DetailSlider from "./components/DetailSlider";
 import Calendar from "./components/Calendar";
 import SelectDropdown from "./components/SelectDropdown";
+import ReactStars from "react-rating-stars-component";
 import Modal from "./components/Modal";
 import Slider from "react-slick";
 import Select from "react-select";
@@ -9,6 +10,7 @@ import ReviewList from "./components/ReviewList";
 import ReviewElement from "./components/ReviewElement";
 import MapContanier from "./components/MapContainer";
 import MapElement from "./components/MapElement";
+import { FaStar } from "react-icons/fa";
 
 import uuid from "react-uuid";
 
@@ -37,13 +39,16 @@ const time_options = [
   { value: "3 시간", label: "3시간" },
 ];
 
+const defaultPrice = 50000;
+
 class ProductDetail extends Component {
   state = {
     imageData: [],
+    userReservationInfo: [],
     target: "",
     startDate: "",
     endDate: "",
-    peopelVal: "",
+    peopleVal: "",
     timeVal: "",
     isShowModal: false,
     name: "user-data-name",
@@ -51,7 +56,11 @@ class ProductDetail extends Component {
     id: uuid(),
     comment: "",
     isComment: false,
+    rating: null,
+    isHover: null,
+    ratings: [],
   };
+
   componentDidMount() {
     fetch("/Data/DetailImage.json")
       .then((res) => res.json())
@@ -62,6 +71,16 @@ class ProductDetail extends Component {
         })
       );
   }
+  handleRating = (_rating) => {
+    this.setState({
+      rating: _rating,
+    });
+  };
+  handleRatingHover = (_rating) => {
+    this.setState({
+      isHover: _rating,
+    });
+  };
 
   userDateHandler = (_startDate, _endDate) => {
     this.setState({
@@ -69,43 +88,59 @@ class ProductDetail extends Component {
       endDate: _endDate,
     });
   };
+
   handlePeopleChange = (e) => {
     this.setState({
-      peopleVal: e.value,
+      peopleVal: e.value.slice(0, 1),
     });
   };
 
   handleTimeChange = (e) => {
     this.setState({
-      timeVal: e.value,
+      timeVal: e.value.slice(0, 1),
     });
   };
+
   submitHandleChange = (e) => {
     console.log(e);
   };
 
+  onSubmitInfoHandler = (e) => {
+    e.preventDefault();
+    const reservation = {
+      start: this.state.startDate && this.state.startDate.format("YYYY.MM.DD"),
+      end: this.state.endDate && this.state.endDate.format("YYYY.MM.DD"),
+      pplNumber: this.state.peopleVal,
+      timeAmount: this.state.timeVal,
+    };
+    this.setState({
+      userReservationInfo: [...this.state.userReservationInfo, { reservation }],
+    });
+  };
+
   showModal = () => {
-    console.log("dd");
     this.setState({
       isShowModal: !this.state.isShowModal,
     });
   };
-  handleSubmit = (_comment) => {
+
+  handleSubmit = (_comment, updatedRating) => {
     const createdComment = {
       name: this.state.name,
       id: this.state.id,
       comment: _comment,
+      rating: updatedRating,
     };
     const addedComment = [...this.state.comments, createdComment];
     this.setState({
       comments: addedComment,
       id: uuid(),
       comment: "",
+      ratings: [...this.state.ratings, updatedRating],
     });
   };
 
   handleDelete = (id) => {
-    console.log(id);
     const filteredComments = this.state.comments.filter(
       (comment) => comment.id !== id
     );
@@ -114,8 +149,21 @@ class ProductDetail extends Component {
     });
   };
   render() {
-    const { imageData, isComment } = this.state;
-    console.log(this.state.comments);
+    const {
+      imageData,
+      isComment,
+      startDate,
+      endDate,
+      timeVal,
+      peopleVal,
+      rating,
+      isHover,
+      ratings,
+    } = this.state;
+    const averageRating = ratings.reduce((pre, cur) => {
+      return pre + cur / ratings.length;
+    }, 0);
+
     return (
       <article className="ProductDetail modal-Mode">
         <div className="product-datail-container">
@@ -297,39 +345,44 @@ class ProductDetail extends Component {
                       <div className="result-col-title">촬영 스케쥴</div>
                       <div className="result-col-period">
                         <div className="result-start">
-                          {this.state.startDate &&
-                            this.state.startDate.format("YYYY.MM.DD")}
+                          {startDate && startDate.format("YYYY.MM.DD")}
                         </div>
                         ~
                         <div className="result-end">
-                          {this.state.endDate &&
-                            this.state.endDate.format("YYYY.MM.DD")}
+                          {endDate && endDate.format("YYYY.MM.DD")}
                         </div>
                       </div>
                     </div>
                     <div className="result-col">
                       <div className="result-col-hours">
                         <div className="title">촬영 시간</div>
-                        <div className="hours">{this.state.timeVal}</div>
+                        <div className="hours">{timeVal} 시간</div>
                       </div>
                       <div className="result-col-total-hours">
-                        {this.state.timeVal.slice(0, 1)} x 50,000원
+                        {timeVal.slice(0, 1)} x 50,000원
                       </div>
                     </div>
                     <div className="result-col">
                       <div className="result-col-ppl">
                         <div className="title">촬영 인원</div>
-                        <div className="hours">{this.state.peopleVal}</div>
+                        <div className="hours">{peopleVal} 명</div>
                       </div>
                       <div className="result-col-total-ppl">추가금액 0원</div>
                     </div>
                     <div className="result-col total">
                       <div className="title">총 금액</div>
-                      <div className="result">600,000 원</div>
+                      <div className="result">
+                        {(timeVal * peopleVal * defaultPrice).toLocaleString(2)}
+                        원
+                      </div>
                     </div>
                   </div>
                   <div className="reservation-btn">
-                    <input type="button" value="예약 가능 여부 확인하기" />
+                    <input
+                      type="button"
+                      value="예약 가능 여부 확인하기"
+                      onClick={this.onSubmitInfoHandler}
+                    />
                   </div>
                 </div>
               </div>
@@ -347,13 +400,15 @@ class ProductDetail extends Component {
                   <img
                     src="
                 ../images/donghakim/another.png"
-                    alt=""
+                    alt="place"
                   />
                 </div>
               </div>
               <div className="product-detail-review-container">
                 <div className="product-detail-review-header">
                   <h2>사용자 후기</h2>
+                  <FaStar size={30} color={"#2c78f2"} className="star" />
+                  <div className="rating-total">{averageRating.toFixed(1)}</div>
                 </div>
                 <div className="product-detail-review-reviews">
                   <div className="review-rows">
@@ -398,6 +453,7 @@ class ProductDetail extends Component {
                   </div>
                 </div>
                 <ReviewList
+                  isHover={isHover}
                   comments={this.state.comments}
                   handleDelete={this.handleDelete}
                 />
@@ -413,11 +469,19 @@ class ProductDetail extends Component {
           </section>
         </div>
         <Modal
+          rating={rating}
+          isHover={isHover}
+          handleRatingHover={(_rating) => {
+            this.handleRatingHover(_rating);
+          }}
+          handleRating={(_rating) => {
+            this.handleRating(_rating);
+          }}
           isComment={isComment}
           isShowModal={this.state.isShowModal}
           showModal={this.showModal}
-          handleSubmit={(_comment) => {
-            this.handleSubmit(_comment);
+          handleSubmit={(_comment, updatedRating) => {
+            this.handleSubmit(_comment, updatedRating);
           }}
         />
       </article>

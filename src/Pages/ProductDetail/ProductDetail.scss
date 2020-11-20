@@ -247,7 +247,6 @@
                             .date-wrap {
                                 display: flex;
                                 width: 285px;
-                                &:first-child {}
                                 input {
                                     padding: 15px 0px;
                                 }
@@ -384,6 +383,14 @@
                         h2 {
                             font-size: 30px;
                         }
+                        .star {
+                            padding-left: 20px;
+                        }
+                        .rating-total {
+                            padding-top: 6px;
+                            font-size: 25px;
+                            padding-left: 10px;
+                        }
                     }
                     .product-detail-review-reviews {
                         display: flex;
@@ -454,8 +461,15 @@
                                         }
                                     }
                                 }
-                                .card-content {
-                                    padding-top: 20px;
+                                .card-content-wrap {
+                                    padding-top: 30px;
+                                    padding-left: 30px;
+                                    .stars-outer {
+                                        display: flex;
+                                    }
+                                    .card-content {
+                                        padding-top: 20px;
+                                    }
                                 }
                                 .delete-comment {
                                     padding-left: 250px;
@@ -492,15 +506,14 @@
 .stars-outer {
     position: relative;
     display: inline-block;
-}
-
-.stars-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    widows: 0;
+    .stars-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        widows: 0;
+    }
 }
 
 .stars-outer::before {

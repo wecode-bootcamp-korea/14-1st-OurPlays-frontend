@@ -7,7 +7,7 @@ import Main from "../src/Pages/Main/Main";
 import SignUp from "../src/Pages/SignUp/SignUp";
 import Login from "../src/Pages/Login/Login";
 import ProductList from "../src/Pages/ProductList/ProductList";
-import ProductDetail from "../src/Pages/ProductDetail/ProductDetail";
+import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 
 class Routes extends React.Component {
   render() {

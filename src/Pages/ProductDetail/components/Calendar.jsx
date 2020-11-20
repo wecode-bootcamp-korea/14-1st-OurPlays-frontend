@@ -25,14 +25,14 @@ class Calendar extends Component {
   }
 
   render() {
-    console.log("Start", this.state.startDate, "end", this.state.endDate);
+    const { startDate, endDate } = this.state;
     moment.locale("ko", koLocale);
     return (
       <div className="Calendar">
         <DateRangePicker
-          startDate={this.state.startDate}
+          startDate={startDate}
           startDateId="startDate"
-          endDate={this.state.endDate}
+          endDate={endDate}
           endDateId="endDate"
           onDatesChange={({ startDate, endDate }) => {
             this.setState({ startDate, endDate });
@@ -44,7 +44,7 @@ class Calendar extends Component {
           showInputs="true"
           block={this.state.block}
           small={this.state.small}
-        />
+        />{" "}
       </div>
     );
   }

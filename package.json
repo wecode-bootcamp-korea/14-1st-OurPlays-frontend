@@ -14,6 +14,8 @@
     "react-daterange-picker": "^2.0.1",
     "react-dates": "^21.8.0",
     "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-select": "^3.1.0",
