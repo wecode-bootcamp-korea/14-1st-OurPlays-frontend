@@ -1,17 +1,17 @@
 .ProductDetail {
     display: flex;
-    width: 100%;
     justify-content: center;
     .product-datail-container {
         .product-image-slider {
+            position: relative;
             width: 1024px;
             height: 540px;
             padding-left: 30px;
             .product-image-cnt {
-                position: absolute;
+                position: relative;
                 width: 100px;
                 height: 30px;
-                left: 20%;
+                left: 5%;
                 bottom: 15%;
                 background-color: rgba(0, 0, 0, 0.3);
                 padding: 10px;
@@ -46,17 +46,18 @@
                 border: 1px solid transparent;
                 cursor: pointer;
                 i {
+                    width: 100%;
                     font-size: 20px;
                     color: black;
                 }
             }
             .link {
                 top: 25%;
-                left: 75%;
+                left: 80%;
             }
             .book-mark {
                 top: 25%;
-                left: 80%;
+                left: 90%;
             }
         }
         .product-detail-content-container {
@@ -151,8 +152,6 @@
                                         border-left: none;
                                     }
                                 }
-                                .area2 {}
-                                .area {}
                             }
                         }
                         .left-middle-table-content {
@@ -254,20 +253,10 @@
                                 }
                                 .date-start {
                                     margin-right: 5px;
-                                    // input {
-                                    //     width: 90px;
-                                    // }
                                 }
-                                .time-start {
-                                    // input {
-                                    //     width: 55px;
-                                    // }
-                                }
+                                .time-start {}
                                 .date-end {
                                     margin-right: 5px;
-                                    // input {
-                                    //     width: 90px;
-                                    // }
                                 }
                                 .time-end {
                                     padding-top: 20px;
@@ -369,6 +358,7 @@
                 .product-detail-map {
                     width: 1024px;
                     height: 550px;
+                    z-index: -1;
                     .Map {
                         width: 100%;
                         height: 100%;
@@ -441,6 +431,7 @@
                                     .card-img {
                                         width: 40px;
                                         height: 40px;
+                                        z-index: -1;
                                         img {
                                             width: 100%;
                                             height: 100%;
@@ -477,7 +468,7 @@
                     position: relative;
                     display: flex;
                     width: 350px;
-                    left: 38%;
+                    left: 34%;
                     top: -250px;
                     outline: none;
                     input {
@@ -491,61 +482,6 @@
                         border: none;
                         outline: none;
                         text-decoration: none;
-                    }
-                }
-                .modal-review-form {
-                    position: absolute;
-                    width: 300px;
-                    height: 300px;
-                    display: flex;
-                    flex-direction: column;
-                    left: 40%;
-                    bottom: 20%;
-                    h2 {
-                        text-align: center;
-                        font-size: 30px;
-                        padding-bottom: 30px;
-                    }
-                    i {
-                        position: absolute;
-                        top: -10%;
-                        right: 0px;
-                    }
-                    .modal-star {
-                        position: relative;
-                        display: inline-block;
-                        padding-bottom: 30px;
-                        font-size: 30px;
-                        left: 70px;
-                        .modal-star-inner {
-                            font-size: 30px;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            widows: 0;
-                        }
-                    }
-                    .form-wrap {
-                        width: 100%;
-                        form {
-                            display: flex;
-                            flex-direction: column;
-                            .user-input {
-                                height: 150px;
-                                border: none;
-                                background-color: #ccc;
-                                margin-bottom: 10px;
-                                border-radius: 10px;
-                            }
-                            .user-submit-btn {
-                                border: none;
-                                width: 100%;
-                                padding: 15px 60px;
-                                border-radius: 10px;
-                            }
-                        }
                     }
                 }
             }
@@ -581,12 +517,6 @@
     font-weight: 900;
 }
 
-// .modal-Mode {
-//     height: 100%;
-//     width: 100%;
-//     background-color: rgba(0, 0, 0, 0.9);
-//     position: fixed;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
+.displayNone {
+    display: none;
+}

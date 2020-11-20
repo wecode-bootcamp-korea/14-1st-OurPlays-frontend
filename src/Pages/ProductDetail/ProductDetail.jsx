@@ -25,9 +25,6 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 3000,
   className: "slides",
-  comments: [],
-  comment: "",
-  id: 0,
 };
 const people_options = [
   { value: "1 명", label: "1명" },
@@ -53,6 +50,7 @@ class ProductDetail extends Component {
     comments: [],
     id: uuid(),
     comment: "",
+    isComment: false,
   };
   componentDidMount() {
     fetch("/Data/DetailImage.json")
@@ -116,7 +114,7 @@ class ProductDetail extends Component {
     });
   };
   render() {
-    const { imageData, target } = this.state;
+    const { imageData, isComment } = this.state;
     console.log(this.state.comments);
     return (
       <article className="ProductDetail modal-Mode">
@@ -126,7 +124,7 @@ class ProductDetail extends Component {
               {imageData.map((img, idx) => {
                 return (
                   <div className="DetailSlider" key={idx}>
-                    <img src={img.img} />
+                    <img src={img.img} alt="place" />
                   </div>
                 );
               })}
@@ -278,12 +276,6 @@ class ProductDetail extends Component {
                             placeholder={"시간을 선택해주세요."}
                             onChange={this.handleTimeChange}
                           />
-                          {/* <input
-                            type="number"
-                            value=""
-                            placeholder="시간"
-                            onSubmit={this.submitHandleChange()}
-                          /> */}
                         </div>
                       </div>
                     </div>
@@ -417,16 +409,17 @@ class ProductDetail extends Component {
                   value="후기 작성"
                 />
               </div>
-              <Modal
-                isShowModal={this.state.isShowModal}
-                showModal={this.showModal}
-                handleSubmit={(_comment) => {
-                  this.handleSubmit(_comment);
-                }}
-              />
             </div>
           </section>
         </div>
+        <Modal
+          isComment={isComment}
+          isShowModal={this.state.isShowModal}
+          showModal={this.showModal}
+          handleSubmit={(_comment) => {
+            this.handleSubmit(_comment);
+          }}
+        />
       </article>
     );
   }
