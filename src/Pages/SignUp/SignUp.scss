@@ -34,6 +34,7 @@ $theme-color: rgb(0, 106, 213);
                 }
                 .authenfication-wrap {
                     position: relative;
+                    width: 100%;
                     .checked-bg {
                         position: absolute;
                         background-color: green;
@@ -92,11 +93,11 @@ $theme-color: rgb(0, 106, 213);
                             grid-template-columns: repeat(4, 120px);
                             grid-template-rows: repeat(3, 30px);
                             width: 460px;
-                            padding: 10px 15px;
+                            padding: 10px 0px;
                             li {
                                 position: relative;
                                 width: 100%;
-                                font-size: 12px;
+                                font-size: 10px;
                                 margin: 0 auto;
                                 span {
                                     text-align: center;
