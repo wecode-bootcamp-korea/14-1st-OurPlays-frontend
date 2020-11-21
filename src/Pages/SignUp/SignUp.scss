@@ -13,8 +13,7 @@ $theme-color: rgb(0, 106, 213);
         h1 {
             width: 100%;
             text-align: center;
-            padding-top: 30px;
-            padding-bottom: 120px;
+            padding: 30px 0px 120px 0;
             font-size: 35px;
         }
         .sign-up-form-wrap {
@@ -37,12 +36,12 @@ $theme-color: rgb(0, 106, 213);
                     width: 100%;
                     .checked-bg {
                         position: absolute;
-                        background-color: green;
                         width: 18px;
                         height: 15px;
                         right: 2%;
                         bottom: 53%;
                         border-radius: 50%;
+                        background-color: green;
                         .checked {
                             position: absolute;
                             font-size: 10px;

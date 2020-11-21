@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// [
-//       { google: { isCheck: false } },
-//       { naver: { isCheck: false } },
-//       { blog: { isCheck: false } },
-//       { recommend: { isCheck: false } },
-//       { brunch: { isCheck: false } },
-//       { app: { isCheck: false } },
-//       { instagram: { isCheck: false } },
-//       { faceboook: { isCheck: false } },
-//       { etc: { isCheck: false } },
-//     ],
+import RegisterPath from "./RegisterPath";
+
+const pathArray = [
+  { ko: "구글 검색", en: "google" },
+  { ko: "네이버 검색", en: "naver" },
+  { ko: "네이버 블로그", en: "blog" },
+  { ko: "지인 추천 / 소개", en: "recommend" },
+  { ko: "브런치", en: "brunch" },
+  { ko: "App 검색", en: "app" },
+  { ko: "인스타그램", en: "instargram" },
+  { ko: "페이스북", en: "facebook" },
+  { ko: "기타(직접 입력", en: "etc" },
+];
+
 class SignUpForm extends Component {
   state = {
     email: "",
@@ -31,8 +34,9 @@ class SignUpForm extends Component {
     },
   };
   onChangeHandler = (e) => {
+    const { name, value } = e.target;
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
   onCheckRecommendPath = (e) => {
@@ -51,7 +55,7 @@ class SignUpForm extends Component {
       anotherPath,
       name,
     } = this.state;
-
+    console.log(this.state.loginPath);
     return (
       <>
         <div className="sign-up-form-wrap">
@@ -120,117 +124,18 @@ class SignUpForm extends Component {
               </label>{" "}
               <div className="register-path-input-wrap">
                 <ul>
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="구글 검색"
-                        id="path"
-                        name="google"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 구글 검색 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="네이버 검색"
-                        id="path"
-                        name="naver"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 네이버 검색 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="네이버 블로그"
-                        id="path"
-                        name="blog"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 네이버 블로그 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="지인 추천/소개"
-                        id="path"
-                        name="recommend"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 지인 추천 / 소개 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="브런치"
-                        id="path"
-                        name="brunch"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 브런치 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="App 검색"
-                        id="path"
-                        name="app"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> App 검색 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="인스타그램"
-                        id="path"
-                        name="instagram"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 인스타그램 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="페이스북"
-                        id="path"
-                        name="facebook"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 페이스북 </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
-                  <li>
-                    <span>
-                      <input
-                        type="checkbox"
-                        value="etc"
-                        id="path"
-                        name="etc"
-                        onChange={this.onCheckRecommendPath}
-                      />{" "}
-                      <span> 기타(직접 입력) </span>{" "}
-                    </span>{" "}
-                  </li>{" "}
+                  {pathArray.map((path, idx) => {
+                    return (
+                      <RegisterPath
+                        path={path}
+                        idx={idx}
+                        onCheckRecommendPath={this.onCheckRecommendPath}
+                      />
+                    );
+                  })}
                 </ul>{" "}
               </div>{" "}
-            </div>{" "}
+            </div>
             <div className="register-path-self-input-wrap">
               <span className="register-path-self-input">
                 <input
@@ -238,7 +143,7 @@ class SignUpForm extends Component {
                   id="register"
                   name="anotherPath"
                   placeholder="기타 가입 경로를 입력해주세요."
-                  disabled={this.state.loginPath.etc ? false : true}
+                  disabled={loginPath.etc ? false : true}
                   onChange={this.onChangeHandler}
                 />{" "}
               </span>{" "}
