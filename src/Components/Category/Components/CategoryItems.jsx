@@ -2,6 +2,25 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../Category.scss';
 
+class CategoryItems extends Component {
+  render() {
+    return (
+      <div className='category-items'>
+        {CATEGORYITEMS.map((categoryItem) => {
+          return (
+            <Link key={categoryItem.id} className='category-item' to=''>
+              <img src={categoryItem.src} alt={categoryItem.alt} />
+              <div className='category-name'>{categoryItem.categoryName}</div>
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
+export default CategoryItems;
+
 const CATEGORYITEMS = [
   {
     id: 0,
@@ -74,22 +93,3 @@ const CATEGORYITEMS = [
     linkTo: '',
   },
 ];
-
-class CategoryItems extends Component {
-  render() {
-    return (
-      <div className='category-items'>
-        {CATEGORYITEMS.map((categoryItem) => {
-          return (
-            <Link key={categoryItem.id} className='category-item' to=''>
-              <img src={categoryItem.src} alt={categoryItem.alt} />
-              <div className='category-name'>{categoryItem.categoryName}</div>
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-export default CategoryItems;
