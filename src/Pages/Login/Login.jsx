@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import './Login.scss';
 import { Link } from 'react-router-dom';
 
+const API = 'http://10.58.7.159:8000/user/signin';
+
 class Login extends Component {
+  state = {
+    data: [],
+  };
+
   constructor() {
     super();
     this.state = {
@@ -10,6 +16,18 @@ class Login extends Component {
       pwValue: '',
     };
   }
+  handleClick = (e) => {
+    console.log(this.state.idValue, this.state.pwValue);
+    fetch(API, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.idValue,
+        password: this.state.pwValue,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  };
 
   handleChangeEmail = (e) => {
     const { value } = e.target;
@@ -85,7 +103,9 @@ class Login extends Component {
         </section>
         <section className='login-footer'>
           <div className='login-button'>
-            <button onClick={this.checkValidation}>로그인</button>
+            <button onClick={this.checkValidation} onClick={this.handleClick}>
+              로그인
+            </button>
           </div>
           <div className='manage-member'>
             <Link to='./SignUp/SignUp' className='sign-up'>
