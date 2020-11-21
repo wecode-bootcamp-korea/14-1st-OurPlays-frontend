@@ -26,7 +26,7 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => this.setState({ data: res }));
   };
 
   handleChangeEmail = (e) => {
@@ -67,7 +67,7 @@ class Login extends Component {
     const { idValue, pwValue } = this.state;
     const activateEmail = idValue.length >= 1 ? 'email-activate' : 'email-deactivate';
     const activatePw = pwValue.length >= 1 ? 'password-activate' : 'password-deactivate';
-
+    console.log(idValue);
     return (
       <div className='Login'>
         <section className='login-header'>
