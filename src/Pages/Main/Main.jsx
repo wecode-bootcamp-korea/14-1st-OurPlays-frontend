@@ -7,16 +7,16 @@ import "./Main.scss";
 class Main extends Component {
   render() {
     return (
-      <section className="Main">
+      <Main className="Main">
         <div className="chat-bot">
           <span className="chat-bot-inner">
-            <i className="far fa-smile"></i>채팅 문의
-          </span>
-        </div>
+            <i className="far fa-smile"> </i>채팅 문의{" "}
+          </span>{" "}
+        </div>{" "}
         <LandingPage />
         <Category />
         <Sliders />
-      </section>
+      </Main>
     );
   }
 }

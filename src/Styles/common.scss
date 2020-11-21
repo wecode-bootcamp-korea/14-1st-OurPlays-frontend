@@ -1,6 +1,10 @@
 $logo-color: #0095f6;
 $theme-color: rgb(0, 106, 213);
-$main-font: 'Nanum Gothic Coding', monospace;
+$main-font: 'Nanum Gothic Coding',
+monospace;
+* {
+    box-sizing: border-box
+}
 
 // html css = 일반 대쉬
 // React = camelCase
