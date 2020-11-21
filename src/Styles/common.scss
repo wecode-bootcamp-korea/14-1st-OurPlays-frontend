@@ -1,12 +1,7 @@
-html {
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-
 $logo-color: #0095f6;
 $theme-color: rgb(0, 106, 213);
 $main-font: 'Nanum Gothic Coding',
 monospace;
-// html css = 일반 대쉬
-// React = camelCase
-// component class 이름 = PascalCase
-// font-family: 'Nanum Gothic Coding', monospace;
