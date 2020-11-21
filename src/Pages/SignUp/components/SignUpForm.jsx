@@ -17,6 +17,7 @@ class SignUpForm extends Component {
     password: "",
     rePassword: "",
     anotherPath: "",
+    name: "test",
     loginPath: {
       google: false,
       naver: false,
@@ -30,7 +31,9 @@ class SignUpForm extends Component {
     },
   };
   onChangeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
   onCheckRecommendPath = (e) => {
     const pathKey = e.target.name;
@@ -40,9 +43,14 @@ class SignUpForm extends Component {
   };
 
   render() {
-    const { email, password, rePassword, loginPath, anotherPath } = this.state;
-    console.log(loginPath.etc);
-    console.log(this.state);
+    const {
+      email,
+      password,
+      rePassword,
+      loginPath,
+      anotherPath,
+      name,
+    } = this.state;
 
     return (
       <>
@@ -50,8 +58,8 @@ class SignUpForm extends Component {
           <form action="post" className="sign-up-form">
             <div className="authenfication-wrap">
               <label htmlFor="authenfication " className="authenfication-title">
-                <span> 본인인증 </span>
-              </label>
+                <span> 본인인증 </span>{" "}
+              </label>{" "}
               <span className="authenfication-input">
                 <input
                   type="text"
@@ -59,11 +67,11 @@ class SignUpForm extends Component {
                   placeholder="인증이 완료되었습니다."
                   disabled="false"
                 />
-              </span>
+              </span>{" "}
               <div className="checked-bg">
-                <i className="fas fa-check checked"> </i>
-              </div>
-            </div>
+                <i className="fas fa-check checked"> </i>{" "}
+              </div>{" "}
+            </div>{" "}
             <div className="email-input-wrap">
               <label htmlFor="email" className="email-input-title">
                 <span> 이메일 주소 </span>{" "}
@@ -75,7 +83,7 @@ class SignUpForm extends Component {
                   name="email"
                   placeholder="이메일 주소를 입력해주세요."
                   onChange={this.onChangeHandler}
-                />
+                />{" "}
               </span>{" "}
             </div>{" "}
             <div className="password-input-wrap">
@@ -89,7 +97,7 @@ class SignUpForm extends Component {
                   name="password"
                   placeholder="8-20자 이내 문자의 조합으로 입력해주세요."
                   onChange={this.onChangeHandler}
-                />
+                />{" "}
               </span>{" "}
             </div>{" "}
             <div className="password-re-input-wrap">
@@ -103,7 +111,7 @@ class SignUpForm extends Component {
                   name="rePassword"
                   placeholder=" 8-20자 이내 문자의 조합으로 입력해주세요."
                   onChange={this.onChangeHandler}
-                />
+                />{" "}
               </span>{" "}
             </div>{" "}
             <div className="register-path-wrap">
@@ -120,7 +128,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="google"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 구글 검색 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -132,7 +140,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="naver"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 네이버 검색 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -144,7 +152,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="blog"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 네이버 블로그 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -156,7 +164,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="recommend"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 지인 추천 / 소개 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -168,7 +176,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="brunch"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 브런치 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -180,7 +188,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="app"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> App 검색 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -192,7 +200,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="instagram"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 인스타그램 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -204,7 +212,7 @@ class SignUpForm extends Component {
                         id="path"
                         name="facebook"
                         onChange={this.onCheckRecommendPath}
-                      />
+                      />{" "}
                       <span> 페이스북 </span>{" "}
                     </span>{" "}
                   </li>{" "}
@@ -216,8 +224,8 @@ class SignUpForm extends Component {
                         id="path"
                         name="etc"
                         onChange={this.onCheckRecommendPath}
-                      />
-                      <span> 기타(직접 입력) </span>
+                      />{" "}
+                      <span> 기타(직접 입력) </span>{" "}
                     </span>{" "}
                   </li>{" "}
                 </ul>{" "}
@@ -232,7 +240,7 @@ class SignUpForm extends Component {
                   placeholder="기타 가입 경로를 입력해주세요."
                   disabled={this.state.loginPath.etc ? false : true}
                   onChange={this.onChangeHandler}
-                />
+                />{" "}
               </span>{" "}
             </div>{" "}
             <div className="recommend-code-input-wrap">
@@ -278,17 +286,18 @@ class SignUpForm extends Component {
                     password,
                     rePassword,
                     loginPath,
-                    anotherPath
+                    anotherPath,
+                    name
                   );
                 }}
-              />
+              />{" "}
             </div>{" "}
             <Link to="/" className="back-to-login">
               <div> 로그인으로 돌아가기 </div>{" "}
               <i class="fas fa-arrow-right"> </i>{" "}
             </Link>{" "}
           </form>{" "}
-        </div>
+        </div>{" "}
       </>
     );
   }
