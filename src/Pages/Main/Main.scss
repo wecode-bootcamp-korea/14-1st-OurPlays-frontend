@@ -1,9 +1,12 @@
 // html {
 //     width: 100%;
 //     height: 100%;
-//     // overflow: hidden;
+//      overflow: hidden;
 // }
+$main-font :'Nanum Gothic Coding',
+monospace;
 body {
+    font-family: $main-font;
     .chat-bot {
         position: fixed;
         width: 150px;
