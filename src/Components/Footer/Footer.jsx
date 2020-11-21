@@ -6,7 +6,7 @@ import FooterIcons from './Components/FooterIcons';
 class Footer extends Component {
   render() {
     return (
-      <div className='Footer'>
+      <footer>
         <div className='footer-box'>
           <div className='munch-factory-icon'>
             <img src='../images/youngjoonpark/munch-factory.png' alt='munch-factory' />
@@ -14,7 +14,7 @@ class Footer extends Component {
           <FooterInfos />
           <FooterIcons />
         </div>
-      </div>
+      </footer>
     );
   }
 }

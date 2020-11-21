@@ -2,6 +2,24 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../Footer.scss';
 
+class FooterInfos extends Component {
+  render() {
+    return (
+      <div className='footer-informations'>
+        {FOOTERINFOS.map((footerInfo) => {
+          return (
+            <Link key={footerInfo.id} className='footer-info' to={footerInfo.linkTo}>
+              {footerInfo.content}
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
+}
+
+export default FooterInfos;
+
 const FOOTERINFOS = [
   {
     id: 0,
@@ -34,21 +52,3 @@ const FOOTERINFOS = [
     linkTo: '',
   },
 ];
-
-class FooterInfos extends Component {
-  render() {
-    return (
-      <div className='footer-informations'>
-        {FOOTERINFOS.map((footerInfo) => {
-          return (
-            <Link key={footerInfo.id} className='footer-info' to={footerInfo.linkTo}>
-              {footerInfo.content}
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-export default FooterInfos;
