@@ -1,27 +1,6 @@
 import React, { Component } from 'react';
 import '../ProductList.scss';
 
-const ROOMLISTIMAGES = [
-  {
-    id: 0,
-    src: '../images/youngjoonpark/옥상.jpg',
-    alt: 'room-img',
-    className: 'room-list-img',
-  },
-  {
-    id: 1,
-    src: '../images/youngjoonpark/bookmark-empty.png',
-    alt: '북마크',
-    className: 'bookmark-empty',
-  },
-  {
-    id: 2,
-    src: '../images/youngjoonpark/bookmark-filled.png',
-    alt: '북마크',
-    className: 'bookmark-filled',
-  },
-];
-
 class RoomListImages extends Component {
   render() {
     return (
@@ -44,3 +23,24 @@ class RoomListImages extends Component {
 }
 
 export default RoomListImages;
+
+const ROOMLISTIMAGES = [
+  {
+    id: 0,
+    src: '../images/youngjoonpark/옥상.jpg',
+    alt: 'room-img',
+    className: 'room-list-img',
+  },
+  {
+    id: 1,
+    src: '../images/youngjoonpark/bookmark-empty.png',
+    alt: '북마크',
+    className: 'bookmark-empty',
+  },
+  {
+    id: 2,
+    src: '../images/youngjoonpark/bookmark-filled.png',
+    alt: '북마크',
+    className: 'bookmark-filled',
+  },
+];

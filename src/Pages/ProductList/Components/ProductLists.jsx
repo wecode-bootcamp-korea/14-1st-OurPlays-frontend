@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import ControlButtons from './ControlButtons';
-import RoomLists from './RoomLists';
+import ProductDetail from '../../ProductDetail/ProductDetail';
+import RoomList from './RoomList';
 import '../ProductList.scss';
 
-const PRODUCTLISTS = [
-  {
-    id: 0,
-    category: '원룸',
-  },
-];
-
 class ProductLists extends Component {
+  state = {
+    productlists: [],
+  };
+
+  // componentDidMount() {
+  //   fetch();
+  // }
+
   render() {
     return (
       <div className='ProductLists'>
@@ -24,8 +26,8 @@ class ProductLists extends Component {
                     <ControlButtons />
                   </div>
                 </section>
-                <section className='main'>
-                  <RoomLists category={productList.category} />
+                <section className='room-lists'>
+                  <RoomList category={productList.category} />
                 </section>
               </div>
             );
@@ -37,3 +39,10 @@ class ProductLists extends Component {
 }
 
 export default ProductLists;
+
+const PRODUCTLISTS = [
+  {
+    id: 0,
+    category: '원룸',
+  },
+];

@@ -61,12 +61,12 @@
       }
     }
 
-    .main {
+    .room-lists {
       margin-top: 20px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
 
-      .room-lists {
+      .room-list {
         width: 244px;
         height: 274px;
         margin: 0 16px 40px 0;
