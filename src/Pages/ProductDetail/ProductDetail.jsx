@@ -144,8 +144,12 @@ class ProductDetail extends Component {
     const filteredComments = this.state.comments.filter(
       (comment) => comment.id !== id
     );
+
+    // const filteredRatings = ratings.index((rating) => comment.id !== id);
+
     this.setState({
       comments: filteredComments,
+      // ratings: filteredRatings,
     });
   };
   render() {
@@ -163,7 +167,7 @@ class ProductDetail extends Component {
     const averageRating = ratings.reduce((pre, cur) => {
       return pre + cur / ratings.length;
     }, 0);
-
+    console.log(this.state);
     return (
       <article className="ProductDetail modal-Mode">
         <div className="product-datail-container">
