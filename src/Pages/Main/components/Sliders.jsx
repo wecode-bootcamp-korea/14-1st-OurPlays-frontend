@@ -17,33 +17,32 @@ class Sliders extends Component {
       );
   }
 
-  nextId = () => {
-    let newId = this.state.target.id + 1;
-    this.setState({
-      target: this.state.information[newId],
-    });
-  };
-  preId = () => {
-    let newId = this.state.target.id - 1;
-    this.setState({
-      target: this.state.information[newId],
-    });
-  };
-
-  // onButtonHandler = (e) => {
-  //   console.log(e.target.name);
-  //   let newId;
-  //   const selectedBtn = e.target.name;
-  //   if (selectedBtn === "pre") {
-  //     newId = this.state.target.id - 1;
-  //   } else if (selectedBtn === "next") {
-  //     newId = this.state.target.id + 1;
-  //     this.setState({
-  //       target: this.state.information[newId],
-  //     });
-  //   }
-  //   console.log(this.state.target);
+  // nextId = () => {
+  //   let newId = this.state.target.id + 1;
+  //   this.setState({
+  //     target: this.state.information[newId],
+  //   });
   // };
+  // preId = () => {
+  //   let newId = this.state.target.id - 1;
+  //   this.setState({
+  //     target: this.state.information[newId],
+  //   });
+  // };
+
+  onButtonHandler = (e) => {
+    let newId;
+    const selectedBtn = e.target.name;
+    if (selectedBtn === "pre") {
+      newId = this.state.target.id - 1;
+    }
+    if (selectedBtn === "next") {
+      newId = this.state.target.id + 1;
+    }
+    this.setState({
+      target: this.state.information[newId],
+    });
+  };
 
   render() {
     const { information, target } = this.state;
@@ -79,10 +78,10 @@ class Sliders extends Component {
                 <button
                   className="left-btn"
                   name="pre"
-                  onClick={() => this.preId()}
-                  // onClick={(e) => {
-                  //   this.onButtonHandler(e);
-                  // }}
+                  // onClick={() => this.preId()}
+                  onClick={(e) => {
+                    this.onButtonHandler(e);
+                  }}
                   disabled={target.id === 0}
                 />{" "}
               </i>{" "}
@@ -90,10 +89,10 @@ class Sliders extends Component {
                 <button
                   className="right-btn"
                   name="next"
-                  onClick={() => this.nextId()}
-                  // onClick={(e) => {
-                  //   this.onButtonHandler(e);
-                  // }}
+                  // onClick={() => this.nextId()}
+                  onClick={(e) => {
+                    this.onButtonHandler(e);
+                  }}
                   disabled={target.id === information.length - 1}
                 />{" "}
               </i>{" "}
