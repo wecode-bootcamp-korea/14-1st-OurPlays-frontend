@@ -20,7 +20,7 @@ class ProductLists extends Component {
   };
 
   render() {
-    console.log(this.state.isModal);
+    // console.log(this.state.isModal);
     return (
       <div className='ProductLists'>
         <div className={this.state.isModal ? '' : 'display-none'}>

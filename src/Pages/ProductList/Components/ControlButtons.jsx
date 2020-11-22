@@ -40,7 +40,7 @@ class ControlButtons extends Component {
     this.props.isModal({ isModal: this.state.isModal });
   };
   render() {
-    console.log(this.state.isModal);
+    // console.log(this.state.isModal);
     return (
       <div className='ControlButtons'>
         <div className='control-buttons'>

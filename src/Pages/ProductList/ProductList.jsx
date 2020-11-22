@@ -10,12 +10,13 @@ class ProductList extends Component {
   componentDidMount() {
     fetch('/Data/PlaceData.json')
       .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => this.setState({ placeinfo: res }));
   }
   render() {
+    const { placeinfo } = this.state;
     return (
       <div className='ProductList'>
-        <ProductLists />
+        <ProductLists placeinfo={placeinfo} />
       </div>
     );
   }
