@@ -47,6 +47,7 @@ class Login extends Component {
 
   render() {
     const { idValue, pwValue } = this.state;
+    console.log(idValue, pwValue);
     const activateEmail =
       idValue.length >= 1 ? "email-activate" : "email-deactivate";
     const activatePw =

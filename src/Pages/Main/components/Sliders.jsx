@@ -6,8 +6,9 @@ class Sliders extends Component {
     information: [],
     target: "",
   };
+
   componentDidMount() {
-    fetch("/Data/Data.json")
+    fetch("http://10.58.7.159:8000/ProductList/ProductDetail")
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -17,18 +18,16 @@ class Sliders extends Component {
       );
   }
 
-  // nextId = () => {
-  //   let newId = this.state.target.id + 1;
-  //   this.setState({
-  //     target: this.state.information[newId],
-  //   });
-  // };
-  // preId = () => {
-  //   let newId = this.state.target.id - 1;
-  //   this.setState({
-  //     target: this.state.information[newId],
-  //   });
-  // };
+  // componentDidMount() {
+  //   fetch("/Data/PlaceData.json")
+  //     .then((res) => res.json())
+  //     .then((res) =>
+  //       this.setState({
+  //         information: res.information,
+  //         target: res.information[0],
+  //       })
+  //     );
+  // }
 
   onButtonHandler = (e) => {
     let newId;
@@ -78,7 +77,6 @@ class Sliders extends Component {
                 <button
                   className="left-btn"
                   name="pre"
-                  // onClick={() => this.preId()}
                   onClick={(e) => {
                     this.onButtonHandler(e);
                   }}
@@ -89,7 +87,6 @@ class Sliders extends Component {
                 <button
                   className="right-btn"
                   name="next"
-                  // onClick={() => this.nextId()}
                   onClick={(e) => {
                     this.onButtonHandler(e);
                   }}
