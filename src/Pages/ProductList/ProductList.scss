@@ -34,13 +34,45 @@
           height: 44px;
           font-size: 12px;
 
-          .button-box {
+          .control-button {
             position: relative;
             &:last-child {
               border-right: 1px solid lightgray;
             }
 
-            .control-button {
+            .button-date {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 107px;
+              height: 44px;
+              padding: 0 16px;
+              border: 1px solid lightgray;
+              border-right: none;
+              font-size: 12px;
+              background-color: white;
+
+              img {
+                width: 17px;
+              }
+            }
+            .button-count {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 107px;
+              height: 44px;
+              padding: 0 16px;
+              border: 1px solid lightgray;
+              border-right: none;
+              font-size: 12px;
+              background-color: white;
+
+              img {
+                width: 17px;
+              }
+            }
+            .button-price {
               display: flex;
               justify-content: space-between;
               align-items: center;

@@ -4,19 +4,25 @@ import './ProductList.scss';
 
 class ProductList extends Component {
   state = {
-    placeinfo: [],
+    PLACEINFO: [],
   };
 
   componentDidMount() {
     fetch('/Data/PlaceData.json')
       .then((res) => res.json())
-      .then((res) => this.setState({ placeinfo: res }));
+      // .then((res) => {
+      //   const datas = res.information;
+      //   const current = datas.find((el) => el.id == this.props.match.params.id);
+      //   this.setState({ PLACEINFO: current });
+      // });
+      .then((res) => this.setState({ PLACEINFO: res.information }));
   }
+
   render() {
-    const { placeinfo } = this.state;
+    const { PLACEINFO } = this.state;
     return (
       <div className='ProductList'>
-        <ProductLists placeinfo={placeinfo} />
+        <ProductLists PLACEINFO={PLACEINFO} />
       </div>
     );
   }

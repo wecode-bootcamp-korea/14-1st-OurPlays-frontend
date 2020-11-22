@@ -1,27 +1,6 @@
 import React, { Component } from 'react';
 import '../ProductList.scss';
 
-const CONTROLBUTTONS = [
-  {
-    id: 0,
-    category: '날짜',
-    src: '../images/youngjoonpark/control-bar.png',
-    alt: 'control-date',
-  },
-  {
-    id: 1,
-    category: '인원',
-    src: '../images/youngjoonpark/control-bar.png',
-    alt: 'control-number',
-  },
-  {
-    id: 2,
-    category: '가격',
-    src: '../images/youngjoonpark/control-bar.png',
-    alt: 'control-price',
-  },
-];
-
 class ControlButtons extends Component {
   constructor() {
     super();
@@ -44,16 +23,24 @@ class ControlButtons extends Component {
     return (
       <div className='ControlButtons'>
         <div className='control-buttons'>
-          {CONTROLBUTTONS.map((controlButton) => {
-            return (
-              <div key={controlButton.id} className='button-box'>
-                <button onClick={this.openModal} className='control-button'>
-                  <span>{controlButton.category}</span>
-                  <img src={controlButton.src} alt={controlButton.alt} />
-                </button>
-              </div>
-            );
-          })}
+          <div className='control-button'>
+            <button className='button-date'>
+              <span>날짜</span>
+              <img src='../images/youngjoonpark/control-bar.png' alt='날짜' />
+            </button>
+          </div>
+          <div className='control-button'>
+            <button className='button-count'>
+              <span>인원</span>
+              <img src='../images/youngjoonpark/control-bar.png' alt='인원' />
+            </button>
+          </div>
+          <div className='control-button' onClick={this.openModal}>
+            <button className='button-price'>
+              <span>가격</span>
+              <img src='../images/youngjoonpark/control-bar.png' alt='가격' />
+            </button>
+          </div>
         </div>
       </div>
     );
