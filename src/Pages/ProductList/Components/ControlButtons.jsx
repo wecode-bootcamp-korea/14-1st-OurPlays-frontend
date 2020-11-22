@@ -23,14 +23,31 @@ const CONTROLBUTTONS = [
 ];
 
 class ControlButtons extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isModal: false,
+    };
+  }
+
+  openModal = (e) => {
+    e.preventDefault();
+    if (this.state.isModal === true) {
+      this.setState({ isModal: false });
+    } else {
+      this.setState({ isModal: true });
+    }
+    this.props.isModal({ isModal: this.state.isModal });
+  };
   render() {
+    console.log(this.state.isModal);
     return (
       <div className='ControlButtons'>
         <div className='control-buttons'>
           {CONTROLBUTTONS.map((controlButton) => {
             return (
               <div key={controlButton.id} className='button-box'>
-                <button className='control-button'>
+                <button onClick={this.openModal} className='control-button'>
                   <span>{controlButton.category}</span>
                   <img src={controlButton.src} alt={controlButton.alt} />
                 </button>

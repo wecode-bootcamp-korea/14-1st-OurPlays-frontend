@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
 import ControlButtons from './ControlButtons';
 import ProductDetail from '../../ProductDetail/ProductDetail';
+import Modal from './Modal';
 import RoomList from './RoomList';
 import '../ProductList.scss';
 
 class ProductLists extends Component {
   state = {
     productlists: [],
+    isModal: '',
   };
 
-  // componentDidMount() {
-  //   fetch();
-  // }
+  openModal = (data) => {
+    this.setState({ isModal: data });
+  };
+
+  closeModal = () => {
+    this.setState({ isModal: false });
+  };
 
   render() {
+    console.log(this.state.isModal);
     return (
       <div className='ProductLists'>
+        <div className={this.state.isModal ? '' : 'display-none'}>
+          <Modal closeModal={this.closeModal} />
+        </div>
         <div className='product-list'>
           {PRODUCTLISTS.map((productList) => {
             return (
@@ -23,7 +33,7 @@ class ProductLists extends Component {
                 <section className='header'>
                   <div className='title'>{productList.category}</div>
                   <div className='filter'>
-                    <ControlButtons />
+                    <ControlButtons isModal={this.openModal} />
                   </div>
                 </section>
                 <section className='room-lists'>
