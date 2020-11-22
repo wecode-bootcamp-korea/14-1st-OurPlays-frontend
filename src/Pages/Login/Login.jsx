@@ -68,6 +68,14 @@ class Login extends Component {
     }
   };
 
+  sendToSignUp = (e) => {
+    this.props.history.push('/Signup');
+  };
+
+  sendToMain = () => {
+    this.props.history.push('/Main');
+  };
+
   render() {
     const { idValue, pwValue } = this.state;
     const activateEmail = idValue.length >= 1 ? 'email-activate' : 'email-deactivate';
@@ -76,6 +84,11 @@ class Login extends Component {
     return (
       <div className='Login'>
         <section className='login-header'>
+          <img
+            onClick={this.sendToMain}
+            src='https://s3.hourplace.co.kr/web/images/logo_blue.svg'
+            alt=''
+          />
           <h1>로그인</h1>
         </section>
         <section className='login-body'>
@@ -113,9 +126,9 @@ class Login extends Component {
             </button>
           </div>
           <div className='manage-member'>
-            <Link to='./SignUp/SignUp' className='sign-up'>
-              회원가입
-            </Link>
+            <div onClick={this.sendToSignUp} className='sign-up'>
+              <h1>회원가입</h1>
+            </div>
           </div>
         </section>
       </div>
