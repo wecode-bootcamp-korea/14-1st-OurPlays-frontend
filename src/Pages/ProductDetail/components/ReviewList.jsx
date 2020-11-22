@@ -23,7 +23,7 @@ class DetailSlider extends Component {
   };
 
   render() {
-    console.log(this.state.currentPage, "pagi");
+    console.log(this.state.posts, "pagi");
     const { handleDelete, isHover, ratings } = this.props;
     const { currentPage, postsPerPage } = this.state;
     const indexOfLastPost = currentPage * postsPerPage;

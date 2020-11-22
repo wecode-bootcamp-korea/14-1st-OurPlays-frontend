@@ -6,11 +6,11 @@ class ReviewElement extends Component {
   };
   render() {
     const {
-      data: { user_name, id, comments, starpoint },
+      data: { user_name, id, comment, starpoint },
       handleDelete,
       posts,
     } = this.props;
-    console.log("posts", posts);
+    console.log(this.props.data);
     return (
       <div className="card-wrap">
         <div className="card-header">
@@ -29,7 +29,7 @@ class ReviewElement extends Component {
               {" "}
             </div>{" "}
           </div>{" "}
-          <div className="card-content"> {comments} </div>{" "}
+          <div className="card-content"> {comment} </div>{" "}
         </div>{" "}
       </div>
     );

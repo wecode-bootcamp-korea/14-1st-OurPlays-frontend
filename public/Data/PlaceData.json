@@ -22,49 +22,58 @@
         "minimum_rental_hour": 1,
         "surcharge_rule": "surcharge_rule",
         "rating": [{
+                "id": 1,
                 "starpoint": 4.5,
                 "user_name": "김동하",
                 "created_at": "2020-11-22T06:17:06.508Z",
                 "comment": "이루이루하이루"
             }, {
+                "id": 2,
                 "starpoint": 3.5,
                 "user_name": "김영주",
                 "created_at": "2020-11-20T06:17:06.508Z",
                 "comment": "많이 좋아해"
             },
             {
+                "id": 3,
                 "starpoint": 5.0,
                 "user_name": "김영주",
                 "created_at": "2020-11-22T06:17:06.508Z",
-                "comment": "안녕!"
+                "comment": "많이 좋아해..."
             }, {
+                "id": 4,
                 "starpoint": 4.5,
                 "user_name": "김동하",
                 "created_at": "2020-11-22T06:17:06.508Z",
-                "comment": "이루이루하이루"
+                "comment": "참 밉다..."
             }, {
+                "id": 5,
                 "starpoint": 3.5,
                 "user_name": "김영주",
                 "created_at": "2020-11-20T06:17:06.508Z",
-                "comment": "많이 좋아해"
+                "comment": "많이 좋아해."
             },
             {
+                "id": 6,
                 "starpoint": 5.0,
                 "user_name": "김영주",
                 "created_at": "2020-11-22T06:17:06.508Z",
-                "comment": "안녕!"
+                "comment": "코딩 혼수상태"
             }, {
+                "id": 7,
                 "starpoint": 4.5,
                 "user_name": "김동하",
                 "created_at": "2020-11-22T06:17:06.508Z",
                 "comment": "이루이루하이루"
             }, {
+                "id": 8,
                 "starpoint": 3.5,
                 "user_name": "김영주",
                 "created_at": "2020-11-20T06:17:06.508Z",
                 "comment": "많이 좋아해"
             },
             {
+                "id": 9,
                 "starpoint": 5.0,
                 "user_name": "김영주",
                 "created_at": "2020-11-22T06:17:06.508Z",
@@ -94,17 +103,20 @@
         "minimum_rental_hour": 1,
         "surcharge_rule": "surcharge_rule",
         "rating": [{
+                "id": 1,
                 "starpoint": 3.5,
                 "user_name": "김동하",
                 "created_at": "2020-11-22T06:17:06.508Z",
                 "comment": "이루이루하이루!!!"
             }, {
+                "id": 2,
                 "starpoint": 3.5,
                 "user_name": "김영주",
                 "created_at": "2020-11-20T06:17:06.508Z",
                 "comment": "많이 좋아해....."
             },
             {
+                "id": 3,
                 "starpoint": 5.0,
                 "user_name": "김영주",
                 "created_at": "2020-11-22T06:17:06.508Z",

@@ -185,6 +185,7 @@ class ProductDetail extends Component {
   };
 
   handleDelete = (id) => {
+    console.log(id, "id");
     const filteredComments = this.state.ratings.filter(
       (comment) => comment.id !== id
     );
