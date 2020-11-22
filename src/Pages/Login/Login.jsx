@@ -16,6 +16,11 @@ class Login extends Component {
       pwValue: '',
     };
   }
+
+  componentDidMount() {
+    this.handleClick();
+  }
+
   handleClick = (e) => {
     console.log(this.state.idValue, this.state.pwValue);
     fetch(API, {
@@ -103,7 +108,7 @@ class Login extends Component {
         </section>
         <section className='login-footer'>
           <div className='login-button'>
-            <button onClick={this.checkValidation} onClick={this.handleClick}>
+            <button onKeyPress={this.checkValidation} onClick={this.handleClick}>
               로그인
             </button>
           </div>
