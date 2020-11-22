@@ -10,20 +10,20 @@
             .product-image-cnt {
                 position: relative;
                 width: 100px;
-                height: 30px;
+                height: 40px;
                 left: 5%;
                 bottom: 15%;
                 background-color: rgba(0, 0, 0, 0.3);
                 padding: 10px;
                 i {
-                    font-size: 25px;
+                    font-size: 18px;
                     color: white;
                     margin-right: 20px;
                 }
                 span {
                     color: white;
                     font-weight: bold;
-                    font-size: 23px;
+                    font-size: 18px;
                 }
             }
             .DetailSlider {
@@ -105,7 +105,7 @@
                             padding-bottom: 20px;
                             .left-top-host-info-image {
                                 width: 60px;
-                                height: 60px;
+                                height: 50px;
                                 padding-right: 15px;
                                 img {
                                     border-radius: 50%;
@@ -385,8 +385,9 @@
                         }
                         .star {
                             padding-left: 20px;
+                            width: 40px;
                         }
-                        s .rating-total {
+                        .rating-total {
                             padding-top: 6px;
                             font-size: 25px;
                             padding-left: 10px;
@@ -423,7 +424,9 @@
                     }
                     .product-detail-review-contents {
                         max-width: 960px;
-                        padding-bottom: 500px;
+                        padding-bottom: 100px;
+                        display: flex;
+                        flex-direction: column;
                         .product-detail-review-content {
                             display: grid;
                             grid-template-columns: repeat(2, 400px);
@@ -453,6 +456,7 @@
                                         .name {
                                             font-size: 18px;
                                             font-weight: bold;
+                                            width: 100px;
                                         }
                                         .time {
                                             padding-top: 10px;
@@ -473,6 +477,7 @@
                                 }
                                 .delete-comment {
                                     padding-left: 250px;
+                                    width: 20px;
                                 }
                             }
                         }
@@ -483,8 +488,9 @@
                     display: flex;
                     width: 350px;
                     left: 34%;
-                    top: -250px;
+                    top: 20px;
                     outline: none;
+                    padding-bottom: 50px;
                     input {
                         background-color: rgb(0, 106, 213);
                         width: 100%;

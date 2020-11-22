@@ -1,0 +1,20 @@
+.Pagination {
+    display: flex;
+    width: 100%;
+    padding-top: 100px;
+    padding-left: 70px;
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        li {
+            width: 50px;
+            a {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
