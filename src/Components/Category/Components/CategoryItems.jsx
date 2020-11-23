@@ -8,7 +8,11 @@ class CategoryItems extends Component {
       <div className='category-items'>
         {CATEGORYITEMS.map((categoryItem) => {
           return (
-            <Link key={categoryItem.id} className='category-item' to=''>
+            <Link
+              key={categoryItem.id}
+              className='category-item'
+              to={`/ProductList/${categoryItem.categoryName}`}
+            >
               <img src={categoryItem.src} alt={categoryItem.alt} />
               <div className='category-name'>{categoryItem.categoryName}</div>
             </Link>
