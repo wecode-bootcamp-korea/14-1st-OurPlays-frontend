@@ -30,16 +30,6 @@ class SignUp extends Component {
     anotherPath,
     name
   ) => {
-    let _alert = null;
-    if (password !== rePassword) {
-      console.log("d");
-      setTimeout(() => {
-        this.setState({
-          isShow: true,
-        });
-      }, 1000);
-    }
-
     this.setState({
       email,
       password,
@@ -49,30 +39,30 @@ class SignUp extends Component {
       name,
       isShow: false,
     });
+    fetch(API, {
+      method: "POST",
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        rePassword: rePassword,
+        loginPath: loginPath,
+        anotherPath: anotherPath,
+        name: name,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (password !== rePassword) {
+          setTimeout(() => {
+            this.setState({
+              isShow: true,
+            });
+          }, 1000);
+        } else {
+          console.log(res);
+        }
+      });
   };
-
-  // onSubmitHandler = (
-  //   email,
-  //   password,
-  //   rePassword,
-  //   loginPath,
-  //   anotherPath,
-  //   name
-  // ) => {
-  //   fetch(API, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       email: email,
-  //       password: password,
-  //       rePassword: rePassword,
-  //       loginPath: loginPath,
-  //       anotherPath: anotherPath,
-  //       name: name,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => console.log(res));
-  // };
 
   // alertFunc = () => {
   //   setTimeout(() => {
