@@ -20,6 +20,7 @@ class ProductList extends Component {
 
   render() {
     const { PLACEINFO } = this.state;
+    console.log('부모', PLACEINFO);
     return (
       <div className='ProductList'>
         <ProductLists PLACEINFO={PLACEINFO} />

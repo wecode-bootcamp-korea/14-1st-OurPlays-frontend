@@ -21,6 +21,7 @@ class ProductLists extends Component {
 
   render() {
     const { PLACEINFO } = this.props;
+    console.log('ProductLists', PLACEINFO);
     return (
       <div className='ProductLists'>
         <div className={this.state.isModal ? '' : 'display-none'}>

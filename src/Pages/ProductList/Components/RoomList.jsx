@@ -10,12 +10,13 @@ class RoomList extends Component {
     this.state = {};
   }
 
-  goToDetail = () => {
-    this.props.history.push(`/ProductList/ProductDetail/${this.props.id}`);
+  goToDetail = (id) => {
+    this.props.history.push(`/ProductList/ProductDetail/${id}`);
   };
 
   render() {
     const { PLACEINFO } = this.props;
+    console.log('RoomList', PLACEINFO);
     return (
       <>
         {PLACEINFO.length > 0 &&
@@ -33,11 +34,11 @@ class RoomList extends Component {
                       <Bookmark />
                     </div>
                   </div>
-                  <div className='room-list-text' onClick={this.goToDetail}>
-                    <div className='room-list-region' onClick={this.goToDetail}>
+                  <div className='room-list-text' onClick={() => this.goToDetail(placeinfo.id)}>
+                    <div className='room-list-region' onClick={() => this.goToDetail(placeinfo.id)}>
                       {placeinfo.category}/{placeinfo.region}
                     </div>
-                    <div className='room-list-title' onClick={this.goToDetail}>
+                    <div className='room-list-title' onClick={() => this.goToDetail(placeinfo.id)}>
                       {placeinfo.title}
                     </div>
                     <div className='room-list-price'>
