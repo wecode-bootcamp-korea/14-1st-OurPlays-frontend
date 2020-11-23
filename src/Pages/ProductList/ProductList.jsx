@@ -19,14 +19,14 @@ class ProductList extends Component {
   // }
 
   componentDidMount() {
-    fetch('http://10.58.7.159:8000/ProductList/ProductDetail')
+    fetch('http://10.58.3.74:8000/ProductList/ProductDetail')
       .then((res) => res.json())
       .then((res) => this.setState({ PLACEINFO: res.information }));
   }
 
   render() {
     const { PLACEINFO } = this.state;
-    // console.log(PLACEINFO);
+    console.log(PLACEINFO);
     return (
       <div className='ProductList'>
         <ProductLists PLACEINFO={PLACEINFO} />
