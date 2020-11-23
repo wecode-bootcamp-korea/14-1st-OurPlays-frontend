@@ -27,7 +27,7 @@ class RoomList extends Component {
                   <div className='RoomListImages'>
                     <div className='room-list-imgs'>
                       <img
-                        onClick={this.goToDetail}
+                        onClick={() => this.goToDetail(placeinfo.id)}
                         className='room-list-img'
                         src={placeinfo.img_url}
                       />
