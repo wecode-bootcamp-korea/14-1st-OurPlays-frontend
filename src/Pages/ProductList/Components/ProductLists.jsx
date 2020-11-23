@@ -29,7 +29,7 @@ class ProductLists extends Component {
         </div>
         <div className='product-list'>
           <section className='header'>
-            <div className='title'>{PLACEINFO[0].category}</div>
+            <div className='title'>{PLACEINFO.category}</div>
             <div className='filter'>
               <ControlButtons isModal={this.openModal} />
             </div>
