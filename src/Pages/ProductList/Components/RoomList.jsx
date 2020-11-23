@@ -11,6 +11,7 @@ class RoomList extends Component {
   }
 
   goToDetail = (id) => {
+    console.log(this.props);
     this.props.history.push(`/ProductList/ProductDetail/${id}`);
   };
 
@@ -21,6 +22,7 @@ class RoomList extends Component {
       <>
         {PLACEINFO.length > 0 &&
           PLACEINFO.map((placeinfo) => {
+            x;
             return (
               <div className='room-list'>
                 <div className='room-list-link'>
