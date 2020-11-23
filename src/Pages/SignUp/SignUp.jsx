@@ -8,6 +8,12 @@ class SignUp extends Component {
     super(props);
     this.state = {
       userInfo: [],
+      email: "",
+      password: "",
+      rePassword: "",
+      loginPath: "",
+      anotherPath: "",
+      name: "",
     };
   }
 
@@ -19,39 +25,51 @@ class SignUp extends Component {
     anotherPath,
     name
   ) => {
-    console.log(email, name, password, rePassword, loginPath, anotherPath);
-    fetch(API, {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        rePassword: rePassword,
-        loginPath: loginPath,
-        anotherPath: anotherPath,
-        name: name,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-
-    // const updatedUser = [
-    //   ...this.state.userInfo,
-    //   { email, password, rePassword, loginPath, anotherPath },
-    // ];
-    // this.setState({
-    //   userInfo: updatedUser,
-    // });
+    this.setState({
+      email,
+      password,
+      rePassword,
+      loginPath,
+      anotherPath,
+      name,
+    });
   };
 
-  componentDidMount() {
-    // this.state.userInfo &&
-  }
+  // onSubmitHandler = (
+  //   email,
+  //   password,
+  //   rePassword,
+  //   loginPath,
+  //   anotherPath,
+  //   name
+  // ) => {
+  //   fetch(API, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       email: email,
+  //       password: password,
+  //       rePassword: rePassword,
+  //       loginPath: loginPath,
+  //       anotherPath: anotherPath,
+  //       name: name,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => console.log(res));
+  // };
+
   render() {
-    console.log(this.state.userInfo);
+    if (this.state.password !== this.state.rePassword) {
+      setTimeout(() => {}, 1000);
+    }
     return (
       <section className="SignUp">
+        {/* <div className="alert alert-danger show">
+          <i className="fas fa-exclamation-circle"></i>
+          비밀번호를 다시 확인해주세요.
+        </div> */}
         <div className="sign-up-container">
-          <h1> 회원가입 </h1>
+          <h1> 회원가입 </h1>{" "}
           <SignUpForm
             onSubmitHandler={(
               email,
@@ -70,8 +88,8 @@ class SignUp extends Component {
                 name
               );
             }}
-          />
-        </div>
+          />{" "}
+        </div>{" "}
       </section>
     );
   }

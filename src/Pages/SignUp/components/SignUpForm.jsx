@@ -32,6 +32,7 @@ class SignUpForm extends Component {
       faceboook: false,
       etc: false,
     },
+    recommend: "",
   };
   onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -54,8 +55,9 @@ class SignUpForm extends Component {
       loginPath,
       anotherPath,
       name,
+      recommend,
     } = this.state;
-    console.log(this.state.loginPath);
+
     return (
       <>
         <div className="sign-up-form-wrap">
@@ -84,6 +86,7 @@ class SignUpForm extends Component {
                 <input
                   type="text"
                   id="email"
+                  value={email}
                   name="email"
                   placeholder="이메일 주소를 입력해주세요."
                   onChange={this.onChangeHandler}
@@ -99,6 +102,7 @@ class SignUpForm extends Component {
                   type="text"
                   id="password"
                   name="password"
+                  value={password}
                   placeholder="8-20자 이내 문자의 조합으로 입력해주세요."
                   onChange={this.onChangeHandler}
                 />{" "}
@@ -113,6 +117,7 @@ class SignUpForm extends Component {
                   type="text"
                   id="re-password"
                   name="rePassword"
+                  value={rePassword}
                   placeholder=" 8-20자 이내 문자의 조합으로 입력해주세요."
                   onChange={this.onChangeHandler}
                 />{" "}
@@ -124,6 +129,7 @@ class SignUpForm extends Component {
               </label>{" "}
               <div className="register-path-input-wrap">
                 <ul>
+                  {" "}
                   {pathArray.map((path, idx) => {
                     return (
                       <RegisterPath
@@ -132,16 +138,17 @@ class SignUpForm extends Component {
                         onCheckRecommendPath={this.onCheckRecommendPath}
                       />
                     );
-                  })}
+                  })}{" "}
                 </ul>{" "}
               </div>{" "}
-            </div>
+            </div>{" "}
             <div className="register-path-self-input-wrap">
               <span className="register-path-self-input">
                 <input
                   type="text"
                   id="register"
                   name="anotherPath"
+                  vlaue={anotherPath}
                   placeholder="기타 가입 경로를 입력해주세요."
                   disabled={loginPath.etc ? false : true}
                   onChange={this.onChangeHandler}
@@ -158,6 +165,7 @@ class SignUpForm extends Component {
                     type="text"
                     id="recommend"
                     name="recommend"
+                    value={recommend}
                     placeholder=" 추천인 코드를 입력해주세요."
                   />
                 </span>{" "}
@@ -194,6 +202,25 @@ class SignUpForm extends Component {
                     anotherPath,
                     name
                   );
+                  this.setState({
+                    email: "",
+                    password: "",
+                    rePassword: "",
+                    anotherPath: "",
+                    name: "test",
+                    loginPath: {
+                      google: false,
+                      naver: false,
+                      blog: false,
+                      recommend: false,
+                      brunch: false,
+                      app: false,
+                      instagram: false,
+                      faceboook: false,
+                      etc: false,
+                    },
+                    recommend: "",
+                  });
                 }}
               />{" "}
             </div>{" "}
