@@ -228,10 +228,11 @@ $theme-color: rgb(0, 106, 213);
 
 .alert-danger {
     background: #eb4034;
+    z-index: 2;
     padding: 20px 30px;
     min-width: 320px;
     position: absolute;
-    top: 140px;
+    top: 540px;
     right: 10px;
     border-radius: 4px;
     .fa-exclamation-circle {
@@ -244,7 +245,7 @@ $theme-color: rgb(0, 106, 213);
 }
 
 .alert {
-    padding: 20px 40px;
+    padding: 30px 50px;
     font-size: 20px;
     color: white;
 }

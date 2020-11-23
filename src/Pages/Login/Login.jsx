@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-
+const API = "http://10.58.7.159:8000/user/signin";
 class Login extends Component {
+  state = {
+    data: [],
+  };
   constructor() {
     super();
     this.state = {
@@ -10,17 +13,29 @@ class Login extends Component {
       pwValue: "",
     };
   }
-
+  componentDidMount() {
+    this.handleClick();
+  }
+  handleClick = (e) => {
+    console.log(this.state.idValue, this.state.pwValue);
+    fetch(API, {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.idValue,
+        password: this.state.pwValue,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => this.setState({ data: res }));
+  };
   handleChangeEmail = (e) => {
     const { value } = e.target;
     this.setState({ idValue: value });
   };
-
   handleChangePw = (e) => {
     const { value } = e.target;
     this.setState({ pwValue: value });
   };
-
   checkValidation = () => {
     const { idValue, pwValue } = this.state;
     const checkId = idValue.includes("@");
@@ -29,32 +44,39 @@ class Login extends Component {
       alert("로그인 성공");
       return this.props.history.push("/Main");
     }
-
     if (!checkId) {
       alert("이메일을 입력해주세요.");
     }
-
     if (!checkPw) {
       alert("비밀번호는 8자리 이상입니다.");
     }
   };
-
   handleKeyPress = (e) => {
     if (e.key === "Enter") {
       this.checkValidation();
     }
   };
-
+  sendToSignUp = (e) => {
+    this.props.history.push("/Signup");
+  };
+  sendToMain = () => {
+    this.props.history.push("/Main");
+  };
   render() {
     const { idValue, pwValue } = this.state;
     const activateEmail =
       idValue.length >= 1 ? "email-activate" : "email-deactivate";
     const activatePw =
       pwValue.length >= 1 ? "password-activate" : "password-deactivate";
-
+    console.log(idValue);
     return (
       <div className="Login">
         <section className="login-header">
+          <img
+            onClick={this.sendToMain}
+            src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
+            alt=""
+          />
           <h1>로그인</h1>
         </section>
         <section className="login-body">
@@ -87,17 +109,21 @@ class Login extends Component {
         </section>
         <section className="login-footer">
           <div className="login-button">
-            <button onClick={this.checkValidation}>로그인</button>
+            <button
+              onKeyPress={this.checkValidation}
+              onClick={this.handleClick}
+            >
+              로그인
+            </button>
           </div>
           <div className="manage-member">
-            <Link to="./SignUp/SignUp" className="sign-up">
-              회원가입
-            </Link>
+            <div onClick={this.sendToSignUp} className="sign-up">
+              <h1>회원가입</h1>
+            </div>
           </div>
         </section>
       </div>
     );
   }
 }
-
 export default Login;

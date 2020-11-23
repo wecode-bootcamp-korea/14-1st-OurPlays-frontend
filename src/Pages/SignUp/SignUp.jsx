@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SignUpForm from "./components/SignUpForm";
+import Alert from "./components/Alert";
 import "./SignUp.scss";
 
 const API = "http://10.58.7.159:8000/user/signup";
@@ -14,7 +15,11 @@ class SignUp extends Component {
       loginPath: "",
       anotherPath: "",
       name: "",
+      isShow: false,
+      showClass: "alert alert-danger show",
+      hideClass: "alert alert-danger hide",
     };
+    this.alertRef = React.createRef();
   }
 
   onSubmitHandler = (
@@ -25,6 +30,16 @@ class SignUp extends Component {
     anotherPath,
     name
   ) => {
+    let _alert = null;
+    if (password !== rePassword) {
+      console.log("d");
+      setTimeout(() => {
+        this.setState({
+          isShow: true,
+        });
+      }, 1000);
+    }
+
     this.setState({
       email,
       password,
@@ -32,6 +47,7 @@ class SignUp extends Component {
       loginPath,
       anotherPath,
       name,
+      isShow: false,
     });
   };
 
@@ -58,16 +74,32 @@ class SignUp extends Component {
   //     .then((res) => console.log(res));
   // };
 
+  // alertFunc = () => {
+  //   setTimeout(() => {
+  //     console.log("Dd");
+  //   }, 1000);
+  // };
+
   render() {
+    let _alert;
     if (this.state.password !== this.state.rePassword) {
-      setTimeout(() => {}, 1000);
+      _alert = <Alert condition={this.state.isShow} />;
     }
+
+    // if (this.state.password !== this.state.rePassword) {
+    //   const propsForIcon = { className: "fas fa-exclamation-circle" };
+    //   const icon = React.createElement(
+    //     "i",
+    //     propsForIcon,
+    //     "비밀번호를 다시 확인해주세요."
+    //   );
+    //   const props = { className: "alert alert-danger" };
+    //   showAlert = React.createElement("div", props, icon);
+    //   console.log(showAlert);
+    // }
     return (
       <section className="SignUp">
-        {/* <div className="alert alert-danger show">
-          <i className="fas fa-exclamation-circle"></i>
-          비밀번호를 다시 확인해주세요.
-        </div> */}
+        {_alert}
         <div className="sign-up-container">
           <h1> 회원가입 </h1>{" "}
           <SignUpForm
