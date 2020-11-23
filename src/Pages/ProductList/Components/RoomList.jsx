@@ -17,7 +17,6 @@ class RoomList extends Component {
 
   render() {
     const { PLACEINFO } = this.props;
-    console.log(PLACEINFO);
     return (
       <>
         {PLACEINFO.length > 0 &&

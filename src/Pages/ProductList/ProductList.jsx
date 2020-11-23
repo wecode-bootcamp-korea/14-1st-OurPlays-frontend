@@ -7,20 +7,26 @@ class ProductList extends Component {
     PLACEINFO: [],
   };
 
+  // componentDidMount() {
+  //   fetch('/Data/PlaceData.json')
+  //     .then((res) => res.json())
+  //     // .then((res) => {
+  //     //   const datas = res.information;
+  //     //   const current = datas.find((el) => el.id == this.props.match.params.id);
+  //     //   this.setState({ PLACEINFO: current });
+  //     // });
+  //     .then((res) => this.setState({ PLACEINFO: res.information }));
+  // }
+
   componentDidMount() {
-    fetch('/Data/PlaceData.json')
+    fetch('http://10.58.7.159:8000/ProductList/ProductDetail')
       .then((res) => res.json())
-      // .then((res) => {
-      //   const datas = res.information;
-      //   const current = datas.find((el) => el.id == this.props.match.params.id);
-      //   this.setState({ PLACEINFO: current });
-      // });
       .then((res) => this.setState({ PLACEINFO: res.information }));
   }
 
   render() {
     const { PLACEINFO } = this.state;
-    console.log('부모', PLACEINFO);
+    // console.log(PLACEINFO);
     return (
       <div className='ProductList'>
         <ProductLists PLACEINFO={PLACEINFO} />

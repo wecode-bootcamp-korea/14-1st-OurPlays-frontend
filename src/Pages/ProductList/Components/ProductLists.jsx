@@ -21,7 +21,7 @@ class ProductLists extends Component {
 
   render() {
     const { PLACEINFO } = this.props;
-    console.log('ProductLists', PLACEINFO.category);
+    console.log('ProductLists', PLACEINFO[0]);
     return (
       <div className='ProductLists'>
         <div className={this.state.isModal ? '' : 'display-none'}>
@@ -29,7 +29,7 @@ class ProductLists extends Component {
         </div>
         <div className='product-list'>
           <section className='header'>
-            <div className='title'>{PLACEINFO.category}</div>
+            <div className='title'>{PLACEINFO[0].category}</div>
             <div className='filter'>
               <ControlButtons isModal={this.openModal} />
             </div>
