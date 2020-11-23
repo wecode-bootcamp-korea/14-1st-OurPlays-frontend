@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import NAVICONS from "./Components/NavIcons";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
-
 class Nav extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
     return (
       <nav>

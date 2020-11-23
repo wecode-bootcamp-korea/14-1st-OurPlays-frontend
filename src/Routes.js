@@ -12,7 +12,6 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
-        <Nav />
         <Switch>
           <Route exact path="/Footer" component={Footer} />
           <Route exact path="/Nav" component={Nav} />
@@ -26,7 +25,6 @@ class Routes extends React.Component {
           />
           <Route exact path="/ProductList" component={ProductList} />
         </Switch>
-        <Footer />
       </Router>
     );
   }
