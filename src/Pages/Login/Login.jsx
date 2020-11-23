@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.scss';
 
-const API = 'http://10.58.7.159:8000/user/signin';
+const API = 'http://10.58.3.74:8000/user/singin';
 
 class Login extends Component {
   constructor() {
@@ -83,7 +83,6 @@ class Login extends Component {
     const { idValue, pwValue } = this.state;
     const activateEmail = idValue.length >= 1 ? 'email-activate' : 'email-deactivate';
     const activatePw = pwValue.length >= 1 ? 'password-activate' : 'password-deactivate';
-    console.log(this.state.data);
 
     return (
       <div className='Login'>
@@ -125,7 +124,7 @@ class Login extends Component {
         </section>
         <section className='login-footer'>
           <div className='login-button'>
-            <button onKeyPress={this.checkValidation} onClick={this.handleClick}>
+            <button onKeyPress={this.checkValidation} onClick={() => this.handleClick()}>
               로그인
             </button>
           </div>
