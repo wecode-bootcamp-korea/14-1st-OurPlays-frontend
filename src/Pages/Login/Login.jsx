@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { Link } from 'react-router-dom';
 
 const API = 'http://10.58.7.159:8000/user/signin';
 
 class Login extends Component {
-  state = {
-    data: [],
-  };
-
   constructor() {
     super();
     this.state = {
       idValue: '',
       pwValue: '',
+      data: [],
     };
   }
 
@@ -31,7 +27,14 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => this.setState({ data: res }));
+      .then((res) => console.log(res));
+    // .then((res) => this.setState({ data: res }));
+    // // .then((res) => localStorage.setItem('token', res));
+    // .then((res) => {
+    //   if (res) {
+    //     localStorage.setItem('token', res);
+    //   }
+    // });
   };
 
   handleChangeEmail = (e) => {
@@ -47,8 +50,8 @@ class Login extends Component {
   checkValidation = () => {
     const { idValue, pwValue } = this.state;
     const checkId = idValue.includes('@');
-    const checkPw = pwValue.length >= 8;
-    if (checkId && checkPw) {
+    const checkPw = pwValue.length >= 8 && pwValue.includes('@');
+    if (checkId && checkPw && this.state.data) {
       alert('로그인 성공');
       return this.props.history.push('/Main');
     }
@@ -58,7 +61,7 @@ class Login extends Component {
     }
 
     if (!checkPw) {
-      alert('비밀번호는 8자리 이상입니다.');
+      alert('비밀번호는 8자리 이상, 특수문자 포함입니다.');
     }
   };
 
@@ -80,7 +83,8 @@ class Login extends Component {
     const { idValue, pwValue } = this.state;
     const activateEmail = idValue.length >= 1 ? 'email-activate' : 'email-deactivate';
     const activatePw = pwValue.length >= 1 ? 'password-activate' : 'password-deactivate';
-    console.log(idValue);
+    console.log(this.state.data);
+
     return (
       <div className='Login'>
         <section className='login-header'>
