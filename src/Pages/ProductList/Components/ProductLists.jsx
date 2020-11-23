@@ -21,28 +21,22 @@ class ProductLists extends Component {
 
   render() {
     const { PLACEINFO } = this.props;
-    console.log('ProductLists', PLACEINFO);
+    console.log('ProductLists', PLACEINFO.category);
     return (
       <div className='ProductLists'>
         <div className={this.state.isModal ? '' : 'display-none'}>
           <Modal closeModal={this.closeModal} />
         </div>
         <div className='product-list'>
-          {PRODUCTLISTS.map((productList) => {
-            return (
-              <div key={productList.id}>
-                <section className='header'>
-                  <div className='title'>{productList.category}</div>
-                  <div className='filter'>
-                    <ControlButtons isModal={this.openModal} />
-                  </div>
-                </section>
-                <section className='room-lists'>
-                  <RoomList PLACEINFO={PLACEINFO} category={productList.category} />
-                </section>
-              </div>
-            );
-          })}
+          <section className='header'>
+            <div className='title'>{PLACEINFO.category}</div>
+            <div className='filter'>
+              <ControlButtons isModal={this.openModal} />
+            </div>
+          </section>
+          <section className='room-lists'>
+            <RoomList PLACEINFO={PLACEINFO} category={PLACEINFO.category} />
+          </section>
         </div>
       </div>
     );
@@ -50,10 +44,3 @@ class ProductLists extends Component {
 }
 
 export default ProductLists;
-
-const PRODUCTLISTS = [
-  {
-    id: 0,
-    category: '원룸',
-  },
-];

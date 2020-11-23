@@ -17,12 +17,11 @@ class RoomList extends Component {
 
   render() {
     const { PLACEINFO } = this.props;
-    console.log('RoomList', PLACEINFO);
+    console.log(PLACEINFO);
     return (
       <>
         {PLACEINFO.length > 0 &&
           PLACEINFO.map((placeinfo) => {
-            x;
             return (
               <div className='room-list'>
                 <div className='room-list-link'>
