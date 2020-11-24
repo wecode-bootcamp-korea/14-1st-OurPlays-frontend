@@ -3,7 +3,6 @@ import "./Alert.scss";
 
 class Alert extends Component {
   render() {
-    console.log(this.props.condition);
     return (
       <div
         className={
@@ -12,7 +11,7 @@ class Alert extends Component {
             : "alert alert-danger show"
         }
       >
-        <i className="fas fa-exclamation-circle">비밀 번호를 확인해주세요.</i>
+        <i className="fas fa-exclamation-circle"> 비밀 번호를 확인해주세요. </i>{" "}
       </div>
     );
   }

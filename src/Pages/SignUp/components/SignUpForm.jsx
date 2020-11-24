@@ -99,7 +99,7 @@ class SignUpForm extends Component {
               </label>{" "}
               <span className="password-user-input">
                 <input
-                  type="text"
+                  type="password"
                   id="password"
                   name="password"
                   value={password}
@@ -114,7 +114,7 @@ class SignUpForm extends Component {
               </label>{" "}
               <span className="password-re-user-input">
                 <input
-                  type="text"
+                  type="password"
                   id="re-password"
                   name="rePassword"
                   value={rePassword}

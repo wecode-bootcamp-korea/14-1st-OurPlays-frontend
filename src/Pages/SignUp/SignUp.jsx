@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import SignUpForm from "./components/SignUpForm";
 import Alert from "./components/Alert";
+import { API } from "../../config";
 import "./SignUp.scss";
 
-const API = "http://10.58.7.159:8000/user/signup";
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +39,7 @@ class SignUp extends Component {
       name,
       isShow: false,
     });
-    fetch(API, {
+    fetch(`${API}/user/signup`, {
       method: "POST",
       body: JSON.stringify({
         email: email,
@@ -59,16 +59,10 @@ class SignUp extends Component {
             });
           }, 1000);
         } else {
-          console.log(res);
+          localStorage.setItem("token", res.token);
         }
       });
   };
-
-  // alertFunc = () => {
-  //   setTimeout(() => {
-  //     console.log("Dd");
-  //   }, 1000);
-  // };
 
   render() {
     let _alert;
@@ -76,41 +70,13 @@ class SignUp extends Component {
       _alert = <Alert condition={this.state.isShow} />;
     }
 
-    // if (this.state.password !== this.state.rePassword) {
-    //   const propsForIcon = { className: "fas fa-exclamation-circle" };
-    //   const icon = React.createElement(
-    //     "i",
-    //     propsForIcon,
-    //     "비밀번호를 다시 확인해주세요."
-    //   );
-    //   const props = { className: "alert alert-danger" };
-    //   showAlert = React.createElement("div", props, icon);
-    //   console.log(showAlert);
-    // }
     return (
       <section className="SignUp">
-        {_alert}
+        {" "}
+        {_alert}{" "}
         <div className="sign-up-container">
           <h1> 회원가입 </h1>{" "}
-          <SignUpForm
-            onSubmitHandler={(
-              email,
-              password,
-              rePassword,
-              loginPath,
-              anotherPath,
-              name
-            ) => {
-              this.onSubmitHandler(
-                email,
-                password,
-                rePassword,
-                loginPath,
-                anotherPath,
-                name
-              );
-            }}
-          />{" "}
+          <SignUpForm onSubmitHandler={this.onSubmitHandler} />{" "}
         </div>{" "}
       </section>
     );
