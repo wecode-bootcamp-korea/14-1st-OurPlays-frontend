@@ -14,10 +14,9 @@ class DetailSlider extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.place_id, "...");
     this.setState({
-      reviewLists: this.props.ratings,
       place_id: this.props.place_id,
+      // reviewLists: this.props.ratings,
     });
   }
 
@@ -29,11 +28,10 @@ class DetailSlider extends Component {
         }/ratings`
       )
         .then((res) => res.json())
-        .then(
-          (res) => console.log(res)
-          // this.setState({
-          //   reviewLists: res,
-          // })
+        .then((res) =>
+          this.setState({
+            reviewLists: res.informations,
+          })
         );
     }
   }
@@ -44,17 +42,19 @@ class DetailSlider extends Component {
   //   });
   // };
 
-  fetchProduct = (e) => {
-    const offset = e.target.dataset.idx * LIMIT;
+  fetchProduct = (cur) => {
+    // const offset = e.target.dataset.idx * LIMIT;
+    const offset = cur * LIMIT;
     fetch(
-      `http://10.58.7.159:8000/ProductList/ProductDetail/?${LIMIT}&offset=${offset}`
+      `http://10.58.7.159:8000/ProductList/${
+        this.props.place_id && this.props.place_id
+      }/ratigns/?${LIMIT}&offset=${offset}`
     )
       .then((res) => res.json())
-      .then(
-        (res) => console.log(res)
-        // this.setState({
-        //   reviewLists: res,
-        // })
+      .then((res) =>
+        this.setState({
+          reviewLists: res,
+        })
       );
   };
 
@@ -64,12 +64,11 @@ class DetailSlider extends Component {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = ratings.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(this.props.place_id);
+    console.log(this.state.reviewLists);
 
     return (
       <div className="product-detail-review-contents">
         <div className="product-detail-review-content">
-          {" "}
           {reviewLists &&
             reviewLists.map((rating) => {
               return (
@@ -81,32 +80,32 @@ class DetailSlider extends Component {
                   }}
                 />
               );
-            })}{" "}
+            })}
           {/* {currentPosts &&
-                            currentPosts.map((rating) => {
-                              return (
-                                <ReviewElement
-                                  isHover={isHover}
-                                  data={rating}
-                                  handleDelete={() => {
-                                    handleDelete(rating.id);
-                                  }}
-                                />
-                              );
-                            })} */}{" "}
+                                            currentPosts.map((rating) => {
+                                              return (
+                                                <ReviewElement
+                                                  isHover={isHover}
+                                                  data={rating}
+                                                  handleDelete={() => {
+                                                    handleDelete(rating.id);
+                                                  }}
+                                                />
+                                              );
+                                            })} */}
           {/* {comments.map((comment) => {
-                                                                            return (
-                                                                              <ReviewElement
-                                                                                ratings={ratings}
-                                                                                isHover={isHover}
-                                                                                data={comment}
-                                                                                handleDelete={() => {
-                                                                                  handleDelete(comment.id);
-                                                                                }}
-                                                                              />
-                                                                            );
-                                                                          })}{ */}{" "}
-        </div>{" "}
+                                                                                            return (
+                                                                                              <ReviewElement
+                                                                                                ratings={ratings}
+                                                                                                isHover={isHover}
+                                                                                                data={comment}
+                                                                                                handleDelete={() => {
+                                                                                                  handleDelete(comment.id);
+                                                                                                }}
+                                                                                              />
+                                                                                            );
+                                                                                          })}{ */}
+        </div>
         <Pagination
           fetchProduct={this.fetchProduct}
           total={reviewLists && reviewLists.length}
@@ -114,7 +113,7 @@ class DetailSlider extends Component {
           // postsPerPage={postsPerPage}
           // totalPosts={ratings.length}
           // paginate={this.paginate}
-        />{" "}
+        />
       </div>
     );
   }

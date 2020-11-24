@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BookMarkLists from "./components/bookmark/BookMarkLists";
+import BookMarkLists from "./components/BookMarkLists";
 import "./BookMarkList.scss";
 
 class BookMarkList extends Component {
@@ -7,41 +7,39 @@ class BookMarkList extends Component {
     bookmarkList: [],
   };
 
+  // componentDidMount() {
+  //   fetch(`http://10.58.7.159:8000/ProductList/ProductDetail/`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       console.log(res.information, "전체 데이터 중 방 하나");
+  //       this.setState({
+  //         placeinfo: res.information[0],
+  //         ratings: res.information[0].rating,
+  //       });
+  //     });
+  // }
+
+  // componentDidMount() {
+  //   fetch(`/Data/PlaceData.json`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       const datas = res.information;
+  //       this.setState({
+  //         placeinfo: datas,
+  //       });
+  //     });
+  // }
+
   componentDidMount() {
-    fetch(
-      `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
-    )
+    fetch(`/Data/PlaceData.json`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.information, "전체 데이터 중 방 하나");
-        // this.setState({
-        //   placeinfo: res.information[0],
-        //   ratings: res.information[0].rating,
-        // });
+        const datas = res.information;
+        this.setState({
+          bookmarkList: datas,
+        });
       });
   }
-
-  // componentDidMount() {
-  //   fetch(`/Data/PlaceData.json`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       const datas = res.information;
-  //       this.setState({
-  //         placeinfo: datas,
-  //       });
-  //     });
-  // }
-
-  // componentDidMount() {
-  //   fetch(`/Data/PlaceData.json`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       const datas = res.information;
-  //       this.setState({
-  //         placeinfo: datas,
-  //       });
-  //     });
-  // }
 
   render() {
     const { bookmarkList } = this.state;

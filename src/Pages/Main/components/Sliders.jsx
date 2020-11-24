@@ -10,19 +10,8 @@ class Sliders extends Component {
     target: "",
   };
 
-  componentDidMount() {
-    fetch("http://10.58.7.159:8000/ProductList/ProductDetail")
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          information: res.information,
-          target: res.information[0],
-        })
-      );
-  }
-
   // componentDidMount() {
-  //   fetch("/Data/PlaceData.json")
+  //   fetch("http://10.58.7.159:8000/ProductList/ProductDetail")
   //     .then((res) => res.json())
   //     .then((res) =>
   //       this.setState({
@@ -31,6 +20,17 @@ class Sliders extends Component {
   //       })
   //     );
   // }
+
+  componentDidMount() {
+    fetch("/Data/PlaceData.json")
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          information: res.information,
+          target: res.information[0],
+        })
+      );
+  }
 
   onButtonHandler = (e) => {
     let newId;

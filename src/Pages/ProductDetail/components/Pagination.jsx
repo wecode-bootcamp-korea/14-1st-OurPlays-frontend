@@ -8,24 +8,31 @@ const Pagination = ({
   total,
   limit,
 }) => {
+  // const pageNumber = [];
+  // for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+  //   pageNumber.push(i);
+  // }
+
   const pageNumber = [];
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(total / limit); i++) {
     pageNumber.push(i);
   }
-  // console.log(fetchProduct, total, limit);
+  console.log(fetchProduct, total, limit);
 
   return (
     <div className="Pagination">
       <ul className="pagination-lists">
         {" "}
-        {pageNumber.map((number) => (
+        {pageNumber.map((number, idx) => (
           <li key={number} className="page-item">
             <a
               href="!#"
+              data-idx={idx}
               className="page-link"
               onClick={(e) => {
                 e.preventDefault();
-                paginate(number);
+                // paginate(number);
+                fetchProduct(number);
               }}
             >
               {number}{" "}
