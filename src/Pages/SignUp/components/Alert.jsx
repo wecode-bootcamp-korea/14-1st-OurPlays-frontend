@@ -3,15 +3,14 @@ import "./Alert.scss";
 
 class Alert extends Component {
   render() {
+    const { message, condition, color } = this.props;
     return (
       <div
         className={
-          this.props.condition
-            ? "alert alert-danger hide"
-            : "alert alert-danger show"
+          condition ? `alert alert-${color} hide` : `alert alert-${color} show`
         }
       >
-        <i className="fas fa-exclamation-circle"> 비밀 번호를 확인해주세요. </i>{" "}
+        <i className="fas fa-exclamation-circle"> {message} </i>{" "}
       </div>
     );
   }

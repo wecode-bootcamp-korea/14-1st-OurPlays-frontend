@@ -226,13 +226,30 @@ $theme-color: rgb(0, 106, 213);
     }
 }
 
+.alert-success {
+    background: green;
+    padding: 20px 30px;
+    min-width: 320px;
+    position: absolute;
+    top: 90%;
+    right: 10px;
+    border-radius: 4px;
+    .fa-exclamation-circle {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        color: white;
+    }
+}
+
 .alert-danger {
     background: #eb4034;
     z-index: 2;
     padding: 20px 30px;
     min-width: 320px;
     position: absolute;
-    top: 540px;
+    top: 95%;
     right: 10px;
     border-radius: 4px;
     .fa-exclamation-circle {
