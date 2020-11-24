@@ -30,37 +30,30 @@ class ModalPrice extends Component {
   };
 
   render() {
-    const { closeModal } = this.props;
     const { minPrice, maxPrice } = this.state;
     const { PLACEINFO } = this.props;
     const filteredPlaceInfo = PLACEINFO.filter((placeinfo) => {
       return placeinfo.price >= 90000;
     });
-
-    console.log(filteredPlaceInfo);
-
-    console.log(minPrice, maxPrice);
+    const activateMin = minPrice.length > 0;
+    const activateMax = maxPrice.length > 0;
     return (
-      <div onClick={closeModal} className='ModalPrice'>
+      <div className='ModalPrice'>
         <div className='modal'>
           <h3>시간당 금액</h3>
         </div>
         <div className='text-and-input'>
           <div className='text-info'>원하시는 시간당 금액을 설정해 주세요.</div>
           <div className='input-boxes'>
-            <input
-              onChange={this.handleMinPrice}
-              type='text'
-              placeholder='최소금액'
-              className='input-box-min'
-            />
+            <div className='input-box-min'>
+              <input onChange={this.handleMinPrice} type='text' placeholder='최소금액' />
+              <span className={activateMin ? 'activate' : 'deactivate'}>원</span>
+            </div>
             <div className='dash'>-</div>
-            <input
-              onChange={this.handleMaxPrice}
-              type='text'
-              placeholder='최대금액'
-              className='input-box-max'
-            />
+            <div className='input-box-max'>
+              <input onChange={this.handleMaxPrice} type='text' placeholder='최대금액' />
+              <span className={activateMax ? 'activate' : 'deactivate'}>원</span>
+            </div>
           </div>
         </div>
         <div className='delete-confirm'>

@@ -19,18 +19,23 @@ class ControlButtons extends Component {
             </button>
           </div>
           <div className='control-button'>
-            <button className='button-count'>
+            <button
+              className='button-count'
+              onClick={() => {
+                this.props.openModalCount();
+              }}
+            >
               <span>인원</span>
               <img src='../images/youngjoonpark/control-bar.png' alt='인원' />
             </button>
           </div>
-          <div
-            className='control-button'
-            onClick={() => {
-              this.props.openModal();
-            }}
-          >
-            <button className='button-price'>
+          <div className='control-button'>
+            <button
+              className='button-price'
+              onClick={() => {
+                this.props.openModalPrice();
+              }}
+            >
               <span>가격</span>
               <img src='../images/youngjoonpark/control-bar.png' alt='가격' />
             </button>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ControlButtons from './ControlButtons';
+import ModalCount from './ModalCount';
 import ModalPrice from './ModalPrice';
 import RoomList from './RoomList';
 import Buttons from './Buttons';
@@ -11,6 +12,7 @@ class ProductLists extends Component {
     this.state = {
       productlists: [],
       isModal: false,
+      modal: false,
     };
   }
 
@@ -34,8 +36,12 @@ class ProductLists extends Component {
   //     .then((res) => this.setState({ PLACEINFO: res.information }));
   // }
 
-  openModal = () => {
+  openModalPrice = () => {
     this.setState({ isModal: !this.state.isModal });
+  };
+
+  openModalCount = () => {
+    this.setState({ modal: !this.state.modal });
   };
 
   filterLists = (filteredItem) => {
@@ -43,17 +49,21 @@ class ProductLists extends Component {
   };
 
   render() {
+    const { modal, isModal } = this.state;
     const { productlists } = this.state;
-    console.log('asdfasdf', productlists);
+    console.log(modal);
 
     return (
       <>
         {productlists.length > 0 ? (
           <div className='ProductLists'>
-            <div className={this.state.isModal ? '' : 'display-none'}>
+            <div className={modal ? '' : 'display-none'}>
+              <ModalCount PLACEINFO={productlists} openModalCount={this.openModalCount} />
+            </div>
+            <div className={isModal ? '' : 'display-none'}>
               <ModalPrice
                 PLACEINFO={productlists}
-                openModal={this.openModal}
+                openModalPrice={this.openModalPrice}
                 filterLists={this.filterLists}
               />
             </div>
@@ -61,7 +71,10 @@ class ProductLists extends Component {
               <section className='header'>
                 <div className='title'>dd</div>
                 <div className='filter'>
-                  <ControlButtons openModal={this.openModal} />
+                  <ControlButtons
+                    openModalPrice={this.openModalPrice}
+                    openModalCount={this.openModalCount}
+                  />
                 </div>
               </section>
               <section className='room-lists'>
