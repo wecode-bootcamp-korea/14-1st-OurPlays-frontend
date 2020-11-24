@@ -23,7 +23,6 @@ class DetailSlider extends Component {
   };
 
   render() {
-    console.log(this.state.posts, "pagi");
     const { handleDelete, isHover, ratings } = this.props;
     const { currentPage, postsPerPage } = this.state;
     const indexOfLastPost = currentPage * postsPerPage;
@@ -33,6 +32,7 @@ class DetailSlider extends Component {
     return (
       <div className="product-detail-review-contents">
         <div className="product-detail-review-content">
+          {" "}
           {currentPosts &&
             currentPosts.map((rating) => {
               return (
@@ -44,25 +44,25 @@ class DetailSlider extends Component {
                   }}
                 />
               );
-            })}
+            })}{" "}
           {/* {comments.map((comment) => {
-            return (
-              <ReviewElement
-                ratings={ratings}
-                isHover={isHover}
-                data={comment}
-                handleDelete={() => {
-                  handleDelete(comment.id);
-                }}
-              />
-            );
-          })}{ */}
-        </div>
+                            return (
+                              <ReviewElement
+                                ratings={ratings}
+                                isHover={isHover}
+                                data={comment}
+                                handleDelete={() => {
+                                  handleDelete(comment.id);
+                                }}
+                              />
+                            );
+                          })}{ */}{" "}
+        </div>{" "}
         <Pagination
           postsPerPage={postsPerPage}
           totalPosts={ratings.length}
           paginate={this.paginate}
-        />
+        />{" "}
       </div>
     );
   }

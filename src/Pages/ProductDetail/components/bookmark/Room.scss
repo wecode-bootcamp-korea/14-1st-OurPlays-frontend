@@ -1,0 +1,58 @@
+.room-content-list-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 10px;
+    .slider-content-list {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .slider-content {
+            display: flex;
+            .room-mark {
+                position: absolute;
+                top: 80%;
+                right: 10%;
+                font-size: 25px;
+            }
+            .slider-content-inner {
+                padding: 0px 20px;
+                .slider-content-inner-top {
+                    height: 100px;
+                    .slider-content-inner-title {
+                        font-size: 18px;
+                        color: rgba(0, 0, 0, 0.6);
+                        font-weight: 600;
+                    }
+                    .slider-content-inner-loc {
+                        font-size: 14px;
+                        color: white;
+                    }
+                }
+                .slider-content-inner-bottom {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    .slider-content-inner-price {
+                        width: 50px;
+                        font-weight: 600;
+                    }
+                    .slider-content-inner-rateAndMark {
+                        .slider-content-inner-rate {
+                            color: white;
+                            padding-left: 120px;
+                        }
+                        .slider-content-inner-mark {
+                            font-size: 20px;
+                            color: white;
+                            padding-left: 180px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

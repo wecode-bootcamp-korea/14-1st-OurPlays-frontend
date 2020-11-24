@@ -21,8 +21,7 @@ class Modal extends Component {
       handleRating,
     } = this.props;
     const { comment, updatedRating } = this.state;
-    console.log(isHover);
-    console.log("rating", rating);
+
     return (
       <>
         {" "}

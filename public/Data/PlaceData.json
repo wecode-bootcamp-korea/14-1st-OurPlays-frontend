@@ -21,6 +21,7 @@
         "info_nearby": "근처 설명합니다.",
         "minimum_rental_hour": 1,
         "surcharge_rule": "surcharge_rule",
+        "tags": [{ "tag": "기쁨" }, { "tag": "아늑함" }, { "tag": "조용함" }],
         "rating": [{
                 "id": 1,
                 "starpoint": 4.5,

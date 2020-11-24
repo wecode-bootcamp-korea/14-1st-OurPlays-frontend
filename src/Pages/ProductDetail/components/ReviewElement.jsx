@@ -6,22 +6,24 @@ class ReviewElement extends Component {
   };
   render() {
     const {
-      data: { user_name, id, comment, starpoint },
+      data: { user_name, id, avatar_img, comment, starpoint },
       handleDelete,
       posts,
     } = this.props;
-    console.log(this.props.data);
+
     return (
       <div className="card-wrap">
         <div className="card-header">
           <div className="card-img">
-            <img src="../images/donghakim/img1.jpeg" alt="user" />
+            <img src={avatar_img} alt="user" />
           </div>{" "}
           <div className="card-user-info">
             <span className="name"> {user_name} </span>{" "}
             <span className="time"> November 2020 </span>{" "}
           </div>{" "}
-          <i class="far fa-trash-alt delete-comment" onClick={handleDelete}></i>{" "}
+          <i class="far fa-trash-alt delete-comment" onClick={handleDelete}>
+            {" "}
+          </i>{" "}
         </div>{" "}
         <div className="card-content-wrap">
           <div class="stars-outer modal-star">

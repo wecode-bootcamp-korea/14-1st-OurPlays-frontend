@@ -6,10 +6,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumber.push(i);
   }
-  console.log(pageNumber);
+
   return (
     <div className="Pagination">
       <ul className="pagination-lists">
+        {" "}
         {pageNumber.map((number) => (
           <li key={number} className="page-item">
             <a
@@ -20,11 +21,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
                 paginate(number);
               }}
             >
-              {number}
-            </a>
+              {number}{" "}
+            </a>{" "}
           </li>
-        ))}
-      </ul>
+        ))}{" "}
+      </ul>{" "}
     </div>
   );
 };

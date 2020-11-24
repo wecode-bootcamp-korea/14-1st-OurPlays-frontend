@@ -6,10 +6,12 @@ import ReactStars from "react-rating-stars-component";
 import Modal from "./components/Modal";
 import Slider from "react-slick";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 import ReviewList from "./components/ReviewList";
 import ReviewElement from "./components/ReviewElement";
 import MapContanier from "./components/MapContainer";
 import MapElement from "./components/MapElement";
+import TagLists from "./components/TagLists";
 import { FaStar } from "react-icons/fa";
 import uuid from "react-uuid";
 
@@ -63,20 +65,22 @@ class ProductDetail extends Component {
     rating: null,
     isHover: null,
     ratings: [],
+    isArea: true,
   };
 
-  // componentDidMount() {
-  //   fetch(
-  //     `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       this.setState({
-  //         placeinfo: res.information[0],
-  //         ratings: res.information[0].rating,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    fetch(
+      `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.information);
+        this.setState({
+          placeinfo: res.information[0],
+          ratings: res.information[0].rating,
+        });
+      });
+  }
 
   // componentDidMount() {
   //   fetch(`/Data/PlaceData.json`)
@@ -91,18 +95,18 @@ class ProductDetail extends Component {
   //     });
   // }
 
-  componentDidMount() {
-    fetch(`/Data/PlaceData.json`)
-      .then((res) => res.json())
-      .then((res) => {
-        const datas = res.information;
-        const current = datas.find((el) => el.id == 0);
-        this.setState({
-          placeinfo: current,
-          ratings: current.rating,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch(`/Data/PlaceData.json`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       const datas = res.information;
+  //       const current = datas.find((el) => el.id == 0);
+  //       this.setState({
+  //         placeinfo: current,
+  //         ratings: current.rating,
+  //       });
+  //     });
+  // }
 
   handleRating = (_rating) => {
     this.setState({
@@ -193,6 +197,19 @@ class ProductDetail extends Component {
       ratings: filteredComments,
     });
   };
+
+  handleAreaClick = () => {
+    this.setState({
+      isArea: !this.state.isArea,
+    });
+  };
+
+  toBookMark = (e) => {
+    console.log(e, this.props);
+    this.props.history.push(
+      `/BookMarkLists/BookMarkList/${this.props.info.place_id}`
+    );
+  };
   render() {
     const {
       isComment,
@@ -205,6 +222,7 @@ class ProductDetail extends Component {
       ratings,
       placeinfo,
       comments,
+      isArea,
     } = this.state;
 
     const ratingArr = ratings.map((rating) => {
@@ -225,19 +243,34 @@ class ProductDetail extends Component {
                   return (
                     <div className="DetailSlider" key={idx}>
                       <img src={img.url} alt="place" />
+                      <div className="product-image-cnt">
+                        <i className="far fa-image"> </i>{" "}
+                        <span>
+                          {idx} / {placeinfo.images_urls.length}{" "}
+                        </span>{" "}
+                      </div>
                     </div>
                   );
                 })}{" "}
             </Slider>{" "}
-            <div className="product-image-cnt">
-              <i className="far fa-image"> </i> <span> 1 / 18 </span>{" "}
-            </div>{" "}
             <button className="link icon">
               <i className="fas fa-link"> </i>{" "}
             </button>{" "}
             <button className="book-mark icon">
-              <i className="far fa-bookmark"> </i>{" "}
+              {/* <Link to="/BookMarkList"> */}
+              <i className="far fa-bookmark" onClick={() => this.toBookMark()}>
+                {" "}
+              </i>{" "}
+              {/* </Link> */}
             </button>{" "}
+          </div>{" "}
+          <div className="tag-container">
+            <ul className="tag-lists">
+              {placeinfo.tags &&
+                placeinfo.tags.map((tag) => {
+                  return <TagLists tag={tag} />;
+                })}{" "}
+            </ul>
           </div>{" "}
           <section className="product-detail-content-container">
             <div className="product-detail-info-wrap">
@@ -250,7 +283,7 @@ class ProductDetail extends Component {
                     </span>{" "}
                     <div className="left-top-heaer-number">
                       {" "}
-                      장소번호 23423{" "}
+                      장소 번호 {placeinfo.place_id}{" "}
                     </div>{" "}
                   </div>{" "}
                   <div className="left-top-desc">
@@ -259,7 +292,7 @@ class ProductDetail extends Component {
                   <div className="left-top-host-info">
                     <div className="left-top-host-info-image">
                       <img
-                        src={placeinfo.host_avatar && placeinfo.host_avatar}
+                        src={placeinfo.avatar_img && placeinfo.avatar_img}
                         alt="host"
                       />
                     </div>{" "}
@@ -273,19 +306,39 @@ class ProductDetail extends Component {
                   <div className="left-middle-table-header">
                     <span> 장소 소개 </span>{" "}
                     <div className="left-middle-table-btn">
-                      <input type="button" value="m2" className="area2" />
-                      <input type="button" value="평" className="area" />
+                      <input
+                        type="button"
+                        value="m2"
+                        name="qa"
+                        className={isArea ? "m2-btn" : "none-m2-btn"}
+                        onClick={() => {
+                          this.handleAreaClick();
+                        }}
+                      />
+                      <input
+                        type="button"
+                        value="평"
+                        name="area"
+                        className={isArea ? "none-m2-btn" : "m2-btn"}
+                        onClick={() => {
+                          this.handleAreaClick();
+                        }}
+                      />
                     </div>{" "}
                   </div>{" "}
                   <div className="left-middle-table-content">
                     <div className="row">
                       <div className="row-ele">
                         <div className="area-title"> 면적 </div>{" "}
-                        <div className="area-data"> 122 m2 </div>{" "}
+                        <div className="area-data">
+                          {" "}
+                          {isArea ? placeinfo.area * 3 : placeinfo.area}{" "}
+                          <span>{isArea ? "m2" : "평"}</span>
+                        </div>{" "}
                       </div>{" "}
                       <div className="row-ele">
                         <div className="story-title"> 층 </div>{" "}
-                        <div className="story-data"> {placeinfo.floor} </div>{" "}
+                        <div className="story-data"> {placeinfo.floor} 층</div>{" "}
                       </div>{" "}
                     </div>{" "}
                     <div className="row">
@@ -293,7 +346,7 @@ class ProductDetail extends Component {
                         <div className="acceptable-ppl-title"> 기본 인원 </div>{" "}
                         <div className="acceptable-ppl-data">
                           {" "}
-                          {placeinfo.allowed_members_count}{" "}
+                          {placeinfo.allowed_members_count} 명{" "}
                         </div>{" "}
                       </div>{" "}
                       <div className="row-ele">
@@ -302,7 +355,7 @@ class ProductDetail extends Component {
                         </div>{" "}
                         <div className="acceptable-cars-data">
                           {" "}
-                          {placeinfo.maximun_parking_lot}대{" "}
+                          {placeinfo.maximun_parking_lot} 대{" "}
                         </div>{" "}
                       </div>{" "}
                     </div>{" "}
@@ -407,7 +460,7 @@ class ProductDetail extends Component {
                           {" "}
                           {startDate && startDate.format("YYYY.MM.DD")}{" "}
                         </div>
-                        ~
+                        ~{" "}
                         <div className="result-end">
                           {" "}
                           {endDate && endDate.format("YYYY.MM.DD")}{" "}
@@ -435,7 +488,10 @@ class ProductDetail extends Component {
                       </div>{" "}
                       <div className="result-col-total-ppl">
                         {" "}
-                        추가금액 0 원{" "}
+                        추가금액 {peopleVal > 4
+                          ? (peopleVal - 4) * 15000
+                          : 0}{" "}
+                        원{" "}
                       </div>{" "}
                     </div>{" "}
                     <div className="result-col total">
