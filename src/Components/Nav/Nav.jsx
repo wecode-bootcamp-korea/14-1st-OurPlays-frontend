@@ -16,19 +16,19 @@ class Nav extends Component {
           <section className='main-nav'>
             <div className='logo-icon'>
               <Link to='/'>
-                <img src='../images/youngjoonpark/hourplace-logo.svg' alt='logo-img' />
+                <img src='https://s3.hourplace.co.kr/web/images/logo_blue.svg' alt='logo-img' />
               </Link>
             </div>
             <div className='search-input'>
               <input type='text' placeholder='촬영의 모든 장소' />
               <img
                 className='camera-icon'
-                src='../images/youngjoonpark/camera-icon.svg'
+                src='https://s3.hourplace.co.kr/web/images/icon/camera.svg'
                 alt='camera-icon'
               />
               <img
                 className='search-icon'
-                src='../images/youngjoonpark/search-icon.png'
+                src='https://s3.hourplace.co.kr/web/images/ico_search.png'
                 alt='search-icon'
               />
             </div>
