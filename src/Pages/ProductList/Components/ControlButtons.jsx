@@ -9,17 +9,21 @@ class ControlButtons extends Component {
     };
   }
 
-  openModal = (e) => {
-    e.preventDefault();
-    if (this.state.isModal === true) {
-      this.setState({ isModal: false });
-    } else {
-      this.setState({ isModal: true });
-    }
-    this.props.isModal({ isModal: this.state.isModal });
-  };
+  // openModal = (e) => {
+  //   e.preventDefault();
+  //   // if (this.state.isModal === true) {
+  //   //   this.setState({ isModal: false });
+  //   // } else {
+  //   //   this.setState({ isModal: true });
+  //   // }
+
+  //   this.setState({
+  //     isModal: !this.state.isModal,
+  //   });
+  //   // this.props.isModal({ isModal: this.state.isModal });
+  // };
   render() {
-    // console.log(this.state.isModal);
+    console.log(this.props);
     return (
       <div className='ControlButtons'>
         <div className='control-buttons'>
@@ -35,7 +39,12 @@ class ControlButtons extends Component {
               <img src='../images/youngjoonpark/control-bar.png' alt='인원' />
             </button>
           </div>
-          <div className='control-button' onClick={this.openModal}>
+          <div
+            className='control-button'
+            onClick={() => {
+              this.props.openModal();
+            }}
+          >
             <button className='button-price'>
               <span>가격</span>
               <img src='../images/youngjoonpark/control-bar.png' alt='가격' />

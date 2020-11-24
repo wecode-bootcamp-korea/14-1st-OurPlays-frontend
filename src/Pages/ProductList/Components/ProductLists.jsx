@@ -8,34 +8,34 @@ import '../ProductList.scss';
 class ProductLists extends Component {
   state = {
     productlists: [],
-    isModal: '',
+    isModal: false,
   };
 
-  openModal = (data) => {
-    this.setState({ isModal: data });
+  openModal = () => {
+    this.setState({ isModal: !this.state.isModal });
   };
 
-  closeModal = () => {
-    this.setState({ isModal: false });
-  };
+  // closeModal = () => {
+  //   this.setState({ isModal: false });
+  // };
 
   render() {
     const { PLACEINFO } = this.props;
-    console.log('ProductLists', PLACEINFO[0]);
+
     return (
       <div className='ProductLists'>
         <div className={this.state.isModal ? '' : 'display-none'}>
-          <Modal closeModal={this.closeModal} />
+          <Modal openModal={this.openModal} />
         </div>
         <div className='product-list'>
           <section className='header'>
-            <div className='title'>{PLACEINFO.category}</div>
+            <div className='title'>{PLACEINFO.id}</div>
             <div className='filter'>
-              <ControlButtons isModal={this.openModal} />
+              <ControlButtons openModal={this.openModal} />
             </div>
           </section>
           <section className='room-lists'>
-            <RoomList PLACEINFO={PLACEINFO} category={PLACEINFO.category} />
+            <RoomList PLACEINFO={PLACEINFO} category='' />
           </section>
         </div>
       </div>

@@ -1,0 +1,73 @@
+.ProductLists {
+  position: relative;
+  .Modal {
+    position: absolute;
+    top: 300px;
+    right: 0;
+    width: 320px;
+    height: 206px;
+    padding: 16px;
+    font-size: 14px;
+    background-color: #ffffff;
+    z-index: 1000;
+
+    .modal {
+      border-bottom: 2px solid black;
+      padding-bottom: 13px;
+      font-weight: bold;
+    }
+    .text-and-input {
+      .text-info {
+        margin-top: 14px;
+        font-size: 12px;
+        color: lightgray;
+      }
+      .input-boxes {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 14px;
+
+        .input-box {
+          width: 125px;
+          height: 48px;
+          border: 1px solid lightgray;
+          border-radius: 3px;
+
+          &::placeholder {
+            font-size: 12px;
+            color: lightgray;
+          }
+        }
+
+        .dash {
+          color: lightgray;
+        }
+      }
+    }
+    .delete-confirm {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid lightgray;
+      margin-top: 16px;
+      padding-top: 16px;
+
+      button {
+        width: 50px;
+        height: 20px;
+        border: none;
+        border-radius: 3px;
+        color: #ffffff;
+        background-color: lightgray;
+        font-size: 10px;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #0095f6;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -12,7 +12,9 @@ class ProductList extends Component {
       .then((res) => res.json())
       // .then((res) => {
       //   const datas = res.information;
-      //   const current = datas.find((el) => el.id == this.props.match.params.id);
+      //   console.log(datas);
+      //   const current = datas.find((el) => el.id == 0);
+      //   console.log(current);
       //   this.setState({ PLACEINFO: current });
       // });
       .then((res) => this.setState({ PLACEINFO: res.information }));
