@@ -24,17 +24,17 @@ const NAVICONS = [
   {
     id: 0,
     name: '아워플레이스 소개',
-    linkTo: '',
+    linkTo: '/Introduce',
   },
   {
     id: 1,
     name: '촬영장소 등록하기',
-    linkTo: '',
+    linkTo: '/Register',
   },
   {
     id: 2,
     name: '이용방법',
-    linkTo: '',
+    linkTo: '/howToUse',
   },
   {
     id: 3,
