@@ -13,10 +13,6 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    this.handleClick();
-  }
-
   handleClick = (e) => {
     fetch(API, {
       method: 'POST',
@@ -51,6 +47,7 @@ class Login extends Component {
     const { idValue, pwValue } = this.state;
     const checkId = idValue.includes('@');
     const checkPw = pwValue.length >= 8 && pwValue.includes('@');
+    this.handleClick();
     if (checkId && checkPw && this.state.data) {
       alert('로그인 성공');
       // return this.props.history.push('/Main');
