@@ -8,22 +8,7 @@ class ControlButtons extends Component {
       isModal: false,
     };
   }
-
-  // openModal = (e) => {
-  //   e.preventDefault();
-  //   // if (this.state.isModal === true) {
-  //   //   this.setState({ isModal: false });
-  //   // } else {
-  //   //   this.setState({ isModal: true });
-  //   // }
-
-  //   this.setState({
-  //     isModal: !this.state.isModal,
-  //   });
-  //   // this.props.isModal({ isModal: this.state.isModal });
-  // };
   render() {
-    console.log(this.props);
     return (
       <div className='ControlButtons'>
         <div className='control-buttons'>
