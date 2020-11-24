@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import NAVICONS from "./Components/NavIcons";
 import { Link } from "react-router-dom";
-import "./Nav.scss";
+import "./Nav1.scss";
 
 class Nav extends Component {
   render() {
     return (
-      <nav>
+      <nav className="nav1">
         <section className="nav-background">
           <section className="main-nav">
             <div className="logo-icon">

@@ -74,7 +74,7 @@ class ProductDetail extends Component {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.information);
+        console.log(res.information, "전체 데이터 중 방 하나");
         this.setState({
           placeinfo: res.information[0],
           ratings: res.information[0].rating,
@@ -178,6 +178,7 @@ class ProductDetail extends Component {
       id: this.state.id,
       comment: _comment,
     };
+
     const addedComment = [...this.state.comments, createdComment];
     const addRating = [...this.state.ratings, createdRatingElement];
     this.setState({
@@ -207,8 +208,10 @@ class ProductDetail extends Component {
   toBookMark = (e) => {
     console.log(e, this.props);
     this.props.history.push(
-      `/BookMarkLists/BookMarkList/${this.props.info.place_id}`
+      `/BookMarkLists/BookMarkList/${this.props.place_id}`
     );
+
+    fetch();
   };
   render() {
     const {
@@ -224,7 +227,7 @@ class ProductDetail extends Component {
       comments,
       isArea,
     } = this.state;
-
+    console.log(placeinfo.place_id, "placeinfo id");
     const ratingArr = ratings.map((rating) => {
       return rating.starpoint;
     });
@@ -584,6 +587,7 @@ class ProductDetail extends Component {
                   </div>{" "}
                 </div>{" "}
                 <ReviewList
+                  place_id={placeinfo.place_id}
                   ratings={ratings}
                   isHover={isHover}
                   comments={comments}

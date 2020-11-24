@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Slider from "./Slider";
 import "./Sliders.scss";
+import API from "../../../config";
+import API_yh from "../../../config";
+
 class Sliders extends Component {
   state = {
     information: [],

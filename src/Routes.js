@@ -8,13 +8,14 @@ import Login from "../src/Pages/Login/Login";
 import ProductList from "../src/Pages/ProductList/ProductList";
 import ProductDetail from "../src/Pages/ProductDetail/ProductDetail";
 import BookMarkList from "./Pages/ProductDetail/BookMarkList";
+import NavTemp from "../src/Components/NavTemp/Nav";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class Routes extends React.Component {
   render() {
     return (
       <Router>
-        <Nav />
+        <NavTemp />
         <Switch>
           <Route exact path="/Footer" component={Footer} />{" "}
           <Route exact path="/Nav" component={Nav} />{" "}

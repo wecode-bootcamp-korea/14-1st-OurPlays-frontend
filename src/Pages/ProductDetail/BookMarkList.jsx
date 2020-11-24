@@ -4,24 +4,50 @@ import "./BookMarkList.scss";
 
 class BookMarkList extends Component {
   state = {
-    placeinfo: [],
+    bookmarkList: [],
   };
 
   componentDidMount() {
-    fetch(`/Data/PlaceData.json`)
+    fetch(
+      `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
+    )
       .then((res) => res.json())
       .then((res) => {
-        const datas = res.information;
-        this.setState({
-          placeinfo: datas,
-        });
+        console.log(res.information, "전체 데이터 중 방 하나");
+        // this.setState({
+        //   placeinfo: res.information[0],
+        //   ratings: res.information[0].rating,
+        // });
       });
   }
+
+  // componentDidMount() {
+  //   fetch(`/Data/PlaceData.json`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       const datas = res.information;
+  //       this.setState({
+  //         placeinfo: datas,
+  //       });
+  //     });
+  // }
+
+  // componentDidMount() {
+  //   fetch(`/Data/PlaceData.json`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       const datas = res.information;
+  //       this.setState({
+  //         placeinfo: datas,
+  //       });
+  //     });
+  // }
+
   render() {
-    const { placeinfo } = this.state;
+    const { bookmarkList } = this.state;
     return (
       <div className="BookMarkList">
-        <BookMarkLists placeinfo={placeinfo} />{" "}
+        <BookMarkLists bookmarkList={bookmarkList} />{" "}
       </div>
     );
   }
