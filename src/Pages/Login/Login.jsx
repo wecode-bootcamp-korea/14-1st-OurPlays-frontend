@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.scss';
 
-const API = 'http://10.58.3.74:8000/user/singin';
+const API = 'http://10.58.0.20:8000/user/signin';
 
 class Login extends Component {
   constructor() {
@@ -18,12 +18,12 @@ class Login extends Component {
   }
 
   handleClick = (e) => {
-    console.log(this.state.idValue, this.state.pwValue);
     fetch(API, {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.idValue,
         password: this.state.pwValue,
+        name: '백승진',
       }),
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ class Login extends Component {
     const checkPw = pwValue.length >= 8 && pwValue.includes('@');
     if (checkId && checkPw && this.state.data) {
       alert('로그인 성공');
-      return this.props.history.push('/Main');
+      // return this.props.history.push('/Main');
     }
 
     if (!checkId) {
@@ -110,7 +110,7 @@ class Login extends Component {
               <span>비밀번호</span>
               <input
                 className={activatePw}
-                type='password'
+                type='text'
                 placeholder='비밀번호를 입력해 주세요.'
                 onChange={this.handleChangePw}
                 onKeyPress={this.handleKeyPress}
