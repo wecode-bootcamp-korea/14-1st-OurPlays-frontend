@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Slider from "./Slider";
 import "./Sliders.scss";
-import API from "../../../config";
-import API_yh from "../../../config";
+import { API } from "../../../config";
+import { API_yh } from "../../../config";
 
 class Sliders extends Component {
   state = {
@@ -10,8 +10,12 @@ class Sliders extends Component {
     target: "",
   };
 
-  componentDidMount() {
-    fetch("http://10.58.7.159:8000/ProductList/ProductDetail")
+  componentDidMount = () => {
+    fetch(`${API}/ProductList/ProductDetail`, {
+      headers: {
+        Authorization: localStorage.getItem("token") || "",
+      },
+    })
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -19,7 +23,7 @@ class Sliders extends Component {
           target: res.information[0],
         })
       );
-  }
+  };
 
   // componentDidMount() {
   //   fetch("/Data/PlaceData.json")
