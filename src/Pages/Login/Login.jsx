@@ -16,39 +16,23 @@ class Login extends Component {
     };
   }
 
-  // checkLoginValidation = () => {
-  //   // e.preventDefault();
-  //   const { idValue, pwValue } = this.state;
-  //   fetch(API, {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       email: this.state.idValue,
-  //       password: this.state.pwValue,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => console.log(res));
-  //   // .then((res) => this.setState({ data: res }));
-  // };
-
   checkValidation = (e) => {
     e.preventDefault();
-    // console.log('연결확인');
-    const { id, pw } = this.state;
-    fetch("http://10.58.4.236:8000/user/signin", {
+    const { idValue, pwValue } = this.state;
+    fetch(API, {
       method: "POST",
       body: JSON.stringify({
-        ID: id,
-        password: pw,
+        email: idValue,
+        password: pwValue,
       }),
     })
       .then((res) => res.json())
-      .then((result) => {
-        if (result.authorization) {
-          localStorage.setItem("token", result.authorization);
-          this.props.history.push("/");
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("token", res.token);
+          this.props.history.push("/Main");
         } else {
-          alert(result.message);
+          alert(res.message);
         }
       });
   };
@@ -62,23 +46,6 @@ class Login extends Component {
     this.setState({ pwValue: value });
   };
 
-  checkValidation = () => {
-    const { idValue, pwValue } = this.state;
-    const checkId = idValue.includes("@");
-    const checkPw = pwValue.length >= 8;
-
-    if (checkId && checkPw && this.state.data) {
-      alert("로그인 성공");
-      this.checkLoginValidation();
-      return this.props.history.push("/Main");
-    }
-    if (!checkId) {
-      alert("이메일을 입력해주세요.");
-    }
-    if (!checkPw) {
-      alert("비밀번호는 8자리 이상, 특수문자 포함입니다.");
-    }
-  };
   handleKeyPress = (e) => {
     if (e.key === "Enter") {
       this.checkValidation();
@@ -142,7 +109,7 @@ class Login extends Component {
           <div className="login-button">
             <button
               onKeyPress={this.checkValidation}
-              onClick={this.checkLoginValidation}
+              onClick={this.checkValidation}
             >
               로그인
             </button>
