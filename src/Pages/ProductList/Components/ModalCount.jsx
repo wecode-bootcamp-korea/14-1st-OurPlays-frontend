@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './ModalCount.scss';
 
+const countNumber = [{}]
+
 class ModalCount extends Component {
   constructor() {
     super();
@@ -8,6 +10,7 @@ class ModalCount extends Component {
       count: '',
     };
   }
+
 
   filterLists = () => {
     const { PLACEINFO } = this.props;
@@ -28,6 +31,7 @@ class ModalCount extends Component {
           <div className='text-info-bottom'>설정 하신 인원을 수용한 촬영 장소가 검색됩니다.</div>
           <select className='select-options' placeholder=''>
             <option value='count'>인원을 선택해주세요</option>
+
             <option value=''>1</option>
             <option value=''>2</option>
             <option value=''>3</option>
