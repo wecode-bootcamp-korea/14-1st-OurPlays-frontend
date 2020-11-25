@@ -13,9 +13,9 @@ class Login extends Component {
       pwValue: "",
     };
   }
-  componentDidMount() {
-    this.handleClick();
-  }
+  // componentDidMount() {
+  //   this.handleClick();
+  // }
   handleClick = (e) => {
     console.log(this.state.idValue, this.state.pwValue);
     fetch(API, {
@@ -26,7 +26,10 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => this.setState({ data: res }));
+      .then((res) => {
+        localStorage.setItem("token", res.token);
+        this.setState({ data: res });
+      });
   };
   handleChangeEmail = (e) => {
     const { value } = e.target;

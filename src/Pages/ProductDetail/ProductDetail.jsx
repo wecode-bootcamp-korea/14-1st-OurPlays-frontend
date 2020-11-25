@@ -68,22 +68,14 @@ class ProductDetail extends Component {
     isArea: true,
   };
 
-  // componentDidMount() {
-  //   fetch(
-  //     `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       console.log(res.information, "전체 데이터 중 방 하나");
-  //       this.setState({
-  //         placeinfo: res.information[0],
-  //         ratings: res.information[0].rating,
-  //       });
-  //     });
-  // }
-
   componentDidMount() {
-    fetch(`http://10.58.7.159:8000/ProductList/ProductDetail`)
+    fetch(
+      `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`,
+      {
+        method: "GET",
+        headers: { Authorization: localStorage.getItem("token") },
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         console.log(res.information, "전체 데이터 중 방 하나");
@@ -93,6 +85,18 @@ class ProductDetail extends Component {
         });
       });
   }
+
+  // componentDidMount() {
+  //   fetch(`http://10.58.7.159:8000/ProductList/ProductDetail/2`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       console.log(res.information, "전체 데이터 중 방 하나");
+  //       this.setState({
+  //         placeinfo: res.information[0],
+  //         ratings: res.information[0].rating,
+  //       });
+  //     });
+  // }
 
   // componentDidMount() {
   //   fetch(`/Data/PlaceData.json`)

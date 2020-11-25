@@ -8,7 +8,7 @@ import Login from "../src/Pages/Login/Login";
 import ProductList from "../src/Pages/ProductList/ProductList";
 import ProductDetail from "../src/Pages/ProductDetail/ProductDetail";
 import BookMarkList from "./Pages/BookMark/BookMarkList";
-import NavTemp from "../src/Components/NavTemp/Nav";
+
 import UploadImage from "../src/Pages/UploadImage/UploadImage";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -16,7 +16,7 @@ class Routes extends React.Component {
   render() {
     return (
       <Router>
-        <NavTemp />
+        <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/SignUp" component={SignUp} />
