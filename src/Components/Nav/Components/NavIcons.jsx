@@ -25,33 +25,18 @@ export default NavIcons;
 const NAVICONS = [
   {
     id: 0,
-<<<<<<< HEAD
-    name: '아워플레이스 소개',
-    linkTo: '/Introduce',
-  },
-  {
-    id: 1,
-    name: '촬영장소 등록하기',
-    linkTo: '/Register',
-  },
-  {
-    id: 2,
-    name: '이용방법',
-    linkTo: '/howToUse',
-=======
     name: "아워플레이스 소개",
-    linkTo: "",
+    linkTo: "/Introduce",
   },
   {
     id: 1,
     name: "촬영장소 등록하기",
-    linkTo: "",
+    linkTo: "/Register",
   },
   {
     id: 2,
     name: "이용방법",
-    linkTo: "",
->>>>>>> 0d7935c4add1ec3c51efb718ba350eb40b7c693c
+    linkTo: "/howToUse",
   },
   {
     id: 3,

@@ -7,48 +7,27 @@ class Nav extends Component {
   render() {
     return (
       <nav>
-<<<<<<< HEAD
-        <section className='nav-background'>
-          <section className='main-nav'>
-            <div className='logo-icon'>
-              <Link to='/'>
-                <img src='https://s3.hourplace.co.kr/web/images/logo_blue.svg' alt='logo-img' />
-              </Link>
-            </div>
-            <div className='search-input'>
-              <input type='text' placeholder='촬영의 모든 장소' />
-              <img
-                className='camera-icon'
-                src='https://s3.hourplace.co.kr/web/images/icon/camera.svg'
-                alt='camera-icon'
-              />
-              <img
-                className='search-icon'
-                src='https://s3.hourplace.co.kr/web/images/ico_search.png'
-                alt='search-icon'
-=======
         <section className="nav-background">
           <section className="main-nav">
             <div className="logo-icon">
               <Link to="/">
                 <img
-                  src="../images/youngjoonpark/hourplace-logo.svg"
+                  src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
                   alt="logo-img"
                 />
-              </Link>{" "}
-            </div>{" "}
+              </Link>
+            </div>
             <div className="search-input">
               <input type="text" placeholder="촬영의 모든 장소" />
               <img
                 className="camera-icon"
-                src="../images/youngjoonpark/camera-icon.svg"
+                src="https://s3.hourplace.co.kr/web/images/icon/camera.svg"
                 alt="camera-icon"
               />
               <img
                 className="search-icon"
-                src="../images/youngjoonpark/search-icon.png"
+                src="https://s3.hourplace.co.kr/web/images/ico_search.png"
                 alt="search-icon"
->>>>>>> 0d7935c4add1ec3c51efb718ba350eb40b7c693c
               />
             </div>{" "}
             <NAVICONS Link="Link" />

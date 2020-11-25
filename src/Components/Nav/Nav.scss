@@ -1,9 +1,10 @@
+/* style.sass */
+
 * {
     font-family: 'Nanum Gothic Coding', monospace;
 }
 
 nav {
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
   position: relative;
@@ -79,84 +80,6 @@ nav {
             text-decoration: none;
             color: #3b3e4d;
           }
-=======
-    display: flex;
-    justify-content: center;
-    position: relative;
-    .nav-background {
-        display: flex;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 123px;
-        background-color: white;
-        z-index: 10000;
-        .main-nav {
-            display: flex;
-            align-items: center;
-            width: 1080px;
-            height: 80px;
-            .logo-icon {
-                margin-right: 25px;
-                img {
-                    width: 109px;
-                    height: 28px;
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
-            }
-            .search-input {
-                position: relative;
-                input {
-                    width: 400px;
-                    height: 56px;
-                    padding: 5px 68px 0px 19px;
-                    border: 1px solid lightgray;
-                    outline-style: none;
-                    &::placeholder {
-                        color: lightgray;
-                        font-size: 15px;
-                    }
-                }
-                .camera-icon {
-                    position: absolute;
-                    top: 17px;
-                    right: 60px;
-                    width: 20px;
-                    height: 20px;
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
-                .search-icon {
-                    position: absolute;
-                    top: 18px;
-                    right: 15px;
-                    width: 20px;
-                    height: 20px;
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
-            }
-            .nav-icons {
-                width: 500px;
-                margin-left: 45px;
-                .nav-icon {
-                    text-decoration: none;
-                    color: #3b3e4d;
-                    font-size: 15px;
-                    font-weight: bold;
-                    padding: 8px;
-                    &:visited {
-                        text-decoration: none;
-                        color: #3b3e4d;
-                    }
-                }
-            }
->>>>>>> 0d7935c4add1ec3c51efb718ba350eb40b7c693c
         }
     }
 }
@@ -171,7 +94,6 @@ nav {
 }
 
 .side-nav {
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,66 +104,34 @@ nav {
   border-top: 1px solid lightgray;
   background-color: #fbfcfd;
   z-index: 10000;
+  
   .direction {
-=======
->>>>>>> 0d7935c4add1ec3c51efb718ba350eb40b7c693c
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     position: relative;
     width: 1080px;
     font-size: 13px;
     font-weight: bold;
     color: gray;
     border: #fbfcfd;
+    
     .home {
       margin-right: 15px;
       text-decoration: none;
       color: gray;
     }
+    
     img {
       position: absolute;
       top: 3px;
       left: 39px;
       width: 5px;
     }
+    
     .route {
       text-decoration: none;
       color: gray;
-=======
-    position: fixed;
-    top: 80px;
-    width: 100%;
-    height: 43px;
-    border-top: 1px solid lightgray;
-    background-color: #fbfcfd;
-    z-index: 10000;
-    .direction {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        position: relative;
-        width: 1080px;
-        font-size: 13px;
-        font-weight: bold;
-        color: gray;
-        border: #fbfcfd;
-        .home {
-            margin-right: 15px;
-            text-decoration: none;
-            color: gray;
-        }
-        img {
-            position: absolute;
-            top: 3px;
-            left: 39px;
-            width: 5px;
-        }
-        .route {
-            text-decoration: none;
-            color: gray;
-        }
->>>>>>> 0d7935c4add1ec3c51efb718ba350eb40b7c693c
     }
+  }
 }

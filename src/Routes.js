@@ -14,30 +14,19 @@ class Routes extends React.Component {
       <Router>
         <Nav />
         <Switch>
-<<<<<<< HEAD
-          <Route exact path='/Footer' component={Footer} />
-          <Route exact path='/Nav' component={Nav} />
-          <Route exact path='/' component={Main} />
-          <Route exact path='/SignUp' component={SignUp} />
-          <Route exact path='/Login' component={Login} />
-          <Route exact path='/ProductDetail' component={ProductDetail} />
-          <Route exact path='/ProductList' component={ProductList} />
-          <Route exact path='/ProductLIst/ProductDetail/:id' component={ProductDetail} />
-        </Switch>
-=======
-          <Route exact path="/Footer" component={Footer} />{" "}
-          <Route exact path="/Nav" component={Nav} />{" "}
-          <Route exact path="/Main" component={Main} />{" "}
-          <Route exact path="/SignUp" component={SignUp} />{" "}
-          <Route exact path="/Login" component={Login} />{" "}
-          <Route exact path="/ProductList" component={ProductList} />{" "}
+          <Route exact path="/Footer" component={Footer} />
+          <Route exact path="/Nav" component={Nav} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/ProductDetail" component={ProductDetail} />
+          <Route exact path="/ProductList" component={ProductList} />
           <Route
             exact
-            path="/ProductList/ProductDetail:id"
+            path="/ProductLIst/ProductDetail/:id"
             component={ProductDetail}
-          />{" "}
-        </Switch>{" "}
->>>>>>> 0d7935c4add1ec3c51efb718ba350eb40b7c693c
+          />
+        </Switch>
       </Router>
     );
   }
