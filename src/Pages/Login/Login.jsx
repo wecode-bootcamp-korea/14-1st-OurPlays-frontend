@@ -16,18 +16,41 @@ class Login extends Component {
     };
   }
 
-  checkLoginValidation = () => {
-    // e.preventDefault();
-    fetch(API, {
+  // checkLoginValidation = () => {
+  //   // e.preventDefault();
+  //   const { idValue, pwValue } = this.state;
+  //   fetch(API, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       email: this.state.idValue,
+  //       password: this.state.pwValue,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => console.log(res));
+  //   // .then((res) => this.setState({ data: res }));
+  // };
+
+  checkValidation = (e) => {
+    e.preventDefault();
+    // console.log('연결확인');
+    const { id, pw } = this.state;
+    fetch("http://10.58.4.236:8000/user/signin", {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.idValue,
-        password: this.state.pwValue,
+        ID: id,
+        password: pw,
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
-    // .then((res) => this.setState({ data: res }));
+      .then((result) => {
+        if (result.authorization) {
+          localStorage.setItem("token", result.authorization);
+          this.props.history.push("/");
+        } else {
+          alert(result.message);
+        }
+      });
   };
 
   handleChangeEmail = (e) => {
