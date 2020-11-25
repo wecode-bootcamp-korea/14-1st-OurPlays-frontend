@@ -13,20 +13,15 @@ class Nav extends Component {
   componentDidMount() {
     window.addEventListener("scroll", this.scroll);
   }
+
   componentWillUnmount() {
     window.removeEventListener("scroll", this.scroll);
   }
+
   scroll = () => {
-    if (window.scrollY > 10) {
-      this.setState({
-        isSticky: true,
-      });
-    }
-    if (window.scrollY <= 10) {
-      this.setState({
-        isSticky: false,
-      });
-    }
+    this.setState({
+      isSticky: window.scrollY > 10,
+    });
   };
 
   render() {
