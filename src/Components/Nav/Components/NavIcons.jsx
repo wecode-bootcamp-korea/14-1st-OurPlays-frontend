@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../Nav1.scss";
+import "../Nav.scss";
 
 class NavIcons extends Component {
   render() {

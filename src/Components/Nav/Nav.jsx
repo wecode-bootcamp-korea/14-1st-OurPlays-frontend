@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NAVICONS from "./Components/NavIcons";
 import { Link } from "react-router-dom";
-import "./Nav1.scss";
+import "./Nav.scss";
 
 class Nav extends Component {
   render() {
