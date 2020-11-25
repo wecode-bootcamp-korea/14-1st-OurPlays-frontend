@@ -68,19 +68,19 @@ class ProductDetail extends Component {
     isArea: true,
   };
 
-  // componentDidMount() {
-  //   fetch(
-  //     `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       console.log(res.information, "전체 데이터 중 방 하나");
-  //       this.setState({
-  //         placeinfo: res.information[0],
-  //         ratings: res.information[0].rating,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    fetch(
+      `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.information, "전체 데이터 중 방 하나");
+        this.setState({
+          placeinfo: res.information[0],
+          ratings: res.information[0].rating,
+        });
+      });
+  }
 
   // componentDidMount() {
   //   fetch(`/Data/PlaceData.json`)
@@ -98,18 +98,18 @@ class ProductDetail extends Component {
   //     });
   // }
 
-  componentDidMount() {
-    fetch(`/Data/PlaceData.json`)
-      .then((res) => res.json())
-      .then((res) => {
-        const datas = res.information;
-        const current = datas.find((el) => el.id == 0);
-        this.setState({
-          placeinfo: current,
-          ratings: current.rating,
-        });
-      });
-  }
+  // componentDidMount() {
+  //   fetch(`/Data/PlaceData.json`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       const datas = res.information;
+  //       const current = datas.find((el) => el.id == 0);
+  //       this.setState({
+  //         placeinfo: current,
+  //         ratings: current.rating,
+  //       });
+  //     });
+  // }
 
   handleRating = (_rating) => {
     this.setState({

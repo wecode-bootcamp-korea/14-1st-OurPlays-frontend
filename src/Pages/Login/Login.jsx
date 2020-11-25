@@ -26,7 +26,7 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => localStorage.setItem("token", res.token));
+      .then((res) => this.setState({ data: res }));
   };
   handleChangeEmail = (e) => {
     const { value } = e.target;
