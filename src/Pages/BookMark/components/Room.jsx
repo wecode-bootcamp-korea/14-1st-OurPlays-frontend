@@ -15,18 +15,17 @@ class Room extends Component {
       this.addBookMark();
       return;
     }
-    this.props.history.push(
-      `/ProductList/ProductDetail/${this.props.info.place_id}`
-    );
+    this.props.history.push(`/ProductList/ProductDetail/${this.props.info.id}`);
   };
 
-  addBookMark = (e) => {};
-
   render() {
+    console.log("3번째", this.props.info);
     const { info } = this.props;
-    const averageRatingArr = info.rating.map((el) => {
-      return el.starpoint;
-    });
+    const averageRatingArr =
+      info &&
+      info.ratings.map((el) => {
+        return el.starpoint;
+      });
     const average = averageRatingArr.reduce((pre, cur) => {
       return pre + cur / averageRatingArr.length;
     }, 0);
@@ -44,7 +43,8 @@ class Room extends Component {
               </div>
               <div className="slider-content-inner-bottom">
                 <div className="slider-content-inner-price">
-                  {info.price.toLocaleString(2)}/시간
+                  {info.price.toLocaleString(2)}
+                  /시간
                 </div>
                 <div className="slider-content-inner-rateAndMark">
                   <div className="slider-content-inner-rate">
@@ -63,9 +63,7 @@ class Room extends Component {
                       className="far fa-bookmark room-mark"
                       ref={this.target}
                       onClick={this.addBookMark}
-                    >
-                      {" "}
-                    </i>
+                    ></i>
                   </div>
                 </div>
               </div>

@@ -22,7 +22,7 @@ class ImageUpload extends Component {
     formData.append("photo", this.state.selectedFile);
     formData.append("title", this.state.title);
     formData.append("price", this.state.price);
-    console.log(formData);
+
     fetch("API", {
       method: "POST",
       data: formData,

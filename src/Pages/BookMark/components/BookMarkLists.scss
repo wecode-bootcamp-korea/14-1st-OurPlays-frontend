@@ -1,7 +1,7 @@
 .book-mark-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     h2 {
         font-size: 45px;
@@ -9,7 +9,7 @@
     }
     .book-mark-icons {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         width: 1024px;
         i {

@@ -14,6 +14,7 @@ import MapElement from "./components/MapElement";
 import TagLists from "./components/TagLists";
 import { FaStar } from "react-icons/fa";
 import uuid from "react-uuid";
+import { API } from "../../config";
 
 import "./ProductDetail.scss";
 import "slick-carousel/slick/slick.css";
@@ -38,14 +39,23 @@ const people_options = [
   { value: "6", label: "6 명" },
 ];
 
-const time_options = [
-  { value: "1", label: "1 시간" },
-  { value: "2", label: "2 시간" },
-  { value: "3", label: "3 시간" },
-  { value: "4", label: "4 시간" },
-  { value: "5", label: "5 시간" },
-  { value: "6", label: "6 시간" },
+const start_time_options = [
+  { value: "12:00", label: "12 : 00" },
+  { value: "13:00", label: "13 : 00" },
+  { value: "14:00", label: "14 : 00" },
+  { value: "15:00", label: "15 : 00" },
+  { value: "16:00", label: "16 : 00" },
+  { value: "17:00", label: "17 : 00" },
 ];
+const end_time_options = [
+  { value: "12:00", label: "12 : 00" },
+  { value: "13:00", label: "13 : 00" },
+  { value: "14:00", label: "14 : 00" },
+  { value: "15:00", label: "15 : 00" },
+  { value: "16:00", label: "16 : 00" },
+  { value: "17:00", label: "17 : 00" },
+];
+let LIMIT = 4;
 
 class ProductDetail extends Component {
   state = {
@@ -55,7 +65,8 @@ class ProductDetail extends Component {
     startDate: "",
     endDate: "",
     peopleVal: "",
-    timeVal: "",
+    startTime: "",
+    endTime: "",
     isShowModal: false,
     name: "user-data-name",
     comments: [],
@@ -66,11 +77,13 @@ class ProductDetail extends Component {
     isHover: null,
     ratings: [],
     isArea: true,
+    reviewLists: [],
   };
 
   componentDidMount() {
+    console.log("ProductDetail componentDidMount");
     fetch(
-      `http://10.58.7.159:8000/ProductList/ProductDetail/${this.props.match.params.place_id}`,
+      `${API}/ProductList/ProductDetail/${this.props.match.params.place_id}`,
       {
         method: "GET",
         headers: { Authorization: localStorage.getItem("token") },
@@ -78,7 +91,7 @@ class ProductDetail extends Component {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.information, "전체 데이터 중 방 하나");
+        console.log(res.information, "전체 데이터 중 방 하나, product detail");
         this.setState({
           placeinfo: res.information[0],
           ratings: res.information[0].rating,
@@ -151,23 +164,42 @@ class ProductDetail extends Component {
     });
   };
 
-  handleTimeChange = (e) => {
+  handleStartTimeChange = (e) => {
     this.setState({
-      timeVal: e.value.slice(0, 1),
+      startTime: e.value,
+    });
+  };
+  handleEndTimeChange = (e) => {
+    this.setState({
+      endTime: e.value,
     });
   };
 
-  submitHandleChange = (e) => {
-    console.log(e);
-  };
-
-  onSubmitInfoHandler = (e) => {
-    e.preventDefault();
+  onSubmitInfoHandler = () => {
+    fetch(`${API}/reservation/generate`, {
+      method: "POST",
+      headers: { Authorization: localStorage.getItem("token") },
+      body: JSON.stringify({
+        place_id: this.state.placeinfo.place_id,
+        begin_date: this.state.startDate.format("YYYY-MM-DD"),
+        finish_date: this.state.endDate.format("YYYY-MM-DD"),
+        shooting_members_count: this.state.peopleVal,
+        begin_time: this.state.startTime,
+        finish_time: this.state.endTime,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res, "submit comment product detail");
+      });
     const reservation = {
-      start: this.state.startDate && this.state.startDate.format("YYYY.MM.DD"),
-      end: this.state.endDate && this.state.endDate.format("YYYY.MM.DD"),
-      pplNumber: this.state.peopleVal,
-      timeAmount: this.state.timeVal,
+      startDate:
+        this.state.startDate && this.state.startDate.format("YYYY-MM-DD"),
+      endDate: this.state.endDate && this.state.endDate.format("YYYY-MM-DD"),
+      place_id: this.state.placeinfo.place_id,
+      peopleVal: this.state.peopleVal,
+      startTime: this.state.startTime,
+      endTime: this.state.endTime,
     };
     this.setState({
       userReservationInfo: [...this.state.userReservationInfo, { reservation }],
@@ -181,6 +213,36 @@ class ProductDetail extends Component {
   };
 
   handleSubmit = (_comment, updatedRating) => {
+    fetch(`${API}/ProductList/rating`, {
+      method: "POST",
+      headers: { Authorization: localStorage.getItem("token") },
+      body: JSON.stringify({
+        place_id: this.state.placeinfo.place_id,
+        starpoint: updatedRating,
+        comment: _comment,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res, "comment data");
+        const createdRatingElement = {
+          place_id: this.state.placeinfo.place_id,
+          starpoint: updatedRating,
+          user_name: this.state.name,
+          created_at: new Date(),
+          id: this.state.id,
+          comment: _comment,
+        };
+
+        const addRating = [...this.state.ratings, createdRatingElement];
+        this.setState({
+          comments: addRating,
+          id: uuid(),
+          comment: "",
+          ratings: addRating,
+        });
+      });
+
     const createdComment = {
       place_id: this.state.placeinfo.place_id,
       user_name: this.state.name,
@@ -189,27 +251,10 @@ class ProductDetail extends Component {
       created_at: new Date(),
       starpoint: updatedRating,
     };
-    const createdRatingElement = {
-      place_id: this.state.placeinfo.place_id,
-      starpoint: updatedRating,
-      user_name: this.state.name,
-      created_at: new Date(),
-      id: this.state.id,
-      comment: _comment,
-    };
-
     const addedComment = [...this.state.comments, createdComment];
-    const addRating = [...this.state.ratings, createdRatingElement];
-    this.setState({
-      comments: addRating,
-      id: uuid(),
-      comment: "",
-      ratings: addRating,
-    });
   };
 
   handleDelete = (id) => {
-    console.log(id, "id");
     const filteredComments = this.state.ratings.filter(
       (comment) => comment.id !== id
     );
@@ -225,23 +270,24 @@ class ProductDetail extends Component {
   };
 
   toBookMark = (e) => {
-    console.log(e, this.props);
-    fetch("API", {
+    fetch(`${API}/user/placemark`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
       },
-      body: JSON.stringify({}),
-    }).then((res) => {
-      console.log(res);
-    });
-    this.props.history.push(
-      `/BookMarkList/BookMarkLists/${this.props.place_id}`
-    );
+      body: JSON.stringify({ place_id: this.state.placeinfo.place_id }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message === "SUCCESS") {
+          this.props.history.push(`/BookMarkList`);
+        }
+      });
   };
   render() {
     const {
+      userReservationInfo,
       isComment,
       startDate,
       endDate,
@@ -253,15 +299,18 @@ class ProductDetail extends Component {
       placeinfo,
       comments,
       isArea,
+      reviewLists,
     } = this.state;
-    console.log(placeinfo.place_id, "placeinfo id");
+    // console.log(placeinfo.place_id, "place_id 부모");
+    // console.log(reviewLists && reviewLists, "reviewLists 부모");
+
     const ratingArr = ratings.map((rating) => {
       return rating.starpoint;
     });
     const averageRating = ratingArr.reduce((pre, cur) => {
       return pre + cur / ratingArr.length;
     }, 0);
-
+    // console.log(place_id);
     return (
       <article className="ProductDetail modal-Mode">
         <div className="product-datail-container">
@@ -434,7 +483,7 @@ class ProductDetail extends Component {
                     <div class="stars-outer">
                       <div
                         class="stars-inner"
-                        style={{ width: `${averageRating * 4}%` }}
+                        style={{ width: `${averageRating * 5}%` }}
                       ></div>
                     </div>
                     <span class="number-rating"> </span>
@@ -451,11 +500,20 @@ class ProductDetail extends Component {
                         </div>
                       </div>
                       <div className="date-wrap">
+                        <div className="time-start">
+                          <Select
+                            options={start_time_options}
+                            name="startTime"
+                            placeholder="시작 시간을 선택해주세요."
+                            onChange={this.handleStartTimeChange}
+                          />
+                        </div>
                         <div className="time-end">
                           <Select
-                            options={time_options}
-                            placeholder="시간을 선택해주세요."
-                            onChange={this.handleTimeChange}
+                            options={end_time_options}
+                            placeholder="종료 시간을 선택해주세요."
+                            name="endTime"
+                            onChange={this.handleEndTimeChange}
                           />
                         </div>
                       </div>
@@ -489,13 +547,10 @@ class ProductDetail extends Component {
                     <div className="result-col">
                       <div className="result-col-hours">
                         <div className="title"> 촬영 시간 </div>
-                        <div className="hours">
-                          {timeVal}
-                          시간
-                        </div>
+                        <div className="hours">시간</div>
                       </div>
                       <div className="result-col-total-hours">
-                        {timeVal.slice(0, 1)}x {placeinfo.price}
+                        {placeinfo.price}
                       </div>
                     </div>
                     <div className="result-col">
@@ -510,10 +565,7 @@ class ProductDetail extends Component {
                     <div className="result-col total">
                       <div className="title"> 총 금액 </div>
                       <div className="result">
-                        {(timeVal * peopleVal * placeinfo.price).toLocaleString(
-                          2
-                        )}
-                        원
+                        {(peopleVal * placeinfo.price).toLocaleString(2)}원
                       </div>
                     </div>
                   </div>
@@ -521,7 +573,9 @@ class ProductDetail extends Component {
                     <input
                       type="button"
                       value="예약 가능 여부 확인하기"
-                      onClick={this.onSubmitInfoHandler}
+                      onClick={() => {
+                        this.onSubmitInfoHandler();
+                      }}
                     />
                   </div>
                 </div>
@@ -556,18 +610,39 @@ class ProductDetail extends Component {
                       <div className="review-title"> 청결도 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
-                          <div class="stars-inner"> </div>
+                          <div
+                            class="stars-inner"
+                            style={{
+                              width: `${averageRating * 20}%`,
+                            }}
+                          >
+                            {" "}
+                          </div>
                         </div>
-                        <span class="number-rating"> 5, 0 </span>
+                        <span class="number-rating">
+                          {averageRating === 0
+                            ? averageRating
+                            : averageRating.toFixed(1)}{" "}
+                        </span>
                       </div>
                     </div>
                     <div className="review-row">
                       <div className="review-title"> 정확도 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
-                          <div class="stars-inner"> </div>
+                          <div
+                            class="stars-inner"
+                            style={{ width: `${averageRating * 18}%` }}
+                          >
+                            {" "}
+                          </div>
                         </div>
-                        <span class="number-rating"> 5, 0 </span>
+                        <span class="number-rating">
+                          {" "}
+                          {averageRating !== 0
+                            ? (averageRating - 0.5).toFixed(1)
+                            : averageRating}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -576,18 +651,42 @@ class ProductDetail extends Component {
                       <div className="review-title"> 접근성 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
-                          <div class="stars-inner"> </div>
+                          <div
+                            class="stars-inner"
+                            style={
+                              averageRating !== 0
+                                ? { width: `${averageRating * 15}%` }
+                                : { width: `${averageRating}%` }
+                            }
+                          >
+                            {" "}
+                          </div>
                         </div>
-                        <span class="number-rating"> 5, 0 </span>
+                        <span class="number-rating">
+                          {" "}
+                          {averageRating !== 0
+                            ? (averageRating - 1).toFixed(1)
+                            : averageRating}{" "}
+                        </span>
                       </div>
                     </div>
                     <div className="review-row">
                       <div className="review-title"> 가격 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
-                          <div class="stars-inner"> </div>
+                          <div
+                            class="stars-inner"
+                            style={{ width: `${averageRating * 20}%` }}
+                          >
+                            {" "}
+                          </div>
                         </div>
-                        <span class="number-rating"> 5, 0 </span>
+                        <span class="number-rating">
+                          {" "}
+                          {averageRating === 0
+                            ? averageRating
+                            : averageRating.toFixed(1)}{" "}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -596,7 +695,7 @@ class ProductDetail extends Component {
                   place_id={placeinfo.place_id}
                   ratings={ratings}
                   isHover={isHover}
-                  comments={comments}
+                  // comments={comments}
                   handleDelete={this.handleDelete}
                 />
               </div>

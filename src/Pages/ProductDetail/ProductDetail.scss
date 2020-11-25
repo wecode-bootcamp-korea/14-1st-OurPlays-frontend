@@ -270,11 +270,17 @@
                                 .date-start {
                                     margin-right: 5px;
                                 }
-                                .time-start {}
+                                .time-start {
+                                    font-size: 10px;
+                                    padding-top: 20px;
+                                    padding-right: 10px;
+                                    width: 100%;
+                                }
                                 .date-end {
                                     margin-right: 5px;
                                 }
                                 .time-end {
+                                    font-size: 10px;
                                     padding-top: 20px;
                                     width: 100%;
                                     input {
@@ -440,9 +446,12 @@
                                     width: 200px;
                                 }
                                 .review-rate {
+                                    width: 30%;
+                                    .stars-outer {}
                                     span {
+                                        width: 100%;
                                         padding: 0 15px;
-                                        font-size: 12px;
+                                        font-size: 15px;
                                         font-weight: bold;
                                     }
                                 }

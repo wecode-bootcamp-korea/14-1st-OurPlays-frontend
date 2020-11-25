@@ -17,12 +17,11 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(total / limit); i++) {
     pageNumber.push(i);
   }
-  console.log(fetchProduct, total, limit);
+  console.log(total, limit, pageNumber, "pagination");
 
   return (
     <div className="Pagination">
       <ul className="pagination-lists">
-        {" "}
         {pageNumber.map((number, idx) => (
           <li key={number} className="page-item">
             <a
@@ -35,11 +34,11 @@ const Pagination = ({
                 fetchProduct(number);
               }}
             >
-              {number}{" "}
-            </a>{" "}
+              {number}
+            </a>
           </li>
-        ))}{" "}
-      </ul>{" "}
+        ))}
+      </ul>
     </div>
   );
 };

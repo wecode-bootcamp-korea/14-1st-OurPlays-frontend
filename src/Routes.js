@@ -28,11 +28,6 @@ class Routes extends React.Component {
           />
           <Route exact path="/ProductList" component={ProductList} />
           <Route exact path="/BookMarkList" component={BookMarkList} />
-          <Route
-            exact
-            path="/BookMarkList/BookMarkLists/:id"
-            component={BookMarkList}
-          />
           <Route exact path="/UploadImage" component={UploadImage} />{" "}
         </Switch>
         <Footer />
