@@ -26,8 +26,8 @@ class ProductLists extends Component {
       //   console.log(current);
       //   this.setState({ PLACEINFO: current });
       // });
-      .then((res) => this.setState({ productlists: res.information }));
-    // .then((res) => console.log(res));
+      // .then((res) => this.setState({ productlists: res.information }));
+    .then((res) => console.log(res.information));
   }
 
   // componentDidMount() {
