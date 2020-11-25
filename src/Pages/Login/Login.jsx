@@ -72,8 +72,10 @@ class Login extends Component {
 
   render() {
     const { idValue, pwValue } = this.state;
-    const activateEmail = idValue.length >= 1 ? "email-activate" : "email-deactivate";
-    const activatePw = pwValue.length >= 1 ? "password-activate" : "password-deactivate";
+    const activateEmail =
+      idValue.length >= 1 ? "email-activate" : "email-deactivate";
+    const activatePw =
+      pwValue.length >= 1 ? "password-activate" : "password-deactivate";
 
     return (
       <div className="Login">
@@ -115,7 +117,10 @@ class Login extends Component {
         </section>
         <section className="login-footer">
           <div className="login-button">
-            <button onKeyPress={this.checkValidation} onClick={this.checkLoginValidation}>
+            <button
+              onKeyPress={this.checkValidation}
+              onClick={this.checkLoginValidation}
+            >
               로그인
             </button>
           </div>
