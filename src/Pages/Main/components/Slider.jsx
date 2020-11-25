@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class Loading extends Component {
+class Slider extends Component {
   render() {
     return <div></div>;
   }
 }
 
-export default Loading;
+export default Slider;
