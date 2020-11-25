@@ -1,3 +1,76 @@
 {
-  "default": "1"
+    "information": [{
+            "id": 0,
+            "type": "아파트",
+            "location": "인천",
+            "desc": " (송도) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 50000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        },
+        {
+            "id": 1,
+            "type": "주택",
+            "location": "서울",
+            "desc": "(서울) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 10000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 2,
+            "type": "빌라",
+            "location": "경기",
+            "desc": "(경기) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 150000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 3,
+            "type": "아파트",
+            "location": "인천",
+            "desc": "(송도) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 250000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 4,
+            "type": "아파트",
+            "location": "제주도",
+            "desc": "(제주도) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 650000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 5,
+            "type": "아파트",
+            "location": "인천",
+            "desc": " (송도) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 50000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        },
+        {
+            "id": 6,
+            "type": "주택",
+            "location": "서울",
+            "desc": "(서울) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 10000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 7,
+            "type": "빌라",
+            "location": "경기",
+            "desc": "(경기) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 150000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 8,
+            "type": "아파트",
+            "location": "인천",
+            "desc": "(송도) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 250000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }, {
+            "id": 9,
+            "type": "아파트",
+            "location": "제주도",
+            "desc": "(제주도) 다이닝 구조가 매력적인 따뜻한 감성의 심플한 아파트",
+            "price": 650000,
+            "img": "./images/donghakim/Main/img5.jpeg"
+        }
+    ]
 }

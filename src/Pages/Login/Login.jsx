@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-const API = "http://10.58.7.159:8000/user/signin";
+
 class Login extends Component {
   state = {
     data: [],
@@ -13,12 +13,12 @@ class Login extends Component {
       pwValue: "",
     };
   }
-  // componentDidMount() {
-  //   this.handleClick();
-  // }
+  componentDidMount() {
+    this.handleClick();
+  }
   handleClick = (e) => {
     console.log(this.state.idValue, this.state.pwValue);
-    fetch(API, {
+    fetch("API", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.idValue,
@@ -26,10 +26,7 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => {
-        localStorage.setItem("token", res.token);
-        this.setState({ data: res });
-      });
+      .then((res) => this.setState({ data: res }));
   };
   handleChangeEmail = (e) => {
     const { value } = e.target;

@@ -21,21 +21,29 @@
         "info_nearby": "근처 설명합니다.",
         "minimum_rental_hour": 1,
         "surcharge_rule": "surcharge_rule",
+<<<<<<< HEAD
         "tags": [{ "tag": "기쁨" }, { "tag": "아늑함" }, { "tag": "조용함" }],
         "rating": [{
                 "id": 1,
+=======
+        "rating": [{
+>>>>>>> origin
                 "starpoint": 4.5,
                 "user_name": "김동하",
                 "created_at": "2020-11-22T06:17:06.508Z",
                 "comment": "이루이루하이루"
             }, {
+<<<<<<< HEAD
                 "id": 2,
+=======
+>>>>>>> origin
                 "starpoint": 3.5,
                 "user_name": "김영주",
                 "created_at": "2020-11-20T06:17:06.508Z",
                 "comment": "많이 좋아해"
             },
             {
+<<<<<<< HEAD
                 "id": 3,
                 "starpoint": 5.0,
                 "user_name": "김영주",
@@ -75,6 +83,8 @@
             },
             {
                 "id": 9,
+=======
+>>>>>>> origin
                 "starpoint": 5.0,
                 "user_name": "김영주",
                 "created_at": "2020-11-22T06:17:06.508Z",
@@ -104,20 +114,29 @@
         "minimum_rental_hour": 1,
         "surcharge_rule": "surcharge_rule",
         "rating": [{
+<<<<<<< HEAD
                 "id": 1,
+=======
+>>>>>>> origin
                 "starpoint": 3.5,
                 "user_name": "김동하",
                 "created_at": "2020-11-22T06:17:06.508Z",
                 "comment": "이루이루하이루!!!"
             }, {
+<<<<<<< HEAD
                 "id": 2,
+=======
+>>>>>>> origin
                 "starpoint": 3.5,
                 "user_name": "김영주",
                 "created_at": "2020-11-20T06:17:06.508Z",
                 "comment": "많이 좋아해....."
             },
             {
+<<<<<<< HEAD
                 "id": 3,
+=======
+>>>>>>> origin
                 "starpoint": 5.0,
                 "user_name": "김영주",
                 "created_at": "2020-11-22T06:17:06.508Z",
