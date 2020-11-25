@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
-const API = "http://10.58.7.159:8000/user/signin";
 class Login extends Component {
   state = {
     data: [],
@@ -18,7 +17,7 @@ class Login extends Component {
   }
   handleClick = (e) => {
     console.log(this.state.idValue, this.state.pwValue);
-    fetch(API, {
+    fetch("API", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.idValue,

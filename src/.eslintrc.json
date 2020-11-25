@@ -1,6 +1,9 @@
 {
     "parser": "babel-eslint",
-    "extends": ["react-app", "plugin:prettier/recommended"],
+    "extends": [
+        "react-app",
+        "plugin:prettier/recommended"
+    ],
     "plugins": [
         "react",
         "jsx-a11y",
@@ -8,9 +11,10 @@
     ],
     "rules": {
         "indent": 0,
-        "quotes": [0,
+        "quotes": [
+            0,
             {
-       "allowTemplateLiterals": true
+                "allowTemplateLiterals": true
             }
         ],
         "react/jsx-filename-extension": 0,
@@ -26,6 +30,5 @@
         "arrow-parens": 0,
         "react/no-array-index-key": 0,
         "linebreak-style": 0
-        
     }
 }
