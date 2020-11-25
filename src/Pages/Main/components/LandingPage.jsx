@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { withRoute, Link } from "react-router-dom";
 import "./LandingPage.scss";
 
 class LandingPage extends Component {
+  goToImage = () => {
+    this.props.history.push("/ImageUpload");
+  };
   render() {
     return (
       <section className="LandingPage">
@@ -20,11 +24,13 @@ class LandingPage extends Component {
           </article>{" "}
         </div>{" "}
         <div className="register-place-button">
-          <input
-            type="button"
-            className="register-btn"
-            value="촬영 장소 등록하기"
-          />
+          <Link to="/UploadImage">
+            <input
+              type="button"
+              className="register-btn"
+              value="촬영 장소 등록하기"
+            />
+          </Link>{" "}
         </div>{" "}
       </section>
     );

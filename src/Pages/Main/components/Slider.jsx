@@ -16,7 +16,7 @@ class Slider extends Component {
     const average = averageRatingArr.reduce((pre, cur) => {
       return pre + cur / averageRatingArr.length;
     }, 0);
-    console.log(this.props.info);
+
     return (
       <li
         className="slider-content-list-wrap"
@@ -51,6 +51,7 @@ class Slider extends Component {
                       </div>{" "}
                     </div>{" "}
                     <span className="number-rating">
+                      {" "}
                       {averageRatingArr.length}{" "}
                     </span>{" "}
                   </div>{" "}
