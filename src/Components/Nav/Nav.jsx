@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NAVICONS from "./Components/NavIcons";
 import { Link } from "react-router-dom";
 import "./Nav.scss";
-
 class Nav extends Component {
   render() {
     return (
@@ -29,22 +28,22 @@ class Nav extends Component {
                 src="https://s3.hourplace.co.kr/web/images/ico_search.png"
                 alt="search-icon"
               />
-            </div>{" "}
+            </div>
             <NAVICONS Link="Link" />
-          </section>{" "}
-        </section>{" "}
-        <div className="border-without-side"> </div>{" "}
+          </section>
+        </section>
+        <div className="border-without-side"></div>
         <section className="side-nav">
           <div className="direction">
             <Link to="/" className="home">
-              Home{" "}
-            </Link>{" "}
+              Home
+            </Link>
             <img src="../images/youngjoonpark/arrow-img.png" alt="arrow-img" />
             <Link to="현재경로" className="route">
-              route{" "}
-            </Link>{" "}
-          </div>{" "}
-        </section>{" "}
+              route
+            </Link>
+          </div>
+        </section>
       </nav>
     );
   }
