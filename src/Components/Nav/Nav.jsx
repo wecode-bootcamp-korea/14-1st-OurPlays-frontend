@@ -33,17 +33,6 @@ class Nav extends Component {
           </section>
         </section>
         <div className="border-without-side"></div>
-        <section className="side-nav">
-          <div className="direction">
-            <Link to="/" className="home">
-              Home
-            </Link>
-            <img src="../images/youngjoonpark/arrow-img.png" alt="arrow-img" />
-            <Link to="현재경로" className="route">
-              route
-            </Link>
-          </div>
-        </section>
       </nav>
     );
   }
