@@ -19,16 +19,10 @@ class Nav extends Component {
   }
 
   scroll = () => {
-    if (window.scrollY > 5) {
-      this.setState({
-        isSticky: true,
-      });
-    }
-    if (window.scrollY <= 5) {
-      this.setState({
-        isSticky: false,
-      });
-    }
+    const isSticky = window.scrollY > 5;
+    this.setState({
+      isSticky,
+    });
   };
 
   render() {
