@@ -1,0 +1,25 @@
+import React, { Component } from "react";
+import Room from "./Room";
+import "./BookMarkLists.scss";
+class BookMarkLists extends Component {
+  render() {
+    console.log("2번째", this.props.bookmarkList);
+    return (
+      <div className="book-mark-container">
+        <h2> 관심 장소 </h2>
+        <div className="book-mark-icons">
+          <i class="fas fa-hashtag"> </i> <i class="fas fa-plus"> </i>
+        </div>
+        <div className="book-mark-contents">
+          <ul className="slider-contents-lists">
+            {this.props.bookmarkList &&
+              this.props.bookmarkList.map((info) => {
+                return <Room info={info} />;
+              })}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
+export default BookMarkLists;
