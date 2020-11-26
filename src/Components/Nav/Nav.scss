@@ -35,51 +35,63 @@ nav {
           }
         }
       }
+
       .search-input {
         position: relative;
+        
         input {
           width: 400px;
           height: 56px;
           padding: 5px 68px 0px 19px;
           border: 1px solid #3b3e4d;
+          border-radius: 3px;
           outline-style: none;
           background-color: transparent;
+          
           &::placeholder {
             background-color: transparent;
             font-size: 15px;
             color: #3b3e4d;
           }
         }
+
         .camera-icon {
           position: absolute;
           top: 17px;
           right: 60px;
           width: 20px;
           height: 20px;
+          
           &:hover {
             cursor: pointer;
           }
         }
+
         .search-icon {
           position: absolute;
           top: 18px;
           right: 15px;
           width: 20px;
           height: 20px;
+        
           &:hover {
             cursor: pointer;
           }
         }
       }
+      
       .nav-icons {
+        display: flex;
         width: 500px;
         margin-left: 45px;
+        
         .nav-icon {
           text-decoration: none;
           color: #3b3e4d;
           font-size: 15px;
           font-weight: bold;
           padding: 8px;
+         
           &:visited {
             text-decoration: none;
             color: gray;
@@ -91,16 +103,20 @@ nav {
     background: #fff;
     padding: 13px 50px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
     .search-input {
+     
       .input {
         border: 1px solid white;
         background-color: white;
+        
         &::placeholder {
           color: white;
         }
       }
     }
     .nav-icons {
+      
       .nav-icon {
         color: black;
       }

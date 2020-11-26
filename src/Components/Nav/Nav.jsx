@@ -57,7 +57,7 @@ class Nav extends Component {
             <NAVICONS Link="Link" />
           </section>
         </section>
-        <div className="border-without-side"> </div>
+        <div className="border-without-side"></div>
       </nav>
     );
   }
