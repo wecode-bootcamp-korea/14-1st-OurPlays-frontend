@@ -10,7 +10,7 @@ class Alert extends Component {
           condition ? `alert alert-${color} hide` : `alert alert-${color} show`
         }
       >
-        <i className="fas fa-exclamation-circle"> {message} </i>{" "}
+        <i className="fas fa-exclamation-circle"> {message} </i>
       </div>
     );
   }
