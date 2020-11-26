@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 
 class RegisterPath extends Component {
@@ -17,9 +18,9 @@ class RegisterPath extends Component {
             id="path"
             name={path.en}
             onChange={onCheckRecommendPath}
-          />{" "}
-          <span>{path.ko}</span>{" "}
-        </span>{" "}
+          />
+          <span>{path.ko}</span>
+        </span>
       </li>
     );
   }

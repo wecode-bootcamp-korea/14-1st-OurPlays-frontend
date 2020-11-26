@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import React, { Component } from "react";
 
 class ChatBoard extends Component {
