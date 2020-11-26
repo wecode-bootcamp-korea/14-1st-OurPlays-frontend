@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BookMarkLists from "./components/BookMarkLists";
 import { withRouter } from "react-router-dom";
+import { YA_API } from "../../config";
 import { API } from "../../config";
 import "./BookMarkList.scss";
 
@@ -20,8 +21,8 @@ class BookMarkList extends Component {
   //       });
   //     });
   // }
+
   componentDidMount() {
-    console.log("mark cdm");
     fetch(`${API}/user/placemarks`, {
       method: "GET",
       headers: {
@@ -41,10 +42,10 @@ class BookMarkList extends Component {
   }
   render() {
     const { bookmarkList } = this.state;
-    console.log(this.state.bookmarkList, "book");
+    console.log(bookmarkList, "book");
     return (
       <div className="BookMarkList">
-        <BookMarkLists bookmarkList={bookmarkList} />{" "}
+        <BookMarkLists bookmarkList={bookmarkList} />
       </div>
     );
   }

@@ -19,26 +19,24 @@ class Modal extends Component {
       isHover,
       handleRatingHover,
       handleRating,
+      isShowModal,
     } = this.props;
     const { comment, updatedRating } = this.state;
 
     return (
       <>
-        {" "}
-        {this.props.isShowModal ? (
+        {isShowModal && (
           <div className="modal-container">
             <div className="modal-review-form">
-              <h2 className="modal-review-title"> 후기를 작성해주세요! </h2>{" "}
-              <i class="far fa-times-circle" onClick={showModal}>
-                {" "}
-              </i>{" "}
+              <h2 className="modal-review-title"> 후기를 작성해주세요! </h2>
+              <i class="far fa-times-circle" onClick={showModal}></i>
               <Star
                 handleRating={handleRating}
                 handleRatingHover={handleRatingHover}
                 rating={rating}
                 isHover={isHover}
-              />{" "}
-              <span class="number-rating modal-star-number"> </span>{" "}
+              />
+              <span class="number-rating modal-star-number"> </span>
               <div className="form-wrap">
                 <form
                   action="post"
@@ -58,17 +56,17 @@ class Modal extends Component {
                     onChange={(e) => {
                       this.handleChange(e);
                     }}
-                  />{" "}
+                  />
                   <input
                     type="button"
                     value="제출"
                     className="user-submit-btn"
                   />
-                </form>{" "}
-              </div>{" "}
-            </div>{" "}
+                </form>
+              </div>
+            </div>
           </div>
-        ) : null}{" "}
+        )}
       </>
     );
   }

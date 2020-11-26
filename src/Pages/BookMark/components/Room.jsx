@@ -6,10 +6,11 @@ class Room extends Component {
   constructor() {
     super();
     this.target = React.createRef();
+    this.state = {
+      targetClass: "far fa-bookmark",
+    };
   }
-  state = {
-    targetClass: "far fa-bookmark",
-  };
+
   goToDetail = (e) => {
     if (e.target.nodeName === this.target.current.nodeName) {
       this.addBookMark();
@@ -19,16 +20,7 @@ class Room extends Component {
   };
 
   render() {
-    console.log("3번째", this.props.info);
     const { info } = this.props;
-    const averageRatingArr =
-      info &&
-      info.ratings.map((el) => {
-        return el.starpoint;
-      });
-    const average = averageRatingArr.reduce((pre, cur) => {
-      return pre + cur / averageRatingArr.length;
-    }, 0);
     return (
       <li className="room-content-list-wrap" onClick={this.goToDetail}>
         <div className="slider-content-list">
@@ -76,3 +68,12 @@ class Room extends Component {
 }
 
 export default withRouter(Room);
+
+const averageRatingArr =
+  this.props.info &&
+  this.props.info.ratings.map((el) => {
+    return el.starpoint;
+  });
+const average = averageRatingArr.reduce((pre, cur) => {
+  return pre + cur / averageRatingArr.length;
+}, 0);
