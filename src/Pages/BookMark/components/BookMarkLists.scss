@@ -20,12 +20,13 @@
         }
     }
     .book-mark-contents {
-        display: flex;
+        display: grid;
         justify-content: space-between;
         padding-top: 80px;
         .slider-contents-lists {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
             .slider-contents {
                 .slider-contents-lists {}
             }

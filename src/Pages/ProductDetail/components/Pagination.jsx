@@ -17,7 +17,6 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(total / limit); i++) {
     pageNumber.push(i);
   }
-  console.log(total, limit, pageNumber, "pagination");
 
   return (
     <div className="Pagination">
@@ -31,7 +30,7 @@ const Pagination = ({
               onClick={(e) => {
                 e.preventDefault();
                 // paginate(number);
-                fetchProduct(number);
+                fetchProduct(e);
               }}
             >
               {number}

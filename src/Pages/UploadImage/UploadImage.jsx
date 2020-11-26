@@ -17,23 +17,23 @@ class ImageUpload extends Component {
     });
   };
 
-  handleUpload = () => {
-    const formData = new FormData();
-    formData.append("photo", this.state.selectedFile);
-    formData.append("title", this.state.title);
-    formData.append("price", this.state.price);
+  // handleUpload = () => {
+  //   const formData = new FormData();
+  //   formData.append("photo", this.state.selectedFile);
+  //   formData.append("title", this.state.title);
+  //   formData.append("price", this.state.price);
 
-    fetch("API", {
-      method: "POST",
-      data: formData,
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  };
+  //   fetch("API", {
+  //     method: "POST",
+  //     data: formData,
+  //     headers: {
+  //       "Content-Type": "multipart/form-data",
+  //       Authorization: localStorage.getItem("token"),
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => console.log(res));
+  // };
 
   handleChangeValue = (e) => {
     this.setState({

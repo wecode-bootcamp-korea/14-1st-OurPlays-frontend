@@ -68,7 +68,7 @@ class ProductDetail extends Component {
     startTime: "",
     endTime: "",
     isShowModal: false,
-    name: "user-data-name",
+    user_name: "user-data-name",
     comments: [],
     id: uuid(),
     comment: "",
@@ -112,14 +112,13 @@ class ProductDetail extends Component {
   // }
 
   // componentDidMount() {
-  //   fetch(`/Data/PlaceData.json`)
+  //   fetch("/Data/PlaceData.json")
   //     .then((res) => res.json())
   //     .then((res) => {
   //       const datas = res.information;
   //       const current = datas.find(
   //         (el) => el.id == this.props.match.params.place_id
   //       );
-
   //       this.setState({
   //         placeinfo: current,
   //         ratings: current.rating,
@@ -132,7 +131,7 @@ class ProductDetail extends Component {
   //     .then((res) => res.json())
   //     .then((res) => {
   //       const datas = res.information;
-  //       const current = datas.find((el) => el.id == 0);
+  //       const current = datas.find((el) => el.id === 2);
   //       this.setState({
   //         placeinfo: current,
   //         ratings: current.rating,
@@ -176,7 +175,16 @@ class ProductDetail extends Component {
   };
 
   onSubmitInfoHandler = () => {
-    fetch(`${API}/reservation/generate`, {
+    console.log(
+      this.state.placeinfo.place_id,
+      this.state.startDate,
+      this.state.endDate,
+      this.state.peopleVal,
+      this.state.startTime,
+      this.state.endTime,
+      ".asdasda"
+    );
+    fetch(`${API}/reservation`, {
       method: "POST",
       headers: { Authorization: localStorage.getItem("token") },
       body: JSON.stringify({
@@ -190,20 +198,26 @@ class ProductDetail extends Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res, "submit comment product detail");
+        if (res.message === "SUCCESS") {
+          this.props.history.push("/Reservation");
+        }
+        const reservation = {
+          startDate:
+            this.state.startDate && this.state.startDate.format("YYYY-MM-DD"),
+          endDate:
+            this.state.endDate && this.state.endDate.format("YYYY-MM-DD"),
+          place_id: this.state.placeinfo.place_id,
+          peopleVal: this.state.peopleVal,
+          startTime: this.state.startTime,
+          endTime: this.state.endTime,
+        };
+        this.setState({
+          userReservationInfo: [
+            ...this.state.userReservationInfo,
+            { reservation },
+          ],
+        });
       });
-    const reservation = {
-      startDate:
-        this.state.startDate && this.state.startDate.format("YYYY-MM-DD"),
-      endDate: this.state.endDate && this.state.endDate.format("YYYY-MM-DD"),
-      place_id: this.state.placeinfo.place_id,
-      peopleVal: this.state.peopleVal,
-      startTime: this.state.startTime,
-      endTime: this.state.endTime,
-    };
-    this.setState({
-      userReservationInfo: [...this.state.userReservationInfo, { reservation }],
-    });
   };
 
   showModal = () => {
@@ -213,6 +227,7 @@ class ProductDetail extends Component {
   };
 
   handleSubmit = (_comment, updatedRating) => {
+    console.log("submit");
     fetch(`${API}/ProductList/rating`, {
       method: "POST",
       headers: { Authorization: localStorage.getItem("token") },
@@ -228,10 +243,9 @@ class ProductDetail extends Component {
         const createdRatingElement = {
           place_id: this.state.placeinfo.place_id,
           starpoint: updatedRating,
-          user_name: this.state.name,
-          created_at: new Date(),
-          id: this.state.id,
-          comment: _comment,
+          created_at: res.informations.created_at,
+          id: res.informations.id,
+          comment: res.informations.comment,
         };
 
         const addRating = [...this.state.ratings, createdRatingElement];
@@ -255,12 +269,26 @@ class ProductDetail extends Component {
   };
 
   handleDelete = (id) => {
-    const filteredComments = this.state.ratings.filter(
-      (comment) => comment.id !== id
-    );
-    this.setState({
-      ratings: filteredComments,
-    });
+    console.log("삭제ㅁㄴㅇㅁㄴㅇㅁㅇㅁㄴㅇㅁ");
+    fetch(`${API}/ProductList/rating/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message === "SUCCESS") {
+          const filteredComments = this.state.ratings.filter(
+            (comment) => comment.id !== id
+          );
+          console.log(filteredComments);
+          this.setState({
+            ratings: filteredComments,
+          });
+        }
+      });
   };
 
   handleAreaClick = () => {
@@ -291,7 +319,6 @@ class ProductDetail extends Component {
       isComment,
       startDate,
       endDate,
-      timeVal,
       peopleVal,
       rating,
       isHover,
@@ -300,17 +327,19 @@ class ProductDetail extends Component {
       comments,
       isArea,
       reviewLists,
+      startTime,
+      endTime,
     } = this.state;
     // console.log(placeinfo.place_id, "place_id 부모");
     // console.log(reviewLists && reviewLists, "reviewLists 부모");
-
+    console.log(ratings.length, "부모 렝스");
     const ratingArr = ratings.map((rating) => {
       return rating.starpoint;
     });
     const averageRating = ratingArr.reduce((pre, cur) => {
       return pre + cur / ratingArr.length;
     }, 0);
-    // console.log(place_id);
+
     return (
       <article className="ProductDetail modal-Mode">
         <div className="product-datail-container">
@@ -409,7 +438,7 @@ class ProductDetail extends Component {
                         <div className="area-title"> 면적 </div>
                         <div className="area-data">
                           {isArea ? placeinfo.area * 3 : placeinfo.area}
-                          <span>{isArea ? "m2" : "평"}</span>
+                          <span>{isArea ? " m2 " : " 평 "}</span>
                         </div>
                       </div>
                       <div className="row-ele">
@@ -452,9 +481,9 @@ class ProductDetail extends Component {
                       삼각대, 조명, 철제박스, 감독 의자, 기타 장비로 인한 나무
                       바닥과 벽지 파손에 꼭 주의 해주세요. - 준비물: 간단한
                       돗자리나 모포, 테니스 공을 준비해서 장비 밑에 꼭 깔아
-                      놓아주세요. - 파손시: 현장에서 함께 확인 > 사진 촬영 >
-                      견적 확인 후, 배상 요청을 진행하게 됩니다.[스탭인원]
-                      설정한 최대 스탭인원이 지켜지지 않을 경우, 호스트가 촬영을
+                      놓아주세요. - 파손시: 현장에서 함께 확인 사진 촬영 견적
+                      확인 후, 배상 요청을 진행하게 됩니다.[스탭인원] 설정한
+                      최대 스탭인원이 지켜지지 않을 경우, 호스트가 촬영을
                       취소하거나 추가결제를 요청할 수 있습니다.[에티켓] - 주변
                       주민들을 위해 기본 에티켓을 지켜주세요. - 주변 야외 촬영은
                       불가능합니다. - 촬영 도중 발생한 쓰레기는 모두
@@ -479,7 +508,10 @@ class ProductDetail extends Component {
               <div className="right">
                 <div className="right-wrap">
                   <div className="right-price-and-rate">
-                    <span className="price"> {placeinfo.price}원 / 시간 </span>
+                    <span className="price">
+                      {" "}
+                      {(1 * placeinfo.price).toLocaleString(2)}원 / 시간{" "}
+                    </span>
                     <div class="stars-outer">
                       <div
                         class="stars-inner"
@@ -547,7 +579,12 @@ class ProductDetail extends Component {
                     <div className="result-col">
                       <div className="result-col-hours">
                         <div className="title"> 촬영 시간 </div>
-                        <div className="hours">시간</div>
+                        <div className="hours">
+                          {Math.abs(
+                            Number(startTime.slice(0, 2) - endTime.slice(0, 2))
+                          )}{" "}
+                          시간
+                        </div>
                       </div>
                       <div className="result-col-total-hours">
                         {placeinfo.price}
@@ -556,10 +593,15 @@ class ProductDetail extends Component {
                     <div className="result-col">
                       <div className="result-col-ppl">
                         <div className="title"> 촬영 인원 </div>
-                        <div className="hours"> {peopleVal}명 </div>
+                        <div className="hours"> {peopleVal} 명 </div>
                       </div>
                       <div className="result-col-total-ppl">
-                        추가금액 {peopleVal > 4 ? (peopleVal - 4) * 15000 : 0}원
+                        추가금액{" "}
+                        {(peopleVal > 4
+                          ? (peopleVal - 4) * 15000
+                          : 0
+                        ).toLocaleString(2)}
+                        원
                       </div>
                     </div>
                     <div className="result-col total">
@@ -695,6 +737,7 @@ class ProductDetail extends Component {
                   place_id={placeinfo.place_id}
                   ratings={ratings}
                   isHover={isHover}
+                  isShowModal={this.state.isShowModal}
                   // comments={comments}
                   handleDelete={this.handleDelete}
                 />

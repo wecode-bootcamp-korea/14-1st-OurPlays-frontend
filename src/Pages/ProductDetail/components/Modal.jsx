@@ -5,10 +5,10 @@ import "./Modal.scss";
 class Modal extends Component {
   state = {
     comment: "",
-    rating: this.props.isHover,
+    rating: "",
   };
   handleChange = (e) => {
-    this.setState({ comment: e.target.value });
+    this.setState({ comment: e.target.value, rating: this.props.isHover });
   };
 
   render() {
@@ -47,6 +47,7 @@ class Modal extends Component {
                     handleSubmit(comment, rating);
                     this.setState({
                       comment: "",
+                      rating: "",
                     });
                     showModal();
                   }}

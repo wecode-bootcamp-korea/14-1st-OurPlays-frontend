@@ -7,20 +7,21 @@ import "./BookMarkList.scss";
 class BookMarkList extends Component {
   state = {
     bookmarkList: [],
+    isMarkd: false,
   };
 
   // componentDidMount() {
-  //   fetch(`/Data/PlaceData.json`)
+  //   fetch("/Data/PlaceData.json")
   //     .then((res) => res.json())
   //     .then((res) => {
   //       const datas = res.information;
   //       this.setState({
-  //         placeinfo: datas,
+  //         bookmarkList: datas,
   //       });
   //     });
   // }
-
   componentDidMount() {
+    console.log("mark cdm");
     fetch(`${API}/user/placemarks`, {
       method: "GET",
       headers: {
@@ -38,7 +39,6 @@ class BookMarkList extends Component {
         }
       });
   }
-
   render() {
     const { bookmarkList } = this.state;
     console.log(this.state.bookmarkList, "book");
@@ -50,4 +50,4 @@ class BookMarkList extends Component {
   }
 }
 
-export default withRouter(BookMarkList);
+export default BookMarkList;

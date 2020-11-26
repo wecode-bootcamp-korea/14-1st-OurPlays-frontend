@@ -13,10 +13,12 @@ class DetailSlider extends Component {
     postsPerPage: 4,
     place_id: "",
     ratings: "",
+    offset: 0,
   };
 
   componentDidMount() {
     console.log("ReviewList CDM");
+
     // this.setState({
     //   place_id: this.props.place_id,
     //   ratings: this.props.ratings,
@@ -25,12 +27,17 @@ class DetailSlider extends Component {
 
   componentDidUpdate(prevProps) {
     console.log("ReviewList CDUpadate");
-    // console.log(prevProps, this.props.place_id, "prev props, place_id");
-    if (prevProps.place_id !== this.props.place_id) {
+    console.log(prevProps.ratings.length, this.props.ratings.length, "length");
+    if (
+      prevProps.place_id !== this.props.place_id ||
+      (prevProps.isShowModal === true && this.props.isShowModal === false) ||
+      prevProps.ratings.length !== this.props.ratings.length
+    ) {
+      console.log(prevProps.isShowModal, this.props.isShowModal);
       fetch(
         `${API}/ProductList/${
           this.props.place_id && this.props.place_id
-        }/rating?limit=${LIMIT}`,
+        }/ratings?limit=${LIMIT}`,
         {
           method: "GET",
           headers: { Authorization: localStorage.getItem("token") },
@@ -55,10 +62,11 @@ class DetailSlider extends Component {
   //   });
   // };
 
-  fetchProduct = (cur) => {
+  fetchProduct = (e) => {
     console.log("fetchProduct execute");
-    // const offset = e?.target.dataset.idx * LIMIT;
-    let offset = cur * LIMIT;
+    let offset = e?.target.dataset.idx * LIMIT;
+    // let offset = cur * LIMIT;
+
     fetch(
       `http://10.58.7.159:8000/ProductList/${
         this.props.place_id && this.props.place_id
