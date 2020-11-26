@@ -2,4 +2,4 @@
 export const API = "http://10.58.7.159:8000";
 
 // eslint-disable-next-line prettier/prettier
-export const API_yh = "http://10.58.0.20:8000";
+export const YA_API = "http://192.168.200.137:8000";

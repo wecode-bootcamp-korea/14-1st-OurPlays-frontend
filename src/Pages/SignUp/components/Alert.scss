@@ -1,77 +1,77 @@
 .alert-success {
-    background: green;
-    padding: 20px 30px;
-    min-width: 320px;
+  background: green;
+  padding: 20px 30px;
+  min-width: 320px;
+  position: absolute;
+  top: 140px;
+  right: 10px;
+  border-radius: 4px;
+  .fa-exclamation-circle {
     position: absolute;
-    top: 140px;
-    right: 10px;
-    border-radius: 4px;
-    .fa-exclamation-circle {
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        transform: translateY(-50%);
-        color: white;
-    }
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: white;
+  }
 }
 
 .alert-danger {
-    background: #eb4034;
-    padding: 20px 30px;
-    min-width: 320px;
+  background: #eb4034;
+  padding: 20px 30px;
+  min-width: 320px;
+  position: absolute;
+  top: 140px;
+  right: 10px;
+  border-radius: 4px;
+  .fa-exclamation-circle {
     position: absolute;
-    top: 140px;
-    right: 10px;
-    border-radius: 4px;
-    .fa-exclamation-circle {
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        transform: translateY(-50%);
-        color: white;
-    }
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: white;
+  }
 }
 
 .alert {
-    padding: 20px 40px;
-    font-size: 20px;
-    color: white;
+  padding: 20px 40px;
+  font-size: 20px;
+  color: white;
 }
 
 .show {
-    animation: show_slide 1s ease forwards;
+  animation: show_slide 1s ease forwards;
 }
 
 @keyframes show_slide {
-    0% {
-        transform: translateX(100%);
-    }
-    40% {
-        transform: translateX(-10%);
-    }
-    80% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-10px);
-    }
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-10%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
 }
 
 .hide {
-    animation: hide_slide 1s ease forwards;
+  animation: hide_slide 1s ease forwards;
 }
 
 @keyframes hide_slide {
-    0% {
-        transform: translateX(-10px);
-    }
-    40% {
-        transform: translateX(0%);
-    }
-    80% {
-        transform: translateX(-10%);
-    }
-    100% {
-        transform: translateX(110%);
-    }
+  0% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
 }

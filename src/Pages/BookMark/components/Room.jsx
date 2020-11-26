@@ -1,15 +1,17 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Room.scss";
+
+const targetClass = "far fa-bookmark";
 
 class Room extends Component {
   constructor() {
     super();
     this.target = React.createRef();
+    this.state = {};
   }
-  state = {
-    targetClass: "far fa-bookmark",
-  };
+
   goToDetail = (e) => {
     if (e.target.nodeName === this.target.current.nodeName) {
       this.addBookMark();
@@ -19,18 +21,18 @@ class Room extends Component {
   };
 
   render() {
-    console.log("3번째", this.props.info);
-    const { info } = this.props;
+    const { info, idx } = this.props;
     const averageRatingArr =
-      info &&
-      info.ratings.map((el) => {
+      this.props.info &&
+      this.props.info.ratings.map((el) => {
         return el.starpoint;
       });
-    const average = averageRatingArr.reduce((pre, cur) => {
-      return pre + cur / averageRatingArr.length;
-    }, 0);
     return (
-      <li className="room-content-list-wrap" onClick={this.goToDetail}>
+      <li
+        key={idx}
+        className="room-content-list-wrap"
+        onClick={this.goToDetail}
+      >
         <div className="slider-content-list">
           <img src={info.img_url} />
           <div className="slider-content">
@@ -51,7 +53,13 @@ class Room extends Component {
                     <div className="stars-outer">
                       <div
                         className="stars-inner"
-                        style={{ width: `${average * 20}%` }}
+                        style={{
+                          width: `${
+                            averageRatingArr.reduce((pre, cur) => {
+                              return pre + cur / averageRatingArr.length;
+                            }, 0) * 20
+                          }%`,
+                        }}
                       ></div>
                     </div>
                     <span className="number-rating">

@@ -6,15 +6,13 @@ class NavIcons extends Component {
   render() {
     return (
       <div className="nav-icons">
-        {" "}
         {NAVICONS.map((navIcon) => {
           return (
             <Link key={navIcon.id} className="nav-icon" to={navIcon.linkTo}>
-              {" "}
-              {navIcon.name}{" "}
+              {navIcon.name}
             </Link>
           );
-        })}{" "}
+        })}
       </div>
     );
   }
@@ -26,17 +24,17 @@ const NAVICONS = [
   {
     id: 0,
     name: "아워플레이스 소개",
-    linkTo: "",
+    linkTo: "/Introduce",
   },
   {
     id: 1,
     name: "촬영장소 등록하기",
-    linkTo: "",
+    linkTo: "/Register",
   },
   {
     id: 2,
     name: "이용방법",
-    linkTo: "",
+    linkTo: "/howToUse",
   },
   {
     id: 3,

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { YA_API } from "../../config";
 import "./UploadImage.scss";
+
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class ImageUpload extends Component {
   //   formData.append("title", this.state.title);
   //   formData.append("price", this.state.price);
 
-  //   fetch("API", {
+  //   fetch(YA_API, {
   //     method: "POST",
   //     data: formData,
   //     headers: {
@@ -41,7 +43,6 @@ class ImageUpload extends Component {
     });
   };
   render() {
-    console.log(this.state.selectedFile, this.state.price, this.state.title);
     return (
       <div className="UploadImage">
         <section className="login-header">

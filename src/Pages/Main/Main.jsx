@@ -1,13 +1,3 @@
-// import React, { Component } from "react";
-
-// class Main extends Component {
-//   render() {
-//     return <div></div>;
-//   }
-// }
-
-// export default Main;
-
 import React, { Component } from "react";
 import Sliders from "./components/Sliders";
 import LandingPage from "./components/LandingPage";
@@ -28,12 +18,13 @@ class Main extends Component {
       <div className="Main">
         <div className="chat-bot">
           <span className="chat-bot-inner">
-            <i className="far fa-smile" onClick={() => this.chatbotHandler()}>
-              {" "}
-            </i>
+            <i
+              className="far fa-smile"
+              onClick={() => this.chatbotHandler()}
+            ></i>
             채팅 문의
-          </span>{" "}
-          <ChatBot />
+          </span>
+          {/* <ChatBot /> */}
         </div>
         <LandingPage />
         <Category />
