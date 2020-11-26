@@ -1,13 +1,3 @@
-// import React, { Component } from "react";
-
-// class Main extends Component {
-//   render() {
-//     return <div></div>;
-//   }
-// }
-
-// export default Main;
-
 import React, { Component } from "react";
 import Sliders from "./components/Sliders";
 import LandingPage from "./components/LandingPage";

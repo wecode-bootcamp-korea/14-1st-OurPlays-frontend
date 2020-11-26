@@ -45,7 +45,7 @@ class Calendar extends Component {
           showInputs="true"
           block={this.state.block}
           small={this.state.small}
-        />{" "}
+        />
       </div>
     );
   }

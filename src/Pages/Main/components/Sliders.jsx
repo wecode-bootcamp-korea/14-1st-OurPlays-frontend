@@ -11,23 +11,12 @@ class Sliders extends Component {
     target: "",
   };
 
-  componentDidMount = () => {
-    fetch(`${API}/ProductList/ProductDetail`, {
-      headers: {
-        Authorization: localStorage.getItem("token") || "",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          information: res.information,
-          target: res.information[0],
-        })
-      );
-  };
-
-  // componentDidMount() {
-  //   fetch("/Data/PlaceData.json")
+  // componentDidMount = () => {
+  //   fetch(`${API}/ProductList/ProductDetail`, {
+  //     headers: {
+  //       Authorization: localStorage.getItem("token") || "",
+  //     },
+  //   })
   //     .then((res) => res.json())
   //     .then((res) =>
   //       this.setState({
@@ -35,7 +24,18 @@ class Sliders extends Component {
   //         target: res.information[0],
   //       })
   //     );
-  // }
+  // };
+
+  componentDidMount() {
+    fetch("/Data/PlaceData.json")
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          information: res.information,
+          target: res.information[0],
+        })
+      );
+  }
 
   onButtonHandler = (e) => {
     let newId;
