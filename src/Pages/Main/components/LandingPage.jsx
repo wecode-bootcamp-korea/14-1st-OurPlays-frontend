@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-import { withRoute, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./LandingPage.scss";
 
 class LandingPage extends Component {

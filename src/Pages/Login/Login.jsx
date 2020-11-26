@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Login.scss";
@@ -78,12 +79,12 @@ class Login extends Component {
             src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
             alt="Login-img"
           />
-          <h1>로그인</h1>
+          <h1> 로그인 </h1>
         </section>
         <section className="login-body">
           <div className="label">
             <div className="email-label">
-              <span>이메일 주소</span>
+              <span> 이메일 주소 </span>
               <input
                 className={activateEmail}
                 type="text"
@@ -93,7 +94,7 @@ class Login extends Component {
               />
             </div>
             <div className="password-label">
-              <span>비밀번호</span>
+              <span> 비밀번호 </span>
               <input
                 className={activatePw}
                 type="password"
@@ -104,7 +105,7 @@ class Login extends Component {
             </div>
             <div className="maintain-login-label">
               <input className="checkbox" type="checkbox" />
-              <span>로그인 상태 유지</span>
+              <span> 로그인 상태 유지 </span>
             </div>
           </div>
         </section>
@@ -118,9 +119,9 @@ class Login extends Component {
             </button>
           </div>
           <div className="manage-member">
-            <Link to="./SignUp/SignUp" className="sign-up">
-              회원가입
-            </Link>
+            <div onClick={this.sendToSignUp} className="sign-up">
+              <h1> 회원가입 </h1>
+            </div>
           </div>
         </section>
       </div>

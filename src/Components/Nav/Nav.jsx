@@ -39,8 +39,8 @@ class Nav extends Component {
                   src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
                   alt="logo-img"
                 />
-              </Link>
-            </div>
+              </Link>{" "}
+            </div>{" "}
             <div className="search-input">
               <input type="text" placeholder="촬영의 모든 장소" />
               <img
@@ -53,7 +53,7 @@ class Nav extends Component {
                 src="https://s3.hourplace.co.kr/web/images/ico_search.png"
                 alt="search-icon"
               />
-            </div>
+            </div>{" "}
             <NAVICONS Link="Link" />
           </section>
         </section>
