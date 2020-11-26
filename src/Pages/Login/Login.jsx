@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.scss";
 
-const API = "http://10.58.6.206:8000/user/signin";
+const API = "http://192.168.200.108:8000/user/signin";
 
 class Login extends Component {
   state = {
@@ -26,12 +26,11 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res));
       .then((res) => {
         if (res.token) {
           localStorage.setItem("token", res.token);
           alert(res.message);
-          this.props.history.push("/Main");
+          this.props.history.push("/");
         } else {
           alert(res.message);
         }
