@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
+
 import React, { Component } from "react";
 import "../Footer.scss";
 
@@ -9,7 +10,13 @@ class FooterIcons extends Component {
         {FOOTERICONS.map((footerIcons) => {
           return (
             <div key={footerIcons.id} className="footer-icon">
-              <a target="_blank" href={footerIcons.href}>
+              <a
+                target="_blank"
+                href={footerIcons.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
                 <img src={footerIcons.src} alt={footerIcons.alt} />
               </a>
             </div>
