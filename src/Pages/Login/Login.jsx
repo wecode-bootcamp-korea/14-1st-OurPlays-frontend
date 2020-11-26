@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.scss";
 
-const API = "http://10.58.0.20:8000/user/signin";
+const API = "http://10.58.6.206:8000/user/signin";
 
 class Login extends Component {
   state = {
@@ -12,12 +12,11 @@ class Login extends Component {
     this.state = {
       idValue: "",
       pwValue: "",
-      data: [],
     };
   }
 
   checkValidation = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const { idValue, pwValue } = this.state;
     fetch(API, {
       method: "POST",
@@ -27,9 +26,11 @@ class Login extends Component {
       }),
     })
       .then((res) => res.json())
+      // .then((res) => console.log(res));
       .then((res) => {
         if (res.token) {
           localStorage.setItem("token", res.token);
+          alert(res.message);
           this.props.history.push("/Main");
         } else {
           alert(res.message);
@@ -41,6 +42,7 @@ class Login extends Component {
     const { value } = e.target;
     this.setState({ idValue: value });
   };
+
   handleChangePw = (e) => {
     const { value } = e.target;
     this.setState({ pwValue: value });
