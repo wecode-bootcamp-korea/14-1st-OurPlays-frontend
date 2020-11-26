@@ -12,7 +12,7 @@ import React, { Component } from "react";
 import Sliders from "./components/Sliders";
 import LandingPage from "./components/LandingPage";
 import Category from "../../Components/Category/Category";
-import ChatBot from "./components/ChatBot";
+import ChatBot from "./components/Chatbot";
 import "./Main.scss";
 import "../../Styles/common.scss";
 

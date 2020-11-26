@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ChatBoard from "./ChatBoard";
-import "./ChatBot.scss";
+import "./Chatbot.scss";
 
 const text = [
   "무엇을 도와드릴까요?",

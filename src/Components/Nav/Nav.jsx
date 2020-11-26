@@ -33,7 +33,7 @@ class Nav extends Component {
           </section>
         </section>
         <div className="border-without-side"></div>
-        <section className="side-nav">
+        {/* <section className="side-nav">
           <div className="direction">
             <Link to="/" className="home">
               Home
@@ -43,7 +43,7 @@ class Nav extends Component {
               route
             </Link>
           </div>
-        </section>
+        </section> */}
       </nav>
     );
   }
