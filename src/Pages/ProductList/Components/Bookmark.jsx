@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Bookmark extends Component {
   constructor() {
@@ -17,16 +17,16 @@ class Bookmark extends Component {
     const { bookmark } = this.state;
     return (
       <div className={Bookmark}>
-        <div className='bookmark'>
+        <div className="bookmark">
           <img
             onClick={this.handleBookmark}
-            className='bookmark-empty'
+            className="bookmark-empty"
             src={
               bookmark
-                ? '../images/youngjoonpark/bookmark-filled.png'
-                : '../images/youngjoonpark/bookmark-empty.png'
+                ? "../images/youngjoonpark/bookmark-filled.png"
+                : "../images/youngjoonpark/bookmark-empty.png"
             }
-            alt='북마크'
+            alt="북마크"
           />
         </div>
       </div>

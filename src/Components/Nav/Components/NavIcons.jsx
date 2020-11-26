@@ -6,15 +6,13 @@ class NavIcons extends Component {
   render() {
     return (
       <div className="nav-icons">
-        {" "}
         {NAVICONS.map((navIcon) => {
           return (
             <Link key={navIcon.id} className="nav-icon" to={navIcon.linkTo}>
-              {" "}
-              {navIcon.name}{" "}
+              {navIcon.name}
             </Link>
           );
-        })}{" "}
+        })}
       </div>
     );
   }

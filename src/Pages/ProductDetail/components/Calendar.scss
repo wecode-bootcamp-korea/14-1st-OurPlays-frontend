@@ -1,0 +1,22 @@
+.Calendar {
+    .DateRangePickerInput {
+        display: flex;
+        .DateInput_input {
+            width: 120px;
+            text-align: center;
+            right: 21px;
+            font-size: 16px;
+        }
+        .DateInput .DateInput_1 {
+            padding-left: 10px;
+        }
+        .DateRangePickerInput_arrow {
+            padding-top: 13px;
+            left: 2px;
+        }
+    }
+    .CalendarDay {
+        padding-top: 10px;
+        font-weight: bold;
+    }
+}

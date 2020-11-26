@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import '../ProductList.scss';
+import React, { Component } from "react";
+import "../ProductList.scss";
 
 class ControlButtons extends Component {
   constructor() {
@@ -10,34 +10,34 @@ class ControlButtons extends Component {
   }
   render() {
     return (
-      <div className='ControlButtons'>
-        <div className='control-buttons'>
-          <div className='control-button'>
-            <button className='button-date'>
+      <div className="ControlButtons">
+        <div className="control-buttons">
+          <div className="control-button">
+            <button className="button-date">
               <span>날짜</span>
-              <img src='../images/youngjoonpark/control-bar.png' alt='날짜' />
+              <img src="../images/youngjoonpark/control-bar.png" alt="날짜" />
             </button>
           </div>
-          <div className='control-button'>
+          <div className="control-button">
             <button
-              className='button-count'
+              className="button-count"
               onClick={() => {
                 this.props.openModalCount();
               }}
             >
               <span>인원</span>
-              <img src='../images/youngjoonpark/control-bar.png' alt='인원' />
+              <img src="../images/youngjoonpark/control-bar.png" alt="인원" />
             </button>
           </div>
-          <div className='control-button'>
+          <div className="control-button">
             <button
-              className='button-price'
+              className="button-price"
               onClick={() => {
                 this.props.openModalPrice();
               }}
             >
               <span>가격</span>
-              <img src='../images/youngjoonpark/control-bar.png' alt='가격' />
+              <img src="../images/youngjoonpark/control-bar.png" alt="가격" />
             </button>
           </div>
         </div>
