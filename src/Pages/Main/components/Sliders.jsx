@@ -11,23 +11,12 @@ class Sliders extends Component {
     target: "",
   };
 
-  componentDidMount = () => {
-    fetch(`${API}/ProductList/ProductDetail`, {
-      headers: {
-        Authorization: localStorage.getItem("token") || "",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          information: res.information,
-          target: res.information[0],
-        })
-      );
-  };
-
-  // componentDidMount() {
-  //   fetch("/Data/PlaceData.json")
+  // componentDidMount = () => {
+  //   fetch(`${API}/ProductList/ProductDetail`, {
+  //     headers: {
+  //       Authorization: localStorage.getItem("token") || "",
+  //     },
+  //   })
   //     .then((res) => res.json())
   //     .then((res) =>
   //       this.setState({
@@ -35,7 +24,18 @@ class Sliders extends Component {
   //         target: res.information[0],
   //       })
   //     );
-  // }
+  // };
+
+  componentDidMount() {
+    fetch("/Data/PlaceData.json")
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          information: res.information,
+          target: res.information[0],
+        })
+      );
+  }
 
   onButtonHandler = (e) => {
     let newId;
@@ -63,12 +63,12 @@ class Sliders extends Component {
       <section className="Slider">
         <div className="slider-container">
           <div className="slider-top">
-            <h1> Ourplays picks </h1>{" "}
+            <h1> Ourplays picks </h1>
             <div className="slider-top-right">
               <input type="button" value="더보기" className="slider-top-more" />
-              <i className="fas fa-arrow-right"> </i>{" "}
-            </div>{" "}
-          </div>{" "}
+              <i className="fas fa-arrow-right"> </i>
+            </div>
+          </div>
           <div className={`slider-contents active-slide-${target.id}`}>
             <ul
               className="slider-contents-lists"
@@ -78,8 +78,8 @@ class Sliders extends Component {
             >
               {information.map((info, idx) => (
                 <Slider key={idx} info={info} />
-              ))}{" "}
-            </ul>{" "}
+              ))}
+            </ul>
             <div className="slider-btn">
               <i className="fa fa-arrow-circle-left left">
                 <button
@@ -89,8 +89,8 @@ class Sliders extends Component {
                     this.onButtonHandler(e);
                   }}
                   disabled={target.id === 0}
-                />{" "}
-              </i>{" "}
+                />
+              </i>
               <i className="fa fa-arrow-circle-right right">
                 <button
                   className="right-btn"
@@ -99,11 +99,11 @@ class Sliders extends Component {
                     this.onButtonHandler(e);
                   }}
                   disabled={target.id === information.length - 1}
-                />{" "}
-              </i>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
+                />
+              </i>
+            </div>
+          </div>
+        </div>
       </section>
     );
   }

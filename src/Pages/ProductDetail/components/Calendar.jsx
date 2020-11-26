@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import "react-dates/initialize";
 import {
@@ -44,7 +45,7 @@ class Calendar extends Component {
           showInputs="true"
           block={this.state.block}
           small={this.state.small}
-        />{" "}
+        />
       </div>
     );
   }

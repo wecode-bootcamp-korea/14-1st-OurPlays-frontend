@@ -1,7 +1,7 @@
 /* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from "react";
 import ChatBoard from "./ChatBoard";
-import "./ChatBot.scss";
+import "./Chatbot.scss";
 
 const text = [
   "무엇을 도와드릴까요?",
@@ -35,12 +35,12 @@ class ChatBot extends Component {
     return (
       <div className="ChatBot">
         <div className="title">
-          <span> 아워플레이스 채팅 문의 </span>{" "}
-        </div>{" "}
+          <span> 아워플레이스 채팅 문의 </span>
+        </div>
         <div className="chatbot-container">
           <div className="chat-board">
-            <ChatBoard comments={this.state.comments} />{" "}
-          </div>{" "}
+            <ChatBoard comments={this.state.comments} />
+          </div>
           <div className="chat-input">
             <input
               type="text"
@@ -50,7 +50,7 @@ class ChatBot extends Component {
               onChange={(e) => {
                 this.handleChange(e);
               }}
-            />{" "}
+            />
             <input
               type="button"
               className="send-btn"
@@ -58,9 +58,9 @@ class ChatBot extends Component {
               onClick={() =>
                 this.submitHandler(this.setState({ userComment: "" }))
               }
-            />{" "}
-          </div>{" "}
-        </div>{" "}
+            />
+          </div>
+        </div>
       </div>
     );
   }

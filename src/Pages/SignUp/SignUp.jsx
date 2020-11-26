@@ -3,6 +3,7 @@ import SignUpForm from "./components/SignUpForm";
 import Alert from "./components/Alert";
 import { API } from "../../config";
 import "./SignUp.scss";
+
 let _alert;
 class SignUp extends Component {
   constructor(props) {
