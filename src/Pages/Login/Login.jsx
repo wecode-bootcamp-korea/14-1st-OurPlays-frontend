@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Login.scss";
 
+const API = "http://10.58.6.206:8000/user/signin";
+
 class Login extends Component {
   state = {
     data: [],
@@ -14,21 +16,27 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    this.handleClick();
-  }
-
-  handleClick = (e) => {
-    console.log(this.state.idValue, this.state.pwValue);
-    fetch("API", {
+  checkValidation = (e) => {
+    // e.preventDefault();
+    const { idValue, pwValue } = this.state;
+    fetch(API, {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.idValue,
-        password: this.state.pwValue,
+        email: idValue,
+        password: pwValue,
       }),
     })
       .then((res) => res.json())
-      .then((res) => this.setState({ data: res }));
+      // .then((res) => console.log(res));
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("token", res.token);
+          alert(res.message);
+          this.props.history.push("/Main");
+        } else {
+          alert(res.message);
+        }
+      });
   };
 
   handleChangeEmail = (e) => {
@@ -40,46 +48,35 @@ class Login extends Component {
     const { value } = e.target;
     this.setState({ pwValue: value });
   };
-  checkValidation = () => {
-    const { idValue, pwValue } = this.state;
-    const checkId = idValue.includes("@");
-    const checkPw = pwValue.length >= 8;
-    if (checkId && checkPw) {
-      alert("로그인 성공");
-      return this.props.history.push("/Main");
-    }
-    if (!checkId) {
-      alert("이메일을 입력해주세요.");
-    }
-    if (!checkPw) {
-      alert("비밀번호는 8자리 이상입니다.");
-    }
-  };
+
   handleKeyPress = (e) => {
     if (e.key === "Enter") {
       this.checkValidation();
     }
   };
+
   sendToSignUp = (e) => {
     this.props.history.push("/Signup");
   };
+
   sendToMain = () => {
     this.props.history.push("/Main");
   };
+
   render() {
     const { idValue, pwValue } = this.state;
     const activateEmail =
       idValue.length >= 1 ? "email-activate" : "email-deactivate";
     const activatePw =
       pwValue.length >= 1 ? "password-activate" : "password-deactivate";
-    console.log(idValue);
+
     return (
       <div className="Login">
         <section className="login-header">
           <img
             onClick={this.sendToMain}
             src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
-            alt=""
+            alt="Login-img"
           />
           <h1>로그인</h1>
         </section>
@@ -115,7 +112,7 @@ class Login extends Component {
           <div className="login-button">
             <button
               onKeyPress={this.checkValidation}
-              onClick={this.handleClick}
+              onClick={this.checkValidation}
             >
               로그인
             </button>
