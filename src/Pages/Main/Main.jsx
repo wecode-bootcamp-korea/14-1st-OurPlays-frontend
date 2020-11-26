@@ -12,7 +12,7 @@ import React, { Component } from "react";
 import Sliders from "./components/Sliders";
 import LandingPage from "./components/LandingPage";
 import Category from "../../Components/Category/Category";
-import ChatBot from "./components/Chatbot";
+import ChatBot from "./components/ChatBot";
 import "./Main.scss";
 import "../../Styles/common.scss";
 
@@ -28,11 +28,12 @@ class Main extends Component {
       <div className="Main">
         <div className="chat-bot">
           <span className="chat-bot-inner">
-            <i className="far fa-smile" onClick={() => this.chatbotHandler()}>
-              {" "}
-            </i>
+            <i
+              className="far fa-smile"
+              onClick={() => this.chatbotHandler()}
+            ></i>
             채팅 문의
-          </span>{" "}
+          </span>
           <ChatBot />
         </div>
         <LandingPage />

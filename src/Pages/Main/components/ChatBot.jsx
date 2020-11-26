@@ -1,6 +1,7 @@
+/* eslint-disable react/no-direct-mutation-state */
 import React, { Component } from "react";
 import ChatBoard from "./ChatBoard";
-import "./Chatbot.scss";
+import "./ChatBot.scss";
 
 const text = [
   "무엇을 도와드릴까요?",
