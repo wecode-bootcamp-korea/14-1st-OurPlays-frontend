@@ -13,10 +13,10 @@ class Footer extends Component {
               src="../images/youngjoonpark/munch-factory.png"
               alt="munch-factory"
             />
-          </div>{" "}
+          </div>
           <FooterInfos />
           <FooterIcons />
-        </div>{" "}
+        </div>
       </footer>
     );
   }

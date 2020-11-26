@@ -3,6 +3,7 @@ import SignUpForm from "./components/SignUpForm";
 import Alert from "./components/Alert";
 import { API } from "../../config";
 import "./SignUp.scss";
+
 let _alert;
 class SignUp extends Component {
   constructor(props) {
@@ -128,12 +129,11 @@ class SignUp extends Component {
 
     return (
       <section className="SignUp">
-        {" "}
-        {_alert}{" "}
+        {_alert}
         <div className="sign-up-container">
-          <h1> 회원가입 </h1>{" "}
-          <SignUpForm onSubmitHandler={this.onSubmitHandler} />{" "}
-        </div>{" "}
+          <h1> 회원가입 </h1>
+          <SignUpForm onSubmitHandler={this.onSubmitHandler} />
+        </div>
       </section>
     );
   }

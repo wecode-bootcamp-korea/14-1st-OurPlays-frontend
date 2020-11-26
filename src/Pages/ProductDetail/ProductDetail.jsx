@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import DetailSlider from "./components/DetailSlider";
 import Calendar from "./components/Calendar";

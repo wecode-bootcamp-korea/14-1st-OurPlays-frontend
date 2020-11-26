@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Footer from "../src/Components/Footer/Footer";
 import Nav from "../src/Components/Nav/Nav";
 import Main from "../src/Pages/Main/Main";
