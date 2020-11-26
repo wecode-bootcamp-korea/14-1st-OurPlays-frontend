@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./Login.scss";
+
 class Login extends Component {
   state = {
     data: [],
   };
+
   constructor() {
     super();
     this.state = {
@@ -11,9 +13,11 @@ class Login extends Component {
       pwValue: "",
     };
   }
+
   componentDidMount() {
     this.handleClick();
   }
+
   handleClick = (e) => {
     console.log(this.state.idValue, this.state.pwValue);
     fetch("API", {
@@ -26,10 +30,12 @@ class Login extends Component {
       .then((res) => res.json())
       .then((res) => this.setState({ data: res }));
   };
+
   handleChangeEmail = (e) => {
     const { value } = e.target;
     this.setState({ idValue: value });
   };
+
   handleChangePw = (e) => {
     const { value } = e.target;
     this.setState({ pwValue: value });
