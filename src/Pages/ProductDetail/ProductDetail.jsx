@@ -16,10 +16,6 @@ import TagLists from "./components/TagLists";
 import { FaStar } from "react-icons/fa";
 import uuid from "react-uuid";
 
-import people_options from "../../../public/Data/PeopleOption";
-import start_time_options from "../../../public/Data/startTimeOptions";
-import end_time_options from "../../../public/Data/endTimeOptions";
-
 import { API } from "../../config";
 
 import "./ProductDetail.scss";
@@ -36,6 +32,34 @@ const settings = {
   autoplaySpeed: 3000,
   className: "slides",
 };
+
+const end_time_options = [
+  { value: "12:00", label: "12 : 00" },
+  { value: "13:00", label: "13 : 00" },
+  { value: "14:00", label: "14 : 00" },
+  { value: "15:00", label: "15 : 00" },
+  { value: "16:00", label: "16 : 00" },
+  { value: "17:00", label: "17 : 00" },
+];
+
+const people_options = [
+  { value: "1", label: "1 명" },
+  { value: "2", label: "2 명" },
+  { value: "3", label: "3 명" },
+  { value: "4", label: "4 명" },
+  { value: "5", label: "5 명" },
+  { value: "6", label: "6 명" },
+];
+
+const start_time_options = [
+  { value: "12:00", label: "12 : 00" },
+  { value: "13:00", label: "13 : 00" },
+  { value: "14:00", label: "14 : 00" },
+  { value: "15:00", label: "15 : 00" },
+  { value: "16:00", label: "16 : 00" },
+  { value: "17:00", label: "17 : 00" },
+];
+
 let LIMIT = 4;
 
 class ProductDetail extends Component {

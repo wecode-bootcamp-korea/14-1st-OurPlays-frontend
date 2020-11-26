@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import BookMarkLists from "./components/BookMarkLists";
 import { withRouter } from "react-router-dom";
-import { YA_API } from "../../config";
-import { API } from "../../config";
 import "./BookMarkList.scss";
+
+import { API, YA_API } from "../../config";
 
 class BookMarkList extends Component {
   state = {

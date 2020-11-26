@@ -37,7 +37,7 @@ class Reservated extends Component {
     return (
       <div className="content-wrap">
         <div className="pic">
-          <img src={img_url} alt="" />
+          <img src={img_url} alt="장소" />
         </div>
         <div className="place-host-name">{host_name}</div>
         <div className="place-date">

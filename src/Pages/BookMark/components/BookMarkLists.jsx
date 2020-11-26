@@ -11,8 +11,8 @@ class BookMarkLists extends Component {
         </div>
         <div className="book-mark-contents">
           <ul className="slider-contents-lists">
-            {this.props.bookmarkList?.map((info) => {
-              return <Room info={info} />;
+            {this.props.bookmarkList?.map((info, idx) => {
+              return <Room info={info} idx={idx} />;
             })}
           </ul>
         </div>

@@ -30,14 +30,14 @@ class Modal extends Component {
           <div className="modal-container">
             <div className="modal-review-form">
               <h2 className="modal-review-title"> 후기를 작성해주세요! </h2>
-              <i class="far fa-times-circle" onClick={showModal}></i>
+              <i class="far fa-times-circle" onClick={showModal} />
               <Star
                 handleRating={handleRating}
                 handleRatingHover={handleRatingHover}
                 rating={rating}
                 isHover={isHover}
               />
-              <span class="number-rating modal-star-number"> </span>
+              <span class="number-rating modal-star-number" />
               <div className="form-wrap">
                 <form
                   action="post"

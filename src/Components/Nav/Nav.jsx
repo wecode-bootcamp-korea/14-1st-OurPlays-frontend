@@ -54,7 +54,7 @@ class Nav extends Component {
                 alt="search-icon"
               />
             </div>
-            <NAVICONS Link="Link" />
+            <NAVICONS link="Link" />
           </section>
         </section>
         <div className="border-without-side"> </div>

@@ -24,7 +24,7 @@ class Main extends Component {
             ></i>
             채팅 문의
           </span>
-          <ChatBot />
+          {/* <ChatBot /> */}
         </div>
         <LandingPage />
         <Category />
