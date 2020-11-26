@@ -1,117 +1,155 @@
-// * {
-//     font-family: 'Nanum Gothic Coding', monospace;
-// }
+* {
+    font-family: 'Nanum Gothic Coding', monospace;
+}
 
 nav {
-  display: flex;
-  justify-content: center;
-  position: relative;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    .nav-background {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top:0px;
+        width: 100%;
+        padding: 22px 38px;
+        background-color: transparent; // change
+        z-index: 10000;
+        transition: 0.6s;
+        .main-nav {
+            display: flex;
+            align-items: center;
+            width: 1080px;
+            .logo-icon {
+                margin-right: 25px;
+                img {
+                    width: 109px;
+                    height: 28px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .search-input {
+                position: relative;
+                input {
+                    width: 400px;
+                    height: 56px;
+                    padding: 5px 68px 0px 19px;
+                    border: 1px solid #3b3e4d;
+                    outline-style: none;
+                    background-color: transparent;
+                    &::placeholder {
+                        background-color: transparent;
+                        font-size: 15px;
+                        color: #3b3e4d;
+                        ;
+                    }
+                }
+                .camera-icon {
+                    position: absolute;
+                    top: 17px;
+                    right: 60px;
+                    width: 20px;
+                    height: 20px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .search-icon {
+                    position: absolute;
+                    top: 18px;
+                    right: 15px;
+                    width: 20px;
+                    height: 20px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .nav-icons {
+              display: flex;
+                width: 500px;
+                margin-left: 45px;
+                .nav-icon {
+                    text-decoration: none;
+                    color: #3b3e4d;
+                    font-size: 15px;
+                    font-weight: bold;
+                    padding: 8px;
+                    &:visited {
+                        text-decoration: none;
+                        color: #3b3e4d;
+                    }
+                }
+            }
+        }
+    }
+    .sticky {
+        background: #fff;
+        padding: 38px 50px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        .search-input {
+            .input {
+                border: 1px solid white;
+                background-color: white;
+                &::placeholder {
+                    color: white;
+                }
+            }
+        }
+        .nav-icons {
+            .nav-icon {
+                color: black;
+            }
+        }
+    }
+}
 
-  .nav-background {
+.border-without-side {
+    position: absolute;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 1px;
+    left: 0px;
+    top: 80px;
+}
+
+.side-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
+    top: 80px;
     width: 100%;
-    padding: 32px 38px;
-    background-color: transparent;
+    height: 43px;
+    border-top: 1px solid lightgray;
+    background-color: #fbfcfd;
     z-index: 10000;
-    transition: 0.6s;
-    
-    .main-nav {
-      display: flex;
-      align-items: center;
-      width: 1080px;
-
-      .logo-icon {
-        margin-right: 25px;
-        
-        img {
-          width: 109px;
-          height: 28px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-      .search-input {
+    .direction {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         position: relative;
-        input {
-          width: 400px;
-          height: 56px;
-          padding: 5px 68px 0px 19px;
-          border: 1px solid #3b3e4d;
-          outline-style: none;
-          background-color: transparent;
-          &::placeholder {
-            background-color: transparent;
-            font-size: 15px;
-            color: #3b3e4d;
-          }
+        width: 1080px;
+        font-size: 13px;
+        font-weight: bold;
+        color: gray;
+        border: #fbfcfd;
+        .home {
+            margin-right: 15px;
+            text-decoration: none;
+            color: gray;
         }
-        .camera-icon {
-          position: absolute;
-          top: 17px;
-          right: 60px;
-          width: 20px;
-          height: 20px;
-          &:hover {
-            cursor: pointer;
-          }
+        img {
+            position: absolute;
+            top: 3px;
+            left: 39px;
+            width: 5px;
         }
-        .search-icon {
-          position: absolute;
-          top: 18px;
-          right: 15px;
-          width: 20px;
-          height: 20px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-      .nav-icons {
-        width: 500px;
-        margin-left: 45px;
-        .nav-icon {
-          text-decoration: none;
-          color: #3b3e4d;
-          font-size: 15px;
-          font-weight: bold;
-          padding: 8px;
-          &:visited {
+        .route {
             text-decoration: none;
             color: gray;
         }
     }
-  }
-
-  .sticky {
-    background: #fff;
-    padding: 13px 50px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    .search-input {
-      .input {
-        border: 1px solid white;
-        background-color: white;
-        &::placeholder {
-          color: white;
-        }
-      }
-    }
-    .nav-icons {
-      .nav-icon {
-        color: black;
-      }
-    }
-  }
-}}}
-
-.border-without-side {
-  position: absolute;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.1);
-  height: 1px;
-  left: 0px;
-  top: 80px;
 }
