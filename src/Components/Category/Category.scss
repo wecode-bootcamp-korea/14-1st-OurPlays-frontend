@@ -1,5 +1,41 @@
+* {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
 .Category {
-  width: 100%;
-  background-color: green;
-  height: 200px;
+  height: 127px;
+
+  .category-items {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+
+    .category-item {
+      width: 108px;
+      height: 71px;
+      text-decoration: none;
+      text-align: center;
+      color: #000000;
+
+      &:visited {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        width: 50px;
+        padding-bottom: 5px;
+      }
+
+      .category-name {
+        padding-top: 5px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
 }
