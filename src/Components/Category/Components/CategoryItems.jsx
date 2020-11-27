@@ -7,18 +7,18 @@ class CategoryItems extends Component {
     PLACEINFO: [],
   };
 
-  // componentDidMount() {
-  //   fetch('/Data/PlaceData.json')
-  //     .then((res) => res.json())
-  //     // .then((res) => {
-  //     //   const datas = res.information;
-  //     //   console.log(datas);
-  //     //   const current = datas.find((el) => el.id == 0);
-  //     //   console.log(current);
-  //     //   this.setState({ PLACEINFO: current });
-  //     // });
-  //     .then((res) => this.setState({ PLACEINFO: res.information }));
-  // }
+  componentDidMount() {
+    fetch("/Data/PlaceData.json")
+      .then((res) => res.json())
+      // .then((res) => {
+      //   const datas = res.information;
+      //   console.log(datas);
+      //   const current = datas.find((el) => el.id == 0);
+      //   console.log(current);
+      //   this.setState({ PLACEINFO: current });
+      // });
+      .then((res) => this.setState({ PLACEINFO: res.information }));
+  }
 
   // componentDidMount() {
   //   fetch(`http://10.58.3.74:8000/place/%{props.id}`)
@@ -29,7 +29,6 @@ class CategoryItems extends Component {
   render() {
     return (
       <div className="category-items">
-        {" "}
         {CATEGORYITEMS.map((categoryItem) => {
           return (
             <Link
@@ -37,11 +36,11 @@ class CategoryItems extends Component {
               className="category-item"
               to={`/ProductList/${categoryItem.categoryName}`}
             >
-              <img src={categoryItem.src} alt={categoryItem.alt} />{" "}
-              <div className="category-name"> {categoryItem.categoryName} </div>{" "}
+              <img src={categoryItem.src} alt={categoryItem.alt} />
+              <div className="category-name"> {categoryItem.categoryName} </div>
             </Link>
           );
-        })}{" "}
+        })}
       </div>
     );
   }
