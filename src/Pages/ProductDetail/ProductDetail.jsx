@@ -87,13 +87,10 @@ class ProductDetail extends Component {
 
   componentDidMount() {
     console.log("ProductDetail componentDidMount");
-    fetch(
-      `${API}/ProductList/ProductDetail/${this.props.match.params.place_id}`,
-      {
-        method: "GET",
-        headers: { Authorization: localStorage.getItem("token") },
-      }
-    )
+    fetch(`${API}/place/detail/${this.props.match.params.place_id}`, {
+      method: "GET",
+      headers: { Authorization: localStorage.getItem("token") },
+    })
       .then((res) => res.json())
       .then((res) => {
         console.log(res.information, "전체 데이터 중 방 하나, product detail");

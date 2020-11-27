@@ -11,13 +11,14 @@ class RoomList extends Component {
     this.state = {};
   }
 
-  goToDetail = (id) => {
-    console.log(id);
-    this.props.history.push(`/place/detail/${id}`);
+  goToDetail = (place_id) => {
+    console.log(place_id);
+    this.props.history.push(`/place/detail/${place_id}`);
   };
 
   render() {
     const { PLACEINFO } = this.props;
+    console.log(PLACEINFO);
     return (
       <>
         {PLACEINFO.length > 0 &&
@@ -28,7 +29,7 @@ class RoomList extends Component {
                   <div className="RoomListImages">
                     <div className="room-list-imgs">
                       <img
-                        onClick={() => this.goToDetail(placeinfo.id)}
+                        onClick={() => this.goToDetail(placeinfo.place_id)}
                         className="room-list-img"
                         src={placeinfo.img_url}
                       />
@@ -37,17 +38,17 @@ class RoomList extends Component {
                   </div>
                   <div
                     className="room-list-text"
-                    onClick={() => this.goToDetail(placeinfo.id)}
+                    onClick={() => this.goToDetail(placeinfo.place_id)}
                   >
                     <div
                       className="room-list-region"
-                      onClick={() => this.goToDetail(placeinfo.id)}
+                      onClick={() => this.goToDetail(placeinfo.place_id)}
                     >
                       {placeinfo.category}/{placeinfo.region}
                     </div>
                     <div
                       className="room-list-title"
-                      onClick={() => this.goToDetail(placeinfo.id)}
+                      onClick={() => this.goToDetail(placeinfo.place_id)}
                     >
                       {placeinfo.title}
                     </div>
