@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
+import loading from "./loading2.gif";
+import "./Loading.scss";
 
-class Loading extends Component {
-  render() {
-    return <div> </div>;
-  }
-}
-
-export default Loading;
+export default () => {
+  return (
+    <div className="loading">
+      <img src={loading} alt="loading" />
+    </div>
+  );
+};

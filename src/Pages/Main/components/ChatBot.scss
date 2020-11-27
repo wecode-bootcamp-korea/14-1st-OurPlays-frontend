@@ -1,93 +1,97 @@
 .ChatBot {
-  position: relative;
-  top: -470px;
-  left: -150px;
-  width: 360px;
-  height: 460px;
-  background-color: white;
-  border-radius: 30px;
-  border: none;
-  .title {
-    height: 60px;
-    width: 100%;
-    background-color: #0095f6;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    text-align: center;
-    span {
-      position: relative;
-      top: 20px;
-      font-size: 20px;
-      color: white;
-      font-weight: bold;
-    }
-  }
-  .chatbot-container {
-    width: 100%;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    .chat-board {
-      width: 340px;
-      height: 330px;
-      background-color: white;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-      .board-container {
+    top: -470px;
+    left: -150px;
+    width: 360px;
+    height: 460px;
+    background-color: white;
+    border-radius: 30px;
+    border: none;
+    .title {
+        height: 60px;
         width: 100%;
-        .wrap {
-          display: flex;
-          flex-direction: row-reverse;
-          justify-content: space-between;
-          padding-bottom: 40px;
-          .user-div {
-            width: 100px;
-            align-self: flex-end;
-            color: rgb(0, 106, 213);
+        background-color: #0095f6;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        text-align: center;
+        span {
+            position: relative;
+            top: 20px;
+            font-size: 20px;
+            color: white;
             font-weight: bold;
-          }
-          .chat-div {
-            display: flex;
-            flex-direction: column;
-            padding-top: 5px;
-            .chat-name {
-              font-weight: bold;
-              padding-bottom: 8px;
-            }
-            .chat-content {
-              height: 100%;
-              background-color: rgba(0, 0, 0, 0.2);
-              padding: 10px;
-              margin-left: 20px;
-              border-radius: 7px;
-              font-size: 14px;
-            }
-          }
         }
-      }
     }
-    .chat-input {
-      position: relative;
-      padding-top: 10px;
-      .user-type {
-        padding: 10px;
-        border-radius: 10px;
+    .chatbot-container {
         width: 100%;
-        outline: none;
-        border: none;
-      }
-      .send-btn {
-        position: absolute;
-        padding: 10px;
-        right: 2px;
-        border: none;
-        background-color: transparent;
-        outline: none;
-        &:hover {
-          color: rgb(0, 106, 213);
-          transition: 0.5s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        .chat-board {
+            width: 340px;
+            height: 330px;
+            background-color: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            .board-container {
+                width: 100%;
+                .wrap {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-between;
+                    padding-bottom: 40px;
+                    .user-div {
+                        width: 100px;
+                        align-self: flex-end;
+                        color: rgb(0, 106, 213);
+                        font-weight: bold;
+                    }
+                    .chat-div {
+                        display: flex;
+                        flex-direction: column;
+                        padding-top: 5px;
+                        .chat-name {
+                            font-weight: bold;
+                            padding-bottom: 8px;
+                        }
+                        .chat-content {
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.2);
+                            padding: 10px;
+                            margin-left: 20px;
+                            border-radius: 7px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
         }
-      }
+        .chat-input {
+            position: relative;
+            padding-top: 10px;
+            .user-type {
+                padding: 10px;
+                border-radius: 10px;
+                width: 100%;
+                outline: none;
+                border: none;
+            }
+            .send-btn {
+                position: absolute;
+                padding: 10px;
+                right: 2px;
+                border: none;
+                background-color: transparent;
+                outline: none;
+                &:hover {
+                    color: rgb(0, 106, 213);
+                    transition: 0.5s;
+                }
+            }
+        }
     }
-  }
+}
+
+.hide {
+    display: none;
 }
