@@ -65,7 +65,7 @@ class ProductLists extends Component {
             </div>
             <div className="product-list">
               <section className="header">
-                <div className="title"></div>
+                <div className="title">원룸</div>
                 <div className="filter">
                   <ControlButtons
                     openModalPrice={this.openModalPrice}
