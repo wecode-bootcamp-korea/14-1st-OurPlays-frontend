@@ -4,19 +4,27 @@ import "../Category.scss";
 
 class CategoryItems extends Component {
   state = {
-    PLACEINFO: [],
+    productlists: [],
   };
 
-  componentDidMount() {
-    fetch(`http://10.58.7.159:8000/place`)
+  componentDidMount = () => {
+    fetch(`http://10.58.7.159:8000/place`, {
+      headers: {
+        Authorization: localStorage.getItem("token") || "",
+      },
+    })
       .then((res) => res.json())
-      .then((res) => console.log(res));
-    // .then((res) => this.setState({ PLACEINFO: res.information }));
-  }
+      // .then((res) => console.log(res));
+      .then((res) =>
+        this.setState({
+          productlists: res.information,
+        })
+      );
+  };
 
-  goToList = () => {
-    console.log(this.state.PLACEINFO);
-    // this.props.history.push(`/place`);
+  goToList = (id) => {
+    console.log(this.state.productlists);
+    this.props.history.push(`/place/${id}`);
   };
 
   render() {
