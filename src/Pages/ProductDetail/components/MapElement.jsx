@@ -14,21 +14,29 @@ class MapElement extends Component {
       kakao.maps.load(() => {
         let container = document.getElementById("map");
         let options = {
-          center: new kakao.maps.LatLng(37.506502, 127.053617),
-          level: 7,
+          center: new kakao.maps.LatLng(
+            `${this.props.lat}`,
+            `${this.props.lon}`
+          ),
+          level: 4,
         };
         const map = new kakao.maps.Map(container, options);
         let markerPosition = new kakao.maps.LatLng(
-          37.62197524055062,
-          127.16017523675508
+          `${this.props.lat}`,
+          `${this.props.lon}`
         );
         let marker = new kakao.maps.Marker({ position: markerPosition });
         marker.setMap(map);
+        map.relayout();
       });
     };
   }
   render() {
-    return <div id={"map"} className="Map"></div>;
+    return (
+      <div id={"map"} className="Map">
+        {" "}
+      </div>
+    );
   }
 }
 

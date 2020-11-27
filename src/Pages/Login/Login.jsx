@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Login.scss";
 
-const API = "http://10.58.6.206:8000/user/signin";
+import { API, YA_API, YA401_API } from "../../config";
 
 class Login extends Component {
   state = {
@@ -21,7 +21,7 @@ class Login extends Component {
   checkValidation = (e) => {
     // e.preventDefault();
     const { idValue, pwValue } = this.state;
-    fetch(API, {
+    fetch(`${YA401_API}/user/signin`, {
       method: "POST",
       body: JSON.stringify({
         email: idValue,
@@ -34,7 +34,7 @@ class Login extends Component {
         if (res.token) {
           localStorage.setItem("token", res.token);
           alert(res.message);
-          this.props.history.push("/Main");
+          this.props.history.push("/");
         } else {
           alert(res.message);
         }
