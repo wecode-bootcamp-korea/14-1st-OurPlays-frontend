@@ -7,14 +7,15 @@ class CategoryItems extends Component {
   };
 
   componentDidMount() {
-    fetch(`http://10.58.7.159:8000/place/`)
+    fetch(`http://10.58.7.159:8000/place`)
       .then((res) => res.json())
-      .then((res) => console.log(res));
-    // .then((res) => this.setState({ PLACEINFO: res.information }));
+      // .then((res) => console.log(res));
+      .then((res) => this.setState({ PLACEINFO: res.information }));
   }
 
   goToList = () => {
-    // this.props.history.push(``);
+    console.log(this.state.PLACEINFO);
+    this.props.history.push(`/place`);
   };
 
   render() {
