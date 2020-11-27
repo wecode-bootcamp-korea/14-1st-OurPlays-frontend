@@ -6,23 +6,11 @@ class CategoryItems extends Component {
     PLACEINFO: [],
   };
 
-  // componentDidMount() {
-  //   fetch('/Data/PlaceData.json')
-  //     .then((res) => res.json())
-  //     // .then((res) => {
-  //     //   const datas = res.information;
-  //     //   console.log(datas);
-  //     //   const current = datas.find((el) => el.id == 0);
-  //     //   console.log(current);
-  //     //   this.setState({ PLACEINFO: current });
-  //     // });
-  //     .then((res) => this.setState({ PLACEINFO: res.information }));
-  // }
-
   componentDidMount() {
-    fetch(`http://10.58.3.74:8000/place/%{props.id}`)
+    fetch(`http://10.58.7.159:8000/place/`)
       .then((res) => res.json())
-      .then((res) => this.setState({ PLACEINFO: res.information }));
+      .then((res) => console.log(res));
+    // .then((res) => this.setState({ PLACEINFO: res.information }));
   }
 
   goToList = () => {
