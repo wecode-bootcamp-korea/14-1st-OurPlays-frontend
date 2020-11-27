@@ -12,13 +12,11 @@ class RoomList extends Component {
   }
 
   goToDetail = (place_id) => {
-    console.log(place_id);
     this.props.history.push(`/place/detail/${place_id}`);
   };
 
   render() {
     const { PLACEINFO } = this.props;
-    console.log(PLACEINFO);
     return (
       <>
         {PLACEINFO.length > 0 &&
