@@ -5,6 +5,7 @@ import ModalPrice from "./ModalPrice";
 import RoomList from "./RoomList";
 import Buttons from "./Buttons";
 import "../ProductList.scss";
+import { YA_API } from "../../../config";
 
 class ProductLists extends Component {
   constructor(props) {
@@ -16,25 +17,19 @@ class ProductLists extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("/Data/PlaceData.json")
+  componentDidMount = () => {
+    fetch(`${YA_API}/place`, {
+      headers: {
+        Authorization: localStorage.getItem("token") || "",
+      },
+    })
       .then((res) => res.json())
-      // .then((res) => {
-      //   const datas = res.information;
-      //   console.log(datas);
-      //   const current = datas.find((el) => el.id == 0);
-      //   console.log(current);
-      //   this.setState({ PLACEINFO: current });
-      // });
-      .then((res) => this.setState({ productlists: res.information }));
-    // .then((res) => console.log(res.information));
-  }
-
-  // componentDidMount() {
-  //   fetch('http://10.58.3.74:8000/ProductList/ProductDetail')
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ PLACEINFO: res.information }));
-  // }
+      .then((res) =>
+        this.setState({
+          productlists: res.information,
+        })
+      );
+  };
 
   openModalPrice = () => {
     this.setState({ isModal: !this.state.isModal });
@@ -51,8 +46,8 @@ class ProductLists extends Component {
   render() {
     const { modal, isModal } = this.state;
     const { productlists } = this.state;
-    console.log(modal);
-
+    console.log("부모", productlists);
+    console.log("props", this.props);
     return (
       <>
         {productlists.length > 0 ? (
@@ -72,7 +67,7 @@ class ProductLists extends Component {
             </div>
             <div className="product-list">
               <section className="header">
-                <div className="title">dd</div>
+                <div className="title"></div>
                 <div className="filter">
                   <ControlButtons
                     openModalPrice={this.openModalPrice}
@@ -81,7 +76,7 @@ class ProductLists extends Component {
                 </div>
               </section>
               <section className="room-lists">
-                <RoomList PLACEINFO={productlists} category="dd" />
+                <RoomList PLACEINFO={productlists} />
               </section>
               <Buttons />
             </div>
