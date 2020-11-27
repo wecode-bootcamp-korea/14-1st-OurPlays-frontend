@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "../Category.scss";
 
 class CategoryItems extends Component {
@@ -9,13 +10,13 @@ class CategoryItems extends Component {
   componentDidMount() {
     fetch(`http://10.58.7.159:8000/place`)
       .then((res) => res.json())
-      // .then((res) => console.log(res));
-      .then((res) => this.setState({ PLACEINFO: res.information }));
+      .then((res) => console.log(res));
+    // .then((res) => this.setState({ PLACEINFO: res.information }));
   }
 
   goToList = () => {
     console.log(this.state.PLACEINFO);
-    this.props.history.push(`/place`);
+    // this.props.history.push(`/place`);
   };
 
   render() {
@@ -38,7 +39,7 @@ class CategoryItems extends Component {
   }
 }
 
-export default CategoryItems;
+export default withRouter(CategoryItems);
 
 const CATEGORYITEMS = [
   {
