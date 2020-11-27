@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Reservated from "./component/Reservated";
-import { API } from "../..//config";
+import { API, YA401_API } from "../..//config";
 import "./Reservation.scss";
 
 class Reservation extends Component {
@@ -32,7 +32,7 @@ class Reservation extends Component {
 
   componentDidMount() {
     console.log("mark cdm");
-    fetch(`${API}/reservation`, {
+    fetch(`${YA401_API}/reservation`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -79,21 +79,21 @@ class Reservation extends Component {
       <div className="Reservation">
         <div className="container">
           <div className="top">
-            <h2>예약관리</h2>
+            <h2> 예약관리 </h2>{" "}
             <div className="item-title-wrap">
               <div className="pic">
-                공간 이미지
-                <img src="" alt="" />
-              </div>
-              <div className="title">호스트 이름</div>
-              <div className="date">기간</div>
-              <div className="price">최종 금액</div>
-              <div className="title">예약 상태</div>
-              <div className="btn">취소</div>
-            </div>
-          </div>
+                공간 이미지 <img src="" alt="" />
+              </div>{" "}
+              <div className="title"> 호스트 이름 </div>{" "}
+              <div className="date"> 기간 </div>{" "}
+              <div className="price"> 최종 금액 </div>{" "}
+              <div className="title"> 예약 상태 </div>{" "}
+              <div className="btn"> 취소 </div>{" "}
+            </div>{" "}
+          </div>{" "}
           <div className="content">
             <div className="content-header">
+              {" "}
               {this.state.reservation &&
                 this.state.reservation.map((ele) => {
                   return (
@@ -103,10 +103,10 @@ class Reservation extends Component {
                       isStatus={this.state.status}
                     />
                   );
-                })}
-            </div>
-          </div>
-        </div>
+                })}{" "}
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
       </div>
     );
   }

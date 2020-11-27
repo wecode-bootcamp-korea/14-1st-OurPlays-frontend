@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { API } from "../../../config";
+import { API, YA_API, YA401_API } from "../../../config";
 
 class Reservated extends Component {
   state = { isStatus: false };
 
   handleCancel = (_id) => {
-    fetch(`${API}/reservation`, {
+    fetch(`${YA401_API}/reservation`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -38,18 +38,19 @@ class Reservated extends Component {
       <div className="content-wrap">
         <div className="pic">
           <img src={img_url} alt="장소" />
-        </div>
-        <div className="place-host-name">{host_name}</div>
+        </div>{" "}
+        <div className="place-host-name"> {host_name} </div>{" "}
         <div className="place-date">
-          {begin_datetime.slice(0, begin_datetime.indexOf("T"))}
-          <br />
-          <br /> ~ <br /> <br />
-          {finish_datetime.slice(0, finish_datetime.indexOf("T"))}
-        </div>
-        <div className="place-price">{total_price.toLocaleString(2)}</div>
+          {" "}
+          {begin_datetime.slice(0, begin_datetime.indexOf("T"))} <br />
+          <br /> ~ <br /> <br />{" "}
+          {finish_datetime.slice(0, finish_datetime.indexOf("T"))}{" "}
+        </div>{" "}
+        <div className="place-price"> {total_price.toLocaleString(2)} </div>{" "}
         <div className={isStatus ? "place-status cancel" : "place-status"}>
-          {isStatus ? "예약취소" : "예약신청"}
-        </div>
+          {" "}
+          {isStatus ? "예약취소" : "예약신청"}{" "}
+        </div>{" "}
         <div className="place-cancel-btn">
           <input
             type="button"
@@ -58,8 +59,8 @@ class Reservated extends Component {
             onClick={() => {
               this.handleCancel(id);
             }}
-          />
-        </div>
+          />{" "}
+        </div>{" "}
       </div>
     );
   }

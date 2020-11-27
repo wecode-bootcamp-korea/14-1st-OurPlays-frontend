@@ -14,7 +14,6 @@ class CategoryItems extends Component {
       },
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res));
       .then((res) =>
         this.setState({
           productlists: res.information,
@@ -23,6 +22,7 @@ class CategoryItems extends Component {
   };
 
   goToList = (id) => {
+    console.log(id);
     console.log(this.state.productlists);
     this.props.history.push(`/place/${id}`);
   };
