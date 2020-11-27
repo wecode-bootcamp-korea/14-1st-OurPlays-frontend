@@ -20,15 +20,16 @@ class CategoryItems extends Component {
   //     .then((res) => this.setState({ PLACEINFO: res.information }));
   // }
 
-  componentDidMount() {
-    fetch(`http://10.58.3.74:8000/place/%{props.id}`)
-      .then((res) => res.json())
-      .then((res) => this.setState({ PLACEINFO: res.information }));
-  }
+  // componentDidMount() {
+  //   fetch(`http://10.58.3.74:8000/place/%{props.id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => this.setState({ PLACEINFO: res.information }));
+  // }
 
   render() {
     return (
       <div className="category-items">
+        {" "}
         {CATEGORYITEMS.map((categoryItem) => {
           return (
             <Link
@@ -36,11 +37,11 @@ class CategoryItems extends Component {
               className="category-item"
               to={`/ProductList/${categoryItem.categoryName}`}
             >
-              <img src={categoryItem.src} alt={categoryItem.alt} />
-              <div className="category-name">{categoryItem.categoryName}</div>
+              <img src={categoryItem.src} alt={categoryItem.alt} />{" "}
+              <div className="category-name"> {categoryItem.categoryName} </div>{" "}
             </Link>
           );
-        })}
+        })}{" "}
       </div>
     );
   }
