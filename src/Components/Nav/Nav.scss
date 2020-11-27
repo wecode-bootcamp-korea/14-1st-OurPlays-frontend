@@ -36,13 +36,13 @@ nav {
                     width: 400px;
                     height: 56px;
                     padding: 5px 68px 0px 19px;
-                    border: 1px solid #3b3e4d;
+                    border: 1px solid white;
                     outline-style: none;
                     background-color: transparent;
                     &::placeholder {
                         background-color: transparent;
                         font-size: 15px;
-                        color: #3b3e4d;
+                        color: rgba(0, 0, 0, 0.3);
                     }
                 }
                 .camera-icon {
@@ -72,13 +72,13 @@ nav {
                 margin-left: 45px;
                 .nav-icon {
                     text-decoration: none;
-                    color: #3b3e4d;
+                    color: white;
                     font-size: 15px;
                     font-weight: bold;
                     padding: 8px;
                     &:visited {
                         text-decoration: none;
-                        color: #3b3e4d;
+                        color: white;
                     }
                 }
             }
@@ -89,17 +89,23 @@ nav {
         padding: 28px 50px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         .search-input {
+            border: 1px solid black !important;
             .input {
-                border: 1px solid white;
-                background-color: white;
+                border: 1px solid black !important;
                 &::placeholder {
-                    color: white;
+                    color: black;
+                    font-size: 15px;
                 }
             }
         }
         .nav-icons {
             .nav-icon {
-                color: black;
+                color: black !important;
+                font-size: 14px !important;
+                &:visited {
+                    text-decoration: none;
+                    color: black !important;
+                }
             }
         }
     }

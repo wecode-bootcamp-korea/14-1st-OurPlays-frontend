@@ -14,9 +14,9 @@ import MapContanier from "./components/MapContainer";
 import MapElement from "./components/MapElement";
 import TagLists from "./components/TagLists";
 import { FaStar } from "react-icons/fa";
-import uuid from "react-uuid";
+import Loading from "../../Components/Loading/Loading";
 
-import { API } from "../../config";
+import { API, YA_API, YA401_API } from "../../config";
 
 import "./ProductDetail.scss";
 import "slick-carousel/slick/slick.css";
@@ -75,7 +75,6 @@ class ProductDetail extends Component {
     isShowModal: false,
     user_name: "user-data-name",
     comments: [],
-    id: uuid(),
     comment: "",
     isComment: false,
     rating: null,
@@ -100,46 +99,6 @@ class ProductDetail extends Component {
         });
       });
   }
-
-  // componentDidMount() {
-  //   fetch(`http://10.58.7.159:8000/ProductList/ProductDetail/2`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       console.log(res.information, "전체 데이터 중 방 하나");
-  //       this.setState({
-  //         placeinfo: res.information[0],
-  //         ratings: res.information[0].rating,
-  //       });
-  //     });
-  // }
-
-  // componentDidMount() {
-  //   fetch("/Data/PlaceData.json")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       const datas = res.information;
-  //       const current = datas.find(
-  //         (el) => el.id == this.props.match.params.place_id
-  //       );
-  //       this.setState({
-  //         placeinfo: current,
-  //         ratings: current.rating,
-  //       });
-  //     });
-  // }
-
-  // componentDidMount() {
-  //   fetch(`/Data/PlaceData.json`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       const datas = res.information;
-  //       const current = datas.find((el) => el.id === 2);
-  //       this.setState({
-  //         placeinfo: current,
-  //         ratings: current.rating,
-  //       });
-  //     });
-  // }
 
   handleRating = (_rating) => {
     this.setState({
@@ -186,7 +145,7 @@ class ProductDetail extends Component {
       this.state.endTime,
       ".asdasda"
     );
-    fetch(`${API}/reservation`, {
+    fetch(`${YA401_API}/reservation`, {
       method: "POST",
       headers: { Authorization: localStorage.getItem("token") },
       body: JSON.stringify({
@@ -230,11 +189,10 @@ class ProductDetail extends Component {
 
   handleSubmit = (_comment, updatedRating) => {
     console.log("submit");
-    fetch(`${API}/ProductList/rating`, {
+    fetch(`${YA401_API}/place/${this.state.placeinfo.place_id}/ratings`, {
       method: "POST",
       headers: { Authorization: localStorage.getItem("token") },
       body: JSON.stringify({
-        place_id: this.state.placeinfo.place_id,
         starpoint: updatedRating,
         comment: _comment,
       }),
@@ -245,15 +203,13 @@ class ProductDetail extends Component {
         const createdRatingElement = {
           place_id: this.state.placeinfo.place_id,
           starpoint: updatedRating,
-          created_at: res.informations.created_at,
-          id: res.informations.id,
-          comment: res.informations.comment,
+          comment: res.information.comment,
+          user_id: 21,
         };
 
         const addRating = [...this.state.ratings, createdRatingElement];
         this.setState({
           comments: addRating,
-          id: uuid(),
           comment: "",
           ratings: addRating,
         });
@@ -271,25 +227,20 @@ class ProductDetail extends Component {
   };
 
   handleDelete = (id) => {
-    console.log("삭제ㅁㄴㅇㅁㄴㅇㅁㅇㅁㄴㅇㅁ");
-    fetch(`${API}/ProductList/rating/${id}`, {
+    fetch(`${YA401_API}/place/rating/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
       },
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res.message === "SUCCESS") {
-          const filteredComments = this.state.ratings.filter(
-            (comment) => comment.id !== id
-          );
-          console.log(filteredComments);
-          this.setState({
-            ratings: filteredComments,
-          });
-        }
+        const filteredComments = this.state.ratings.filter(
+          (comment) => comment.id !== id
+        );
+        this.setState({
+          ratings: filteredComments,
+        });
       });
   };
 
@@ -300,7 +251,7 @@ class ProductDetail extends Component {
   };
 
   toBookMark = (e) => {
-    fetch(`${API}/user/placemark`, {
+    fetch(`${YA401_API}/user/placemark`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -335,6 +286,7 @@ class ProductDetail extends Component {
     // console.log(placeinfo.place_id, "place_id 부모");
     // console.log(reviewLists && reviewLists, "reviewLists 부모");
     console.log(ratings.length, "부모 렝스");
+    console.log(placeinfo, "render placeinfo");
     const ratingArr = ratings.map((rating) => {
       return rating.starpoint;
     });
@@ -346,78 +298,78 @@ class ProductDetail extends Component {
       <article className="ProductDetail modal-Mode">
         <div className="product-datail-container">
           <div className="product-image-slider">
-            <Slider {...settings}>
-              {" "}
-              {placeinfo.images_urls &&
-                placeinfo.images_urls.map((img, idx) => {
-                  return (
-                    <div className="DetailSlider" key={idx}>
-                      <img src={img.url} alt="place" />
-                      <div className="product-image-cnt">
-                        <i className="far fa-image"> </i>{" "}
-                        <span>
-                          {" "}
-                          {idx}/ {placeinfo.images_urls.length}{" "}
-                        </span>{" "}
-                      </div>{" "}
-                    </div>
-                  );
-                })}{" "}
-            </Slider>{" "}
+            {placeinfo.images_urls === undefined ? (
+              <Loading />
+            ) : (
+              <Slider {...settings}>
+                {placeinfo.images_urls &&
+                  placeinfo.images_urls.map((img, idx) => {
+                    return (
+                      <div className="DetailSlider" key={idx}>
+                        <img src={img.url} alt="place" />
+                        <div className="product-image-cnt">
+                          <i className="far fa-image"> </i>
+                          <span>
+                            {idx}/ {placeinfo.images_urls.length}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </Slider>
+            )}
+
             <button className="link icon">
-              <i className="fas fa-link"> </i>{" "}
-            </button>{" "}
+              <i className="fas fa-link"> </i>
+            </button>
             <button className="book-mark icon">
-              {" "}
-              {/* <Link to="/BookMarkList"> */}{" "}
+              {/* <Link to="/BookMarkList"> */}
               <i
                 className="far fa-bookmark"
                 onClick={() => this.toBookMark()}
-              ></i>{" "}
-              {/* </Link> */}{" "}
-            </button>{" "}
-          </div>{" "}
+              ></i>
+              {/* </Link> */}
+            </button>
+          </div>
           <div className="tag-container">
             <ul className="tag-lists">
-              {" "}
               {placeinfo.tags &&
                 placeinfo.tags.map((tag) => {
                   return <TagLists tag={tag} />;
-                })}{" "}
-            </ul>{" "}
-          </div>{" "}
+                })}
+            </ul>
+          </div>
           <section className="product-detail-content-container">
             <div className="product-detail-info-wrap">
               <div className="left">
                 <div className="left-top">
                   <div className="left-top-header">
                     <span>
-                      {" "}
-                      {placeinfo.category}/{placeinfo.region}{" "}
-                    </span>{" "}
+                      {placeinfo.category}/{placeinfo.region}
+                    </span>
                     <div className="left-top-heaer-number">
-                      장소 번호 {placeinfo.place_id}{" "}
-                    </div>{" "}
-                  </div>{" "}
+                      장소 번호 {placeinfo.place_id}
+                    </div>
+                  </div>
                   <div className="left-top-desc">
-                    <h3> {placeinfo.title} </h3>{" "}
-                  </div>{" "}
+                    <h3> {placeinfo.title} </h3>
+                  </div>
                   <div className="left-top-host-info">
                     <div className="left-top-host-info-image">
                       <img
                         src={placeinfo.avatar_img && placeinfo.avatar_img}
                         alt="host"
                       />
-                    </div>{" "}
+                    </div>
                     <div className="left-top-host-info-desc">
-                      <span className="host-title"> 호스트 </span>{" "}
-                      <span className="host-name"> {placeinfo.user_name} </span>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                      <span className="host-title"> 호스트 </span>
+                      <span className="host-name"> {placeinfo.user_name} </span>
+                    </div>
+                  </div>
+                </div>
                 <div className="left-middle-table">
                   <div className="left-middle-table-header">
-                    <span> 장소 소개 </span>{" "}
+                    <span> 장소 소개 </span>
                     <div className="left-middle-table-btn">
                       <input
                         type="button"
@@ -427,7 +379,7 @@ class ProductDetail extends Component {
                         onClick={() => {
                           this.handleAreaClick();
                         }}
-                      />{" "}
+                      />
                       <input
                         type="button"
                         value="평"
@@ -436,57 +388,50 @@ class ProductDetail extends Component {
                         onClick={() => {
                           this.handleAreaClick();
                         }}
-                      />{" "}
-                    </div>{" "}
-                  </div>{" "}
+                      />
+                    </div>
+                  </div>
                   <div className="left-middle-table-content">
                     <div className="row">
                       <div className="row-ele">
-                        <div className="area-title"> 면적 </div>{" "}
+                        <div className="area-title"> 면적 </div>
                         <div className="area-data">
-                          {" "}
-                          {isArea ? placeinfo.area * 3 : placeinfo.area}{" "}
-                          <span> {isArea ? " m2 " : " 평 "} </span>{" "}
-                        </div>{" "}
-                      </div>{" "}
+                          {isArea ? placeinfo.area * 3 : placeinfo.area}
+                          <span> {isArea ? " m2 " : " 평 "} </span>
+                        </div>
+                      </div>
                       <div className="row-ele">
-                        <div className="story-title"> 층 </div>{" "}
-                        <div className="story-data"> {placeinfo.floor}층 </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
+                        <div className="story-title"> 층 </div>
+                        <div className="story-data"> {placeinfo.floor}층 </div>
+                      </div>
+                    </div>
                     <div className="row">
                       <div className="row-ele">
-                        <div className="acceptable-ppl-title"> 기본 인원 </div>{" "}
+                        <div className="acceptable-ppl-title"> 기본 인원 </div>
                         <div className="acceptable-ppl-data">
-                          {" "}
-                          {placeinfo.allowed_members_count}명{" "}
-                        </div>{" "}
-                      </div>{" "}
+                          {placeinfo.allowed_members_count}명
+                        </div>
+                      </div>
                       <div className="row-ele">
                         <div className="acceptable-cars-title">
-                          주차 가능 대수{" "}
-                        </div>{" "}
+                          주차 가능 대수
+                        </div>
                         <div className="acceptable-cars-data">
-                          {" "}
-                          {placeinfo.maximun_parking_lot}대{" "}
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                          {placeinfo.maximun_parking_lot}대
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="left-desc">
                   <div className="left-desc-content">
                     <br /> {placeinfo.description} <br />
                     <br /> {placeinfo.description} <br />
-                    <br /> {placeinfo.description}{" "}
-                  </div>{" "}
+                    <br /> {placeinfo.description}
+                  </div>
                   <div className="left-desc-rules">
-                    <div className="left-desc-rules-header">
-                      {" "}
-                      장소 이용 규칙{" "}
-                    </div>{" "}
+                    <div className="left-desc-rules-header">장소 이용 규칙</div>
                     <div className="left-desc-rules-content">
-                      {" "}
                       [시간 엄수] - 계약된 시간을 꼭 준수하여 주시기 바랍니다. -
                       이용요금은[시작시간] 및[종료시간] 으로 계약됩니다. -
                       촬영준비 및 세팅, 장비 철수 및 장소 원상복구 시간은
@@ -503,48 +448,47 @@ class ProductDetail extends Component {
                       불가능합니다. - 촬영 도중 발생한 쓰레기는 모두
                       정리해주셔야 합니다. - 주차는 안내된 주차대수에 한해
                       제공됩니다. - 기존의 가구 세팅 및 구조를 필요에 의해
-                      변경하신 경우 마감시간 전에 원상복구 해주셔야 합니다.{" "}
-                      {placeinfo.using_rule}{" "}
-                    </div>{" "}
-                  </div>{" "}
+                      변경하신 경우 마감시간 전에 원상복구 해주셔야 합니다.
+                      {placeinfo.using_rule}
+                    </div>
+                  </div>
                   <div className="left-desc-nearby-info">
-                    <div className="left-desc-nearby-header"> 주변 정보 </div>{" "}
+                    <div className="left-desc-nearby-header"> 주변 정보 </div>
                     <div className="left-desc-nearby-content">
                       -거실에는 6 인용 원목식탁과 감성있는 의자가 준비되어
                       있습니다. - 아파트 상가에 편의점이 위치하고, 길 건너에
                       GS슈퍼가 있습니다. - 아파트단지 뒤쪽으로 달빛공원이
-                      있습니다. - 인근에 센트럴파크 채드윅국제학교가 있습니다.{" "}
-                      {placeinfo.info_nearby}{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
-              </div>{" "}
+                      있습니다. - 인근에 센트럴파크 채드윅국제학교가 있습니다.
+                      {placeinfo.info_nearby}
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="right">
                 <div className="right-wrap">
                   <div className="right-price-and-rate">
                     <span className="price">
-                      {" "}
-                      {(1 * placeinfo.price).toLocaleString(2)}원 / 시간{" "}
-                    </span>{" "}
+                      {(1 * placeinfo.price).toLocaleString(2)}원 / 시간
+                    </span>
                     <div class="stars-outer">
                       <div
                         class="stars-inner"
                         style={{ width: `${averageRating * 5}%` }}
-                      ></div>{" "}
-                    </div>{" "}
-                    <span class="number-rating"> </span>{" "}
-                  </div>{" "}
+                      ></div>
+                    </div>
+                    <span class="number-rating"> </span>
+                  </div>
                   <div className="right-user-select-date">
                     <div className="right-user-select-date-header">
-                      <span className="title"> 촬영 스케줄 선택 </span>{" "}
-                      <i className="far fa-question-circle"> </i>{" "}
-                    </div>{" "}
+                      <span className="title"> 촬영 스케줄 선택 </span>
+                      <i className="far fa-question-circle"> </i>
+                    </div>
                     <div className="right-user-select-date-wrap">
                       <div className="date-wrap">
                         <div className="date-start">
-                          <Calendar userDateHandler={this.userDateHandler} />{" "}
-                        </div>{" "}
-                      </div>{" "}
+                          <Calendar userDateHandler={this.userDateHandler} />
+                        </div>
+                      </div>
                       <div className="date-wrap">
                         <div className="time-start">
                           <Select
@@ -552,84 +496,79 @@ class ProductDetail extends Component {
                             name="startTime"
                             placeholder="시작 시간을 선택해주세요."
                             onChange={this.handleStartTimeChange}
-                          />{" "}
-                        </div>{" "}
+                          />
+                        </div>
                         <div className="time-end">
                           <Select
                             options={end_time_options}
                             placeholder="종료 시간을 선택해주세요."
                             name="endTime"
                             onChange={this.handleEndTimeChange}
-                          />{" "}
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="right-user-select-ppl">
                     <div className="right-user-select-ppl-header">
-                      촬영 인원 선택{" "}
-                    </div>{" "}
+                      촬영 인원 선택
+                    </div>
                     <div className="right-user-select-ppl-wrap">
                       <Select
                         options={people_options}
                         onChange={this.handlePeopleChange}
                         placeholder={"인원수를 선택해주세요."}
-                      />{" "}
-                    </div>{" "}
-                  </div>{" "}
+                      />
+                    </div>
+                  </div>
                   <div className="right-user-select-result">
                     <div className="result-col">
-                      <div className="result-col-title"> 촬영 스케쥴 </div>{" "}
+                      <div className="result-col-title"> 촬영 스케쥴 </div>
                       <div className="result-col-period">
                         <div className="result-start">
-                          {" "}
-                          {startDate && startDate.format("YYYY.MM.DD")}{" "}
+                          {startDate && startDate.format("YYYY.MM.DD")}
                         </div>
                         ~
                         <div className="result-end">
-                          {" "}
-                          {endDate && endDate.format("YYYY.MM.DD")}{" "}
-                        </div>{" "}
-                      </div>{" "}
-                    </div>{" "}
+                          {endDate && endDate.format("YYYY.MM.DD")}
+                        </div>
+                      </div>
+                    </div>
                     <div className="result-col">
                       <div className="result-col-hours">
-                        <div className="title"> 촬영 시간 </div>{" "}
+                        <div className="title"> 촬영 시간 </div>
                         <div className="hours">
-                          {" "}
                           {Math.abs(
                             Number(startTime.slice(0, 2) - endTime.slice(0, 2))
-                          )}{" "}
-                          시간{" "}
-                        </div>{" "}
-                      </div>{" "}
+                          )}
+                          시간
+                        </div>
+                      </div>
                       <div className="result-col-total-hours">
-                        {" "}
-                        {placeinfo.price}{" "}
-                      </div>{" "}
-                    </div>{" "}
+                        {(1 * placeinfo.price).toLocaleString(2)}
+                      </div>
+                    </div>
                     <div className="result-col">
                       <div className="result-col-ppl">
-                        <div className="title"> 촬영 인원 </div>{" "}
-                        <div className="hours"> {peopleVal}명 </div>{" "}
-                      </div>{" "}
+                        <div className="title"> 촬영 인원 </div>
+                        <div className="hours"> {peopleVal}명 </div>
+                      </div>
                       <div className="result-col-total-ppl">
-                        추가금액{" "}
+                        추가금액
                         {(peopleVal > 4
                           ? (peopleVal - 4) * 15000
                           : 0
                         ).toLocaleString(2)}
-                        원{" "}
-                      </div>{" "}
-                    </div>{" "}
+                        원
+                      </div>
+                    </div>
                     <div className="result-col total">
-                      <div className="title"> 총 금액 </div>{" "}
+                      <div className="title"> 총 금액 </div>
                       <div className="result">
-                        {" "}
-                        {(peopleVal * placeinfo.price).toLocaleString(2)}원{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
+                        {(peopleVal * placeinfo.price).toLocaleString(2)}원
+                      </div>
+                    </div>
+                  </div>
                   <div className="reservation-btn">
                     <input
                       type="button"
@@ -637,41 +576,41 @@ class ProductDetail extends Component {
                       onClick={() => {
                         this.onSubmitInfoHandler();
                       }}
-                    />{" "}
-                  </div>{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>{" "}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="product-detail-info-another">
               <div className="product-detail-map">
-                <MapContanier />{" "}
-                {/* <img src="../images/donghakim/map.png" alt="" /> */}{" "}
-              </div>{" "}
+                <MapContanier
+                  lat={placeinfo.latitude}
+                  lon={placeinfo.longtitude}
+                />
+                {/* <img src="../images/donghakim/map.png" alt="" /> */}
+              </div>
               <div className="product-detail-another-place">
                 <div className="product-detail-another-place-header">
-                  주변 촬영장소{" "}
-                </div>{" "}
+                  주변 촬영장소
+                </div>
                 <div className="product-detail-another-place-content">
                   <img
                     src="
             .. / images / donghakim / another.png "
                     alt="place"
                   />
-                </div>{" "}
-              </div>{" "}
+                </div>
+              </div>
               <div className="product-detail-review-container">
                 <div className="product-detail-review-header">
-                  <h2> 사용자 후기 </h2>{" "}
+                  <h2> 사용자 후기 </h2>
                   <FaStar size={30} color={"#2c78f2"} className="star" />
-                  <div className="rating-total">
-                    {" "}
-                    {averageRating.toFixed(1)}{" "}
-                  </div>{" "}
-                </div>{" "}
+                  <div className="rating-total">{averageRating.toFixed(1)}</div>
+                </div>
                 <div className="product-detail-review-reviews">
                   <div className="review-rows">
                     <div className="review-row">
-                      <div className="review-title"> 청결도 </div>{" "}
+                      <div className="review-title"> 청결도 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
                           <div
@@ -679,41 +618,35 @@ class ProductDetail extends Component {
                             style={{
                               width: `${averageRating * 20}%`,
                             }}
-                          >
-                            {" "}
-                          </div>{" "}
-                        </div>{" "}
+                          ></div>
+                        </div>
                         <span class="number-rating">
-                          {" "}
                           {averageRating === 0
                             ? averageRating
-                            : averageRating.toFixed(1)}{" "}
-                        </span>{" "}
-                      </div>{" "}
-                    </div>{" "}
+                            : averageRating.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
                     <div className="review-row">
-                      <div className="review-title"> 정확도 </div>{" "}
+                      <div className="review-title"> 정확도 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
                           <div
                             class="stars-inner"
                             style={{ width: `${averageRating * 18}%` }}
-                          >
-                            {" "}
-                          </div>{" "}
-                        </div>{" "}
+                          ></div>
+                        </div>
                         <span class="number-rating">
-                          {" "}
                           {averageRating !== 0
                             ? (averageRating - 0.5).toFixed(1)
-                            : averageRating}{" "}
-                        </span>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
+                            : averageRating}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                   <div className="review-rows">
                     <div className="review-row">
-                      <div className="review-title"> 접근성 </div>{" "}
+                      <div className="review-title"> 접근성 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
                           <div
@@ -723,39 +656,33 @@ class ProductDetail extends Component {
                                 ? { width: `${averageRating * 15}%` }
                                 : { width: `${averageRating}%` }
                             }
-                          >
-                            {" "}
-                          </div>{" "}
-                        </div>{" "}
+                          ></div>
+                        </div>
                         <span class="number-rating">
-                          {" "}
                           {averageRating !== 0
                             ? (averageRating - 1).toFixed(1)
-                            : averageRating}{" "}
-                        </span>{" "}
-                      </div>{" "}
-                    </div>{" "}
+                            : averageRating}
+                        </span>
+                      </div>
+                    </div>
                     <div className="review-row">
-                      <div className="review-title"> 가격 </div>{" "}
+                      <div className="review-title"> 가격 </div>
                       <div className="review-rate">
                         <div class="stars-outer">
                           <div
                             class="stars-inner"
                             style={{ width: `${averageRating * 20}%` }}
-                          >
-                            {" "}
-                          </div>{" "}
-                        </div>{" "}
+                          ></div>
+                        </div>
                         <span class="number-rating">
-                          {" "}
                           {averageRating === 0
                             ? averageRating
-                            : averageRating.toFixed(1)}{" "}
-                        </span>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+                            : averageRating.toFixed(1)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <ReviewList
                   place_id={placeinfo.place_id}
                   ratings={ratings}
@@ -763,18 +690,18 @@ class ProductDetail extends Component {
                   isShowModal={this.state.isShowModal}
                   // comments={comments}
                   handleDelete={this.handleDelete}
-                />{" "}
-              </div>{" "}
+                />
+              </div>
               <div className="show-review-modal">
                 <input
                   type="button"
                   onClick={this.showModal}
                   value="후기 작성"
                 />
-              </div>{" "}
-            </div>{" "}
-          </section>{" "}
-        </div>{" "}
+              </div>
+            </div>
+          </section>
+        </div>
         <Modal
           rating={rating}
           isHover={isHover}
@@ -790,7 +717,7 @@ class ProductDetail extends Component {
           handleSubmit={(_comment, updatedRating) => {
             this.handleSubmit(_comment, updatedRating);
           }}
-        />{" "}
+        />
       </article>
     );
   }

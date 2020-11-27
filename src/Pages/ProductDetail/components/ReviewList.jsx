@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import ReviewElement from "./ReviewElement";
 import Pagination from "./Pagination";
 import "./ReviewList.scss";
-import { API } from "../../../config";
+import { API, YA401_API } from "../../../config";
 const LIMIT = 4;
 
 class DetailSlider extends Component {
@@ -36,7 +36,7 @@ class DetailSlider extends Component {
     ) {
       console.log(prevProps.isShowModal, this.props.isShowModal);
       fetch(
-        `${API}/ProductList/${
+        `${YA401_API}/place/${
           this.props.place_id && this.props.place_id
         }/ratings?limit=${LIMIT}`,
         {
@@ -69,7 +69,7 @@ class DetailSlider extends Component {
     // let offset = cur * LIMIT;
 
     fetch(
-      `http://10.58.7.159:8000/ProductList/${
+      `${YA401_API}/place/${
         this.props.place_id && this.props.place_id
       }/ratings?offset=${offset}&limit=${LIMIT}`,
       {
@@ -103,6 +103,7 @@ class DetailSlider extends Component {
     return (
       <div className="product-detail-review-contents">
         <div className="product-detail-review-content">
+          {" "}
           {reviewLists &&
             reviewLists.map((rating) => {
               return (
@@ -114,32 +115,32 @@ class DetailSlider extends Component {
                   }}
                 />
               );
-            })}
+            })}{" "}
           {/* {currentPosts &&
-                                            currentPosts.map((rating) => {
-                                              return (
-                                                <ReviewElement
-                                                  isHover={isHover}
-                                                  data={rating}
-                                                  handleDelete={() => {
-                                                    handleDelete(rating.id);
-                                                  }}
-                                                />
-                                              );
-                                            })} */}
+                                                                            currentPosts.map((rating) => {
+                                                                              return (
+                                                                                <ReviewElement
+                                                                                  isHover={isHover}
+                                                                                  data={rating}
+                                                                                  handleDelete={() => {
+                                                                                    handleDelete(rating.id);
+                                                                                  }}
+                                                                                />
+                                                                              );
+                                                                            })} */}{" "}
           {/* {comments.map((comment) => {
-                                                                                            return (
-                                                                                              <ReviewElement
-                                                                                                ratings={ratings}
-                                                                                                isHover={isHover}
-                                                                                                data={comment}
-                                                                                                handleDelete={() => {
-                                                                                                  handleDelete(comment.id);
-                                                                                                }}
-                                                                                              />
-                                                                                            );
-                                                                                          })}{ */}
-        </div>
+                                                                                                                            return (
+                                                                                                                              <ReviewElement
+                                                                                                                                ratings={ratings}
+                                                                                                                                isHover={isHover}
+                                                                                                                                data={comment}
+                                                                                                                                handleDelete={() => {
+                                                                                                                                  handleDelete(comment.id);
+                                                                                                                                }}
+                                                                                                                              />
+                                                                                                                            );
+                                                                                                                          })}{ */}{" "}
+        </div>{" "}
         <Pagination
           fetchProduct={this.fetchProduct}
           total={ratings && ratings.length}
@@ -147,7 +148,7 @@ class DetailSlider extends Component {
           // postsPerPage={postsPerPage}
           // totalPosts={ratings.length}
           // paginate={this.paginate}
-        />
+        />{" "}
       </div>
     );
   }
