@@ -11,7 +11,7 @@ import ProductList from "../src/Pages/ProductList/ProductList";
 import ProductDetail from "../src/Pages/ProductDetail/ProductDetail";
 import BookMarkList from "./Pages/BookMark/BookMarkList";
 import Reservation from "./Pages/Reservation/Reservation";
-
+import Auth from "../src/Pages/SignUp/components/Auth";
 import UploadImage from "../src/Pages/UploadImage/UploadImage";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -23,6 +23,7 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/Auth" component={Auth} />
           <Route exact path="/Login" component={Login} />
           <Route
             exact

@@ -11,20 +11,22 @@ class Main extends Component {
     isChatBot: false,
   };
   chatbotHandler = () => {
-    this.setState({});
+    this.setState({
+      isChatBot: !this.state.isChatBot,
+    });
   };
   render() {
     return (
       <div className="Main">
         <div className="chat-bot">
-          <span className="chat-bot-inner">
-            <i
-              className="far fa-smile"
-              onClick={() => this.chatbotHandler()}
-            ></i>
+          <span
+            className="chat-bot-inner"
+            onClick={() => this.chatbotHandler()}
+          >
+            <i className="far fa-smile"></i>
             채팅 문의
           </span>
-          {/* <ChatBot /> */}
+          <ChatBot chatOn={this.state.isChatBot} />
         </div>
         <LandingPage />
         <Category />
