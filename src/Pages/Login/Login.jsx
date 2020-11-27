@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Login.scss";
-
-const API = "http://192.168.200.108:8000/user/signin";
+import { API } from "../../config";
 
 class Login extends Component {
   state = {
@@ -16,9 +15,8 @@ class Login extends Component {
   }
 
   checkValidation = (e) => {
-    // e.preventDefault();
     const { idValue, pwValue } = this.state;
-    fetch(API, {
+    fetch(`${API}/user/signin`, {
       method: "POST",
       body: JSON.stringify({
         email: idValue,
