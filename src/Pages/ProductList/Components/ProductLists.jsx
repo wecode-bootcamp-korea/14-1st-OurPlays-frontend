@@ -5,7 +5,7 @@ import ModalPrice from "./ModalPrice";
 import RoomList from "./RoomList";
 import Buttons from "./Buttons";
 import "../ProductList.scss";
-import { YA_API } from "../../../config";
+import { API } from "../../../config";
 
 class ProductLists extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class ProductLists extends Component {
   }
 
   componentDidMount = () => {
-    fetch(`${YA_API}/place`, {
+    fetch(`${API}/place`, {
       headers: {
         Authorization: localStorage.getItem("token") || "",
       },
@@ -46,8 +46,6 @@ class ProductLists extends Component {
   render() {
     const { modal, isModal } = this.state;
     const { productlists } = this.state;
-    console.log("부모", productlists);
-    console.log("props", this.props);
     return (
       <>
         {productlists.length > 0 ? (
