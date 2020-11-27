@@ -1,0 +1,89 @@
+.UploadImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nanum Gothic Coding', monospace;
+    .login-header {
+        margin-top: 123px;
+        width: 1024px;
+        padding: 50px 0 50px 0;
+        border-bottom: 2px solid black;
+        text-align: center;
+        font-size: 29px;
+        font-weight: bold;
+        h1 {
+            padding-top: 20px;
+        }
+    }
+    .login-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 290px;
+        width: 1024px;
+        border-bottom: 1px solid lightgray;
+        font-size: 13px;
+        .label {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 600px;
+            input {
+                padding: 20px;
+                width: 100%;
+            }
+            .email-label {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+                padding-bottom: 20px;
+                span {
+                    width: 180px;
+                }
+            }
+            .password-label {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+                span {
+                    width: 180px;
+                }
+                input {
+                    width: 50%;
+                    margin-right: 80px;
+                }
+            }
+        }
+    }
+    .login-footer {
+        .login-button {
+            padding: 60px 0 38px 0;
+            button {
+                width: 240px;
+                height: 48px;
+                color: white;
+                background-color: #0095f6;
+                border: none;
+                border-radius: 10px;
+                font-size: 17px;
+                &:hover {
+                    cursor: pointer;
+                    outline-style: none;
+                }
+            }
+        }
+        .manage-member {
+            display: flex;
+            justify-content: center;
+            font-size: 12px;
+            .sign-up {
+                text-decoration: none;
+                color: #0095f6;
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@ class DetailSlider extends Component {
     const { img } = this.props;
     return (
       <div className="DetailSlider" key={img.idx}>
-        <img src={img.img} alt="" />
+        <img src={img.img} alt="productImg" />
       </div>
     );
   }

@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Footer from "../src/Components/Footer/Footer";
 import Nav from "../src/Components/Nav/Nav";
 import Main from "../src/Pages/Main/Main";
@@ -7,6 +9,11 @@ import SignUp from "../src/Pages/SignUp/SignUp";
 import Login from "../src/Pages/Login/Login";
 import ProductList from "../src/Pages/ProductList/ProductList";
 import ProductDetail from "../src/Pages/ProductDetail/ProductDetail";
+import BookMarkList from "./Pages/BookMark/BookMarkList";
+import Reservation from "./Pages/Reservation/Reservation";
+
+import UploadImage from "../src/Pages/UploadImage/UploadImage";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class Routes extends React.Component {
   render() {
@@ -14,8 +21,6 @@ class Routes extends React.Component {
       <Router>
         <Nav />
         <Switch>
-          <Route exact path="/Footer" component={Footer} />
-          <Route exact path="/Nav" component={Nav} />
           <Route exact path="/" component={Main} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/Login" component={Login} />
@@ -25,7 +30,11 @@ class Routes extends React.Component {
             component={ProductDetail}
           />
           <Route exact path="/ProductList" component={ProductList} />
+          <Route exact path="/BookMarkList" component={BookMarkList} />
+          <Route exact path="/Reservation" component={Reservation} />
+          <Route exact path="/UploadImage" component={UploadImage} />{" "}
         </Switch>
+        <Footer />
       </Router>
     );
   }
