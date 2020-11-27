@@ -4,19 +4,18 @@ import { withRouter } from "react-router-dom";
 
 class Slider extends Component {
   goToDetail = () => {
-    this.props.history.push(
-      `/ProductList/ProductDetail/${this.props.info.place_id}`
-    );
+    this.props.history.push(`/place/detail/${this.props.info.place_id}`);
   };
 
   render() {
     const { info } = this.props;
-    const averageRatingArr = info.rating.map((el) => {
-      return el.starpoint;
-    });
-    const average = averageRatingArr.reduce((pre, cur) => {
-      return pre + cur / averageRatingArr.length;
-    }, 0);
+    console.log(info, info);
+    // const averageRatingArr = info.ratings.map((el) => {
+    //   return el.starpoint;
+    // });
+    // const average = averageRatingArr.reduce((pre, cur) => {
+    //   return pre + cur / averageRatingArr.length;
+    // }, 0);
 
     return (
       <li
@@ -36,7 +35,7 @@ class Slider extends Component {
               </div>
               <div className="slider-content-inner-bottom">
                 <div className="slider-content-inner-price">
-                  {info.price.toLocaleString(2)}
+                  {info.price_per_hour.toLocaleString(2)}
                   /시간
                 </div>
                 <div className="slider-content-inner-rateAndMark">
@@ -44,12 +43,14 @@ class Slider extends Component {
                     <div className="stars-outer">
                       <div
                         className="stars-inner"
-                        style={{ width: `${average * 20}%` }}
+                        style={{
+                          width: `${info.starpoint_avg * 18}%`,
+                        }}
                       ></div>
                     </div>
-                    <span className="number-rating">
-                      {averageRatingArr.length}
-                    </span>
+                    <div className="number-rating">
+                      {info.ratings === 0 ? "평가없음" : info.ratings}
+                    </div>
                   </div>
                   <div className="slider-content-inner-mark">
                     <i className="far fa-bookmark"> </i>
