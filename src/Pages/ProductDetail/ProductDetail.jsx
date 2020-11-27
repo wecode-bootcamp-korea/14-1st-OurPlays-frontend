@@ -86,7 +86,7 @@ class ProductDetail extends Component {
 
   componentDidMount() {
     console.log("ProductDetail componentDidMount");
-    fetch(`${YA401_API}/place/detail/${this.props.match.params.place_id}`, {
+    fetch(`${API}/place/detail/${this.props.match.params.place_id}`, {
       method: "GET",
       headers: { Authorization: localStorage.getItem("token") },
     })
