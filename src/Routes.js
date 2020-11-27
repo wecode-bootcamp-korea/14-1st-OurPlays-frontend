@@ -6,6 +6,7 @@ import Footer from "../src/Components/Footer/Footer";
 import Nav from "../src/Components/Nav/Nav";
 import Main from "../src/Pages/Main/Main";
 import SignUp from "../src/Pages/SignUp/SignUp";
+import Auth from "../src/Pages/SignUp/components/Auth";
 import Login from "../src/Pages/Login/Login";
 import ProductList from "../src/Pages/ProductList/ProductList";
 import ProductDetail from "../src/Pages/ProductDetail/ProductDetail";
@@ -23,10 +24,11 @@ class Routes extends React.Component {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/Auth" component={Auth} />
           <Route exact path="/Login" component={Login} />
           <Route
             exact
-            path="/ProductList/ProductDetail/:place_id"
+            path="/place/detail/:place_id"
             component={ProductDetail}
           />
           <Route exact path="/ProductList" component={ProductList} />

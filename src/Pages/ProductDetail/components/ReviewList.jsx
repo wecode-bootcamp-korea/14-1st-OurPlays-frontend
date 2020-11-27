@@ -28,13 +28,12 @@ class DetailSlider extends Component {
 
   componentDidUpdate(prevProps) {
     console.log("ReviewList CDUpadate");
-    console.log(prevProps.ratings.length, this.props.ratings.length, "length");
+    console.log(prevProps.isDelete, this.props.isDelete, "isDelete");
     if (
       prevProps.place_id !== this.props.place_id ||
       (prevProps.isShowModal === true && this.props.isShowModal === false) ||
       prevProps.ratings.length !== this.props.ratings.length
     ) {
-      console.log(prevProps.isShowModal, this.props.isShowModal);
       fetch(
         `${YA401_API}/place/${
           this.props.place_id && this.props.place_id

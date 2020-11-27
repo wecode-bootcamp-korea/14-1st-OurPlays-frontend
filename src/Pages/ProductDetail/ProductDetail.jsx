@@ -82,6 +82,7 @@ class ProductDetail extends Component {
     ratings: [],
     isArea: true,
     reviewLists: [],
+    isDelete: false,
   };
 
   componentDidMount() {
@@ -235,12 +236,16 @@ class ProductDetail extends Component {
     })
       .then((res) => res.json())
       .then((res) => {
-        const filteredComments = this.state.ratings.filter(
-          (comment) => comment.id !== id
-        );
-        this.setState({
-          ratings: filteredComments,
-        });
+        if (res.message === "SUCCESS") {
+          console.log("--------------삭제------------------");
+          const filteredComments = this.state.ratings.filter(
+            (comment) => comment.id !== id
+          );
+          this.setState({
+            ratings: filteredComments,
+            isDelete: true,
+          });
+        }
       });
   };
 
@@ -684,6 +689,7 @@ class ProductDetail extends Component {
                   </div>
                 </div>
                 <ReviewList
+                  isDelete={this.state.isDelete}
                   place_id={placeinfo.place_id}
                   ratings={ratings}
                   isHover={isHover}
