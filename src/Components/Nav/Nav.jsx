@@ -19,8 +19,9 @@ class Nav extends Component {
   }
 
   scroll = () => {
+    const isSticky = window.scrollY > 5;
     this.setState({
-      isSticky: window.scrollY > 10,
+      isSticky,
     });
   };
 
@@ -54,7 +55,7 @@ class Nav extends Component {
                 alt="search-icon"
               />
             </div>
-            <NAVICONS Link="Link" />
+            <NAVICONS link="Link" />
           </section>
         </section>
         <div className="border-without-side"> </div>
