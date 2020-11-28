@@ -3,6 +3,7 @@
 
 ## OurPlays
 - 소개: hourplace라는 홈페이지를 클론하여 Ourplays라는 사이트를 구현해 보았습니다.
+- 영상: 추후 업로드 예정
 
 ## Our convention
 - html css = 일반 대쉬
