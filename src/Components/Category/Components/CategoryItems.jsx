@@ -1,44 +1,45 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "../Category.scss";
 
 class CategoryItems extends Component {
   state = {
-    PLACEINFO: [],
+    productlists: [],
   };
 
-  componentDidMount() {
-    fetch("/Data/PlaceData.json")
+  componentDidMount = () => {
+    fetch(`http://10.58.7.159:8000/place`, {
+      headers: {
+        Authorization: localStorage.getItem("token") || "",
+      },
+    })
       .then((res) => res.json())
-      // .then((res) => {
-      //   const datas = res.information;
-      //   console.log(datas);
-      //   const current = datas.find((el) => el.id == 0);
-      //   console.log(current);
-      //   this.setState({ PLACEINFO: current });
-      // });
-      .then((res) => this.setState({ PLACEINFO: res.information }));
-  }
+      .then((res) =>
+        this.setState({
+          productlists: res.information,
+        })
+      );
+  };
 
-  // componentDidMount() {
-  //   fetch(`http://10.58.3.74:8000/place/%{props.id}`)
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ PLACEINFO: res.information }));
-  // }
+  goToList = (id) => {
+    console.log(id);
+    console.log(this.state.productlists);
+    this.props.history.push(`/place/${id}`);
+  };
 
   render() {
     return (
       <div className="category-items">
         {CATEGORYITEMS.map((categoryItem) => {
           return (
-            <Link
+            <div
               key={categoryItem.id}
               className="category-item"
-              to={`/ProductList/${categoryItem.categoryName}`}
+              onClick={this.goToList}
             >
               <img src={categoryItem.src} alt={categoryItem.alt} />
-              <div className="category-name"> {categoryItem.categoryName} </div>
-            </Link>
+              <div className="category-name">{categoryItem.categoryName}</div>
+            </div>
           );
         })}
       </div>
@@ -46,7 +47,7 @@ class CategoryItems extends Component {
   }
 }
 
-export default CategoryItems;
+export default withRouter(CategoryItems);
 
 const CATEGORYITEMS = [
   {

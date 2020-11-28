@@ -30,7 +30,7 @@ class Routes extends React.Component {
             path="/place/detail/:place_id"
             component={ProductDetail}
           />
-          <Route exact path="/ProductList" component={ProductList} />
+          <Route exact path="/place/:id" component={ProductList} />
           <Route exact path="/BookMarkList" component={BookMarkList} />
           <Route exact path="/Reservation" component={Reservation} />
           <Route exact path="/UploadImage" component={UploadImage} />{" "}

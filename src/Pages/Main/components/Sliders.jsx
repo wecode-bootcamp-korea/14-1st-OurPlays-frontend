@@ -12,7 +12,7 @@ class Sliders extends Component {
   };
 
   componentDidMount = () => {
-    fetch(`${YA401_API}/place`, {
+    fetch(`${API}/place`, {
       headers: {
         Authorization: localStorage.getItem("token") || "",
       },
