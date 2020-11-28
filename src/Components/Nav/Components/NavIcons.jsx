@@ -1,49 +1,75 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../Nav.scss";
 
 class NavIcons extends Component {
+  constructor() {
+    super();
+    this.state = {
+      login: false,
+    };
+  }
+      () {
+    const isToken = localStorage.setItem("token");
+    if (isToken) {
+      this.setState({ login: true });
+    } else {
+      this.setState({ login: false });
+    }
+  }
+
   render() {
     return (
       <div className="nav-icons">
-        {NAVICONS.map((navIcon) => {
-          return (
-            <Link key={navIcon.id} className="nav-icon" to={navIcon.linkTo}>
-              {navIcon.name}
-            </Link>
-          );
-        })}
+        {this.state.login ? (
+          <Link className="nav-icon" to="/">
+            아워플레이스 소개
+          </Link>
+        ) : (
+          <Link className="nav-icon" to="/">
+            아워플레이스 소개
+          </Link>
+        )}
+        {this.state.login ? (
+          <Link className="nav-icon" to="/">
+            관심장소
+          </Link>
+        ) : (
+          <Link className="nav-icon" to="/">
+            관심장소
+          </Link>
+        )}
+        {this.state.login ? (
+          <Link className="nav-icon" to="/">
+            예약관리
+          </Link>
+        ) : (
+          <Link className="nav-icon" to="/">
+            예약관리
+          </Link>
+        )}
+        {this.state.login ? (
+          <Link className="nav-icon" to="/SignUp">
+            회원가입
+          </Link>
+        ) : (
+          <Link className="nav-icon" to="/SignUp">
+            회원가입
+          </Link>
+        )}
+        {this.state.login ? (
+          <Link onClick={this.changeMode} className="nav-icon" to="/">
+            로그아웃
+          </Link>
+        ) : (
+          <Link className="nav-icon" to="/Login">
+            로그인
+          </Link>
+        )}
       </div>
     );
   }
 }
 
 export default NavIcons;
-
-const NAVICONS = [
-  {
-    id: 0,
-    name: "아워플레이스 소개",
-    linkTo: "/Introduce",
-  },
-  {
-    id: 1,
-    name: "촬영장소 등록하기",
-    linkTo: "/Register",
-  },
-  {
-    id: 2,
-    name: "이용방법",
-    linkTo: "/howToUse",
-  },
-  {
-    id: 3,
-    name: "회원가입",
-    linkTo: "/SignUp",
-  },
-  {
-    id: 4,
-    name: "로그인",
-    linkTo: "/Login",
-  },
-];
