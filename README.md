@@ -30,7 +30,9 @@
 - class를 이용한 ReactJS, Reack-Router, SASS 등등
 
 ### Back-end
-- Django, Python, KAKAO map API, Naver cloud 문자인증 
+- Django Python, KAKAO map API, Naver cloud 문자인증 등등
+- Database Modeling (AQueryTool)
+![](https://images.velog.io/images/jinybear/post/527bb472-d22e-44ba-ab3f-d950ad82e877/hourplace_20201129_31_24.png)
 
 ## OurPlays 담당 구현사항 
 ### Front-end 
@@ -38,7 +40,7 @@
 - 박영준 : Nav Bar, Footer, ProductList, Login, Category
 ### Back-end
 - 백승진 : Database Modeling, Reservation App View 작업, 문자인증 기능 구현,
-- 김영환 : Database Modeling, Place View 작업, 카카오 API 연결
+- 김영환 : Database Modeling,
 - 김영주 : Database Modeling,
 
 ## 마치며...
@@ -47,5 +49,5 @@
 - 박영준: 개발 시작후 처음으로 해보는 팀프로젝트였습니다. 여러가지로 부족한 점도 많았고 아쉬운점도 많았지만 팀원들과 함께 호흡해보며 많은걸 배웠습니다. 함께 성장해 나갈수 있는 시간을 보낼수 있었던거같아 좋았습니다.
 ### Back-end
 - 백승진: 팀원분들과 함께 즐기면서 작업할 수 있어서 너무 좋았습니다. 한편으로는 제가 PM으로써, 개발자로써 잘 했는지 되돌아보게 됩니다. 2주간 좋은 경험이었습니다. 고맙습니다. 여러분    
-- 김영환: 너무 좋은 팀원님들을 만나서 즐겁게 작업할수 있었습니다. 첫 프로젝트여서 그런지 부족한 부분이 많은것을 느끼고 더 좋은 팀원이 되도록 노력하겠습니다 감사합니다.
+- 김영환: 
 - 김영주: 
