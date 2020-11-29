@@ -1,0 +1,190 @@
+* {
+    font-family: 'Nanum Gothic Coding', monospace;
+}
+
+.MainList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .product-list {
+        margin: 123px 0 200px 0;
+        width: 1024px;
+        .header {
+            padding-bottom: 50px;
+            .title {
+                height: 67px;
+                padding-top: 33.5px;
+                text-align: center;
+                font-size: 32px;
+                font-weight: bold;
+            }
+            .filter {
+                width: 100%;
+                height: 44px;
+                margin-top: 40px;
+                position: relative;
+                .control-buttons {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    display: flex;
+                    width: 321px;
+                    height: 44px;
+                    font-size: 12px;
+                    .control-button {
+                        position: relative;
+                        &:last-child {
+                            border-right: 1px solid lightgray;
+                        }
+                        .button-date {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 107px;
+                            height: 44px;
+                            padding: 0 16px;
+                            border: 1px solid lightgray;
+                            border-right: none;
+                            font-size: 12px;
+                            background-color: white;
+                            img {
+                                width: 17px;
+                            }
+                        }
+                        .button-count {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 107px;
+                            height: 44px;
+                            padding: 0 16px;
+                            border: 1px solid lightgray;
+                            border-right: none;
+                            font-size: 12px;
+                            background-color: white;
+                            img {
+                                width: 17px;
+                            }
+                        }
+                        .button-price {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            width: 107px;
+                            height: 44px;
+                            padding: 0 16px;
+                            border: 1px solid lightgray;
+                            border-right: none;
+                            font-size: 12px;
+                            background-color: white;
+                            img {
+                                width: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .room-lists {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            .room-list {
+                width: 244px;
+                height: 274px;
+                margin: 0 16px 40px 0;
+                .room-list-link {
+                    text-decoration: none;
+                    &:visited {
+                        text-decoration: none;
+                    }
+                    .room-list-imgs {
+                        position: relative;
+                        .room-list-img {
+                            width: 100%;
+                            height: 168px;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        .bookmark {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            right: 0px;
+                            bottom: 4px;
+                            width: 55px;
+                            height: 55px;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                            .bookmark-empty {
+                                width: 24px;
+                                height: 24px;
+                                &:hover {
+                                    width: 27px;
+                                    height: 27px;
+                                    transition: 0.1s;
+                                }
+                            }
+                        }
+                    }
+                    .room-list-text {
+                        width: 100%;
+                        height: 97px;
+                        padding-top: 10px;
+                        .room-list-region {
+                            font-size: 13px;
+                            font-weight: bold;
+                            color: rgb(0, 106, 213);
+                        }
+                        .room-list-title {
+                            height: 24px;
+                            margin-top: 8px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #3b3e4d;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                        .room-list-price {
+                            margin-top: 8px;
+                            font-size: 14px;
+                            color: black;
+                            .big-text {
+                                font-weight: bold;
+                            }
+                            .small-text {
+                                font-size: 11px;
+                                font-weight: 400px;
+                            }
+                        }
+                        .room-list-grade {
+                            display: flex;
+                            margin-top: 3px;
+                            color: black;
+                            .star-icons {
+                                img {
+                                    width: 17px;
+                                }
+                            }
+                            .review-number {
+                                display: flex;
+                                align-items: center;
+                                margin-left: 2px;
+                                font-size: 13px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.display-none {
+    display: none;
+}

@@ -223,7 +223,7 @@ class SignUpForm extends Component {
                 }}
               />
             </div>
-            <Link to="/" className="back-to-login">
+            <Link to="/Login" className="back-to-login">
               <div> 로그인으로 돌아가기 </div>
               <i class="fas fa-arrow-right"> </i>
             </Link>

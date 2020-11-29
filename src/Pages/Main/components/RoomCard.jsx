@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import RoomListGrade from "./RoomListGrade";
-import Bookmark from "./Bookmark";
-import "../ProductList.scss";
+import "./MainList.scss";
 
-class RoomList extends Component {
+class RoomCard extends Component {
   constructor() {
     super();
     this.state = {};
@@ -16,13 +14,13 @@ class RoomList extends Component {
   };
 
   render() {
-    const { PLACEINFO } = this.props;
-    console.log(PLACEINFO);
+    const { MainLists } = this.props;
+    console.log(this.props.MainLists);
     return (
       <>
-        {" "}
-        {PLACEINFO &&
-          PLACEINFO.map((placeinfo) => {
+        {MainLists &&
+          MainLists.map((placeinfo) => {
+            console.log(placeinfo);
             return (
               <div className="room-list">
                 <div className="room-list-link">
@@ -33,7 +31,6 @@ class RoomList extends Component {
                         className="room-list-img"
                         src={placeinfo.img_url}
                       />{" "}
-                      <Bookmark />
                     </div>{" "}
                   </div>{" "}
                   <div
@@ -44,26 +41,31 @@ class RoomList extends Component {
                       className="room-list-region"
                       onClick={() => this.goToDetail(placeinfo.place_id)}
                     >
+                      {" "}
                       {placeinfo.category}/{placeinfo.region}{" "}
                     </div>{" "}
                     <div
                       className="room-list-title"
                       onClick={() => this.goToDetail(placeinfo.place_id)}
                     >
+                      {" "}
                       {placeinfo.title}{" "}
                     </div>{" "}
                     <div className="room-list-price">
                       <span className="big-text">
                         {" "}
-                        {(1 * placeinfo.price_per_hour).toLocaleString(2)}{" "}
+                        {placeinfo.price_per_hour.toLocaleString(2)}{" "}
                       </span>{" "}
                       <span className="small-text"> 원 / 시간 </span>{" "}
                     </div>{" "}
                     <div className="room-list-grade">
-                      <RoomListGrade placeinfo={placeinfo} /> <br />
-                      <div className="review-number">
-                        <span> {placeinfo.ratings} </span>{" "}
-                      </div>{" "}
+                      {" "}
+                      <div class="stars-outer">
+                        <div
+                          class="stars-inner"
+                          style={{ width: `${placeinfo.starpoint_avg * 20}%` }}
+                        ></div>
+                      </div>
                     </div>{" "}
                   </div>{" "}
                 </div>{" "}
@@ -74,4 +76,5 @@ class RoomList extends Component {
     );
   }
 }
-export default withRouter(RoomList);
+
+export default withRouter(RoomCard);

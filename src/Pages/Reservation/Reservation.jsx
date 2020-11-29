@@ -32,7 +32,7 @@ class Reservation extends Component {
 
   componentDidMount() {
     console.log("mark cdm");
-    fetch(`${YA401_API}/reservation`, {
+    fetch(`${API}/reservation`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

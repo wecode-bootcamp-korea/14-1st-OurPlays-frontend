@@ -4,10 +4,11 @@ import "./Alert.scss";
 class Alert extends Component {
   render() {
     const { message, condition, color } = this.props;
+    console.log(this.props);
     return (
       <div
         className={
-          condition ? `alert alert-${color} hide` : `alert alert-${color} show`
+          condition ? `alert alert-${color} show` : `alert alert-${color} hide`
         }
       >
         <i className="fas fa-exclamation-circle"> {message} </i>

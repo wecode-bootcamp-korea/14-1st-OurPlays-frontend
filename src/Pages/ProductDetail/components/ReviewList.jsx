@@ -18,8 +18,7 @@ class DetailSlider extends Component {
   };
 
   componentDidMount() {
-    console.log("ReviewList CDM");
-
+    // console.log("ReviewList CDM");
     // this.setState({
     //   place_id: this.props.place_id,
     //   ratings: this.props.ratings,
@@ -27,16 +26,15 @@ class DetailSlider extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("ReviewList CDUpadate");
+    // console.log("ReviewList CDUpadate");
     console.log(prevProps.ratings.length, this.props.ratings.length, "length");
     if (
       prevProps.place_id !== this.props.place_id ||
       (prevProps.isShowModal === true && this.props.isShowModal === false) ||
       prevProps.ratings.length !== this.props.ratings.length
     ) {
-      console.log(prevProps.isShowModal, this.props.isShowModal);
       fetch(
-        `${YA401_API}/place/${
+        `${API}/place/${
           this.props.place_id && this.props.place_id
         }/ratings?limit=${LIMIT}`,
         {
@@ -46,7 +44,7 @@ class DetailSlider extends Component {
       )
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
+          console.log(res, "컴디업 결과");
           if (res.message === "SUCCESS") {
             this.setState({
               totalLength: res.informations,
@@ -64,12 +62,11 @@ class DetailSlider extends Component {
   // };
 
   fetchProduct = (e) => {
-    console.log("fetchProduct execute");
     let offset = e?.target.dataset.idx * LIMIT;
     // let offset = cur * LIMIT;
 
     fetch(
-      `${YA401_API}/place/${
+      `${API}/place/${
         this.props.place_id && this.props.place_id
       }/ratings?offset=${offset}&limit=${LIMIT}`,
       {
@@ -88,6 +85,7 @@ class DetailSlider extends Component {
   render() {
     const { handleDelete, isHover, ratings } = this.props;
     const { currentPage, postsPerPage, reviewLists, totalLength } = this.state;
+    console.log("review list", reviewLists);
     // const indexOfLastPost = currentPage * postsPerPage;
     // const indexOfFirstPost = indexOfLastPost - postsPerPage;
     // const currentPosts = ratings.slice(indexOfFirstPost, indexOfLastPost);
@@ -109,6 +107,7 @@ class DetailSlider extends Component {
               return (
                 <ReviewElement
                   isHover={isHover}
+                  id_for_delete={reviewLists}
                   data={rating}
                   handleDelete={() => {
                     handleDelete(rating.id);

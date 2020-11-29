@@ -15,19 +15,18 @@ class MapElement extends Component {
         let container = document.getElementById("map");
         let options = {
           center: new kakao.maps.LatLng(
-            `${this.props.lat}`,
-            `${this.props.lon}`
+            `${this.props.lat && this.props.lat}`,
+            `${this.props.lon && this.props.lon}`
           ),
           level: 4,
         };
         const map = new kakao.maps.Map(container, options);
         let markerPosition = new kakao.maps.LatLng(
-          `${this.props.lat}`,
-          `${this.props.lon}`
+          `${this.props.lat && this.props.lat}`,
+          `${this.props.lon && this.props.lon}`
         );
         let marker = new kakao.maps.Marker({ position: markerPosition });
         marker.setMap(map);
-        map.relayout();
       });
     };
   }

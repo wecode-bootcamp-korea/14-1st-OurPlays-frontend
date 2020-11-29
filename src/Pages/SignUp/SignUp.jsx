@@ -3,6 +3,7 @@ import SignUpForm from "./components/SignUpForm";
 import Alert from "./components/Alert";
 import { API } from "../../config";
 import "./SignUp.scss";
+import { FaSadCry } from "react-icons/fa";
 
 let _alert;
 class SignUp extends Component {
@@ -39,17 +40,12 @@ class SignUp extends Component {
     anotherPath,
     name
   ) => {
-    if (this.state.passwordBoolean) {
-      setTimeout(() => {
-        this.setState({
-          isShow: true,
-          passwordBoolean: false,
-          emailBoolean: false,
-          existBoolean: false,
-          successBoolean: false,
-        });
-      }, 1000);
-    }
+    setTimeout(() => {
+      this.setState({
+        isShow: false,
+      });
+    }, 2000);
+
     this.setState({
       email,
       password,
@@ -57,8 +53,13 @@ class SignUp extends Component {
       loginPath,
       anotherPath,
       name,
-      isShow: false,
+      isShow: true,
+      passwordBoolean: false,
+      emailBoolean: false,
+      existBoolean: false,
+      successBoolean: false,
     });
+
     fetch(`${API}/user/signup`, {
       method: "POST",
       body: JSON.stringify({
@@ -67,12 +68,11 @@ class SignUp extends Component {
         rePassword: rePassword,
         loginPath: loginPath,
         anotherPath: anotherPath,
-        name: name,
+        name: "김동하",
       }),
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         if (res.message === "BAD_EMAIL_REQUEST") {
           this.setState({ emailBoolean: true, isShow: true });
         }
@@ -117,15 +117,15 @@ class SignUp extends Component {
         />
       );
     }
-    if (this.state.successBoolean) {
-      _alert = (
-        <Alert
-          condition={this.state.isShow}
-          message={this.state.successMessage}
-          color={this.state.successColor}
-        />
-      );
-    }
+    // if (this.state.successBoolean) {
+    //   _alert = (
+    //     <Alert
+    //       condition={this.state.isShow}
+    //       message={this.state.successMessage}
+    //       color={this.state.successColor}
+    //     />
+    //   );
+    // }
 
     return (
       <section className="SignUp">
