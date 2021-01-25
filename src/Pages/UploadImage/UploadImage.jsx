@@ -51,12 +51,12 @@ class ImageUpload extends Component {
             src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
             alt="로고"
           />
-          <h1> 사진 등록하기 </h1>
-        </section>
+          <h1> 사진 등록하기 </h1>{" "}
+        </section>{" "}
         <section className="login-body">
           <div className="label">
             <div className="email-label">
-              <span> 우리집 이름 </span>
+              <span> 우리집 이름 </span>{" "}
               <input
                 type="text"
                 placeholder="공간의 이름이 무엇인가요?"
@@ -64,10 +64,10 @@ class ImageUpload extends Component {
                 onChange={(e) => {
                   this.handleChangeValue(e);
                 }}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
             <div className="email-label">
-              <span> 시간 당 가격 </span>
+              <span> 시간 당 가격 </span>{" "}
               <input
                 type="number"
                 placeholder="시간 당 가격을 입력해주세요."
@@ -75,10 +75,10 @@ class ImageUpload extends Component {
                 onChange={(e) => {
                   this.handleChangeValue(e);
                 }}
-              />
-            </div>
+              />{" "}
+            </div>{" "}
             <div className="password-label">
-              <span> 사진 업로드 </span>
+              <span> 사진 업로드 </span>{" "}
               <input
                 type="file"
                 placeholder="사진 업로드"
@@ -88,10 +88,10 @@ class ImageUpload extends Component {
                 onChange={(e) => {
                   this.handleAddFile(e);
                 }}
-              />
-            </div>
-          </div>
-        </section>
+              />{" "}
+            </div>{" "}
+          </div>{" "}
+        </section>{" "}
         <section className="login-footer">
           <div className="login-button">
             <button
@@ -100,15 +100,15 @@ class ImageUpload extends Component {
                 this.handleUpload();
               }}
             >
-              로그인
-            </button>
-          </div>
+              사진 올리기{" "}
+            </button>{" "}
+          </div>{" "}
           <div className="manage-member">
             <div onClick={this.sendToSignUp} className="sign-up">
-              <h1> 회원가입 </h1>
-            </div>
-          </div>
-        </section>
+              {" "}
+            </div>{" "}
+          </div>{" "}
+        </section>{" "}
       </div>
     );
   }

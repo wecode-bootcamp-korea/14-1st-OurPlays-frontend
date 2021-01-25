@@ -3,8 +3,11 @@ import Sliders from "./components/Sliders";
 import LandingPage from "./components/LandingPage";
 import Category from "../../Components/Category/Category";
 import ChatBot from "./components/ChatBot";
+import MainList from "./components/MainList";
+
 import "./Main.scss";
 import "../../Styles/common.scss";
+import "./components/MainList.scss";
 
 class Main extends Component {
   state = {
@@ -31,6 +34,7 @@ class Main extends Component {
         <LandingPage />
         <Category />
         <Sliders />
+        <MainList />
       </div>
     );
   }

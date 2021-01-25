@@ -22,7 +22,13 @@ class ReviewElement extends Component {
             <span className="name"> {user_name} </span>
             <span className="time"> November 2020 </span>
           </div>
-          <i class="far fa-trash-alt delete-comment" onClick={handleDelete}></i>
+          <i
+            class="far fa-trash-alt delete-comment"
+            onClick={(e) => {
+              e.preventDefault();
+              handleDelete();
+            }}
+          ></i>
         </div>
         <div className="card-content-wrap">
           <div class="stars-outer modal-star">

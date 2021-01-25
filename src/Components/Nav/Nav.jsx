@@ -19,7 +19,7 @@ class Nav extends Component {
   }
 
   scroll = () => {
-    const isSticky = window.scrollY > 5;
+    const isSticky = window.scrollY > 10;
     this.setState({
       isSticky,
     });
@@ -35,7 +35,7 @@ class Nav extends Component {
         >
           <section className="main-nav">
             <div className="logo-icon">
-              <Link to="/">
+              <Link to="/Main">
                 <img
                   src="https://s3.hourplace.co.kr/web/images/logo_blue.svg"
                   alt="logo-img"

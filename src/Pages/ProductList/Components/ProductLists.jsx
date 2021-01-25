@@ -17,20 +17,6 @@ class ProductLists extends Component {
     };
   }
 
-  componentDidMount = () => {
-    fetch(`${API}/place`, {
-      headers: {
-        Authorization: localStorage.getItem("token") || "",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) =>
-        this.setState({
-          productlists: res.information,
-        })
-      );
-  };
-
   openModalPrice = () => {
     this.setState({ isModal: !this.state.isModal });
   };
@@ -45,10 +31,11 @@ class ProductLists extends Component {
 
   render() {
     const { modal, isModal } = this.state;
-    const { productlists } = this.state;
+    const { productlists } = this.props;
+    // console.log(productlists[0].category);
     return (
-      <>
-        {productlists.length > 0 ? (
+      productlists.length > 0 && (
+        <>
           <div className="ProductLists">
             <div className={modal ? "" : "display-none"}>
               <ModalCount
@@ -65,7 +52,11 @@ class ProductLists extends Component {
             </div>
             <div className="product-list">
               <section className="header">
-                <div className="title">원룸</div>
+                <div className="title">
+                  {" "}
+                  {productlists[0].category ? productlists[0].category : null}
+                  {/* {productlists.category ? productlists.category : null} */}
+                </div>
                 <div className="filter">
                   <ControlButtons
                     openModalPrice={this.openModalPrice}
@@ -79,10 +70,9 @@ class ProductLists extends Component {
               <Buttons />
             </div>
           </div>
-        ) : null}
-      </>
+        </>
+      )
     );
   }
 }
-
 export default ProductLists;

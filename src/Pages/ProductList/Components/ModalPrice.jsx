@@ -25,7 +25,10 @@ class ModalPrice extends Component {
     const { minPrice, maxPrice } = this.state;
     const { PLACEINFO } = this.props;
     const filteredPlaceInfo = PLACEINFO.filter((placeinfo) => {
-      return placeinfo.price <= maxPrice && placeinfo.price >= minPrice;
+      return (
+        placeinfo.price_per_hour <= maxPrice &&
+        placeinfo.price_per_hour >= minPrice
+      );
     });
     this.props.filterLists(filteredPlaceInfo);
   };
@@ -34,17 +37,21 @@ class ModalPrice extends Component {
     const { minPrice, maxPrice } = this.state;
     const { PLACEINFO } = this.props;
     const filteredPlaceInfo = PLACEINFO.filter((placeinfo) => {
-      return placeinfo.price >= 90000;
+      return placeinfo.price_per_hour >= 90000;
     });
     const activateMin = minPrice.length > 0;
     const activateMax = maxPrice.length > 0;
+
     return (
       <div className="ModalPrice">
         <div className="modal">
-          <h3>시간당 금액</h3>
-        </div>
+          <h3> 시간당 금액 </h3>{" "}
+        </div>{" "}
         <div className="text-and-input">
-          <div className="text-info">원하시는 시간당 금액을 설정해 주세요.</div>
+          <div className="text-info">
+            {" "}
+            원하시는 시간당 금액을 설정해 주세요.{" "}
+          </div>{" "}
           <div className="input-boxes">
             <div className="input-box-min">
               <input
@@ -53,10 +60,10 @@ class ModalPrice extends Component {
                 placeholder="최소금액"
               />
               <span className={activateMin ? "activate" : "deactivate"}>
-                원
-              </span>
-            </div>
-            <div className="dash">-</div>
+                원{" "}
+              </span>{" "}
+            </div>{" "}
+            <div className="dash"> - </div>{" "}
             <div className="input-box-max">
               <input
                 onChange={this.handleMaxPrice}
@@ -64,17 +71,17 @@ class ModalPrice extends Component {
                 placeholder="최대금액"
               />
               <span className={activateMax ? "activate" : "deactivate"}>
-                원
-              </span>
-            </div>
-          </div>
-        </div>
+                원{" "}
+              </span>{" "}
+            </div>{" "}
+          </div>{" "}
+        </div>{" "}
         <div className="delete-confirm">
-          <button className="delete">삭제</button>
+          <button className="delete"> 삭제 </button>{" "}
           <button onClick={this.filterLists} className="confirm">
-            확인
-          </button>
-        </div>
+            확인{" "}
+          </button>{" "}
+        </div>{" "}
       </div>
     );
   }

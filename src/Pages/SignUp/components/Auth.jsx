@@ -21,7 +21,7 @@ class Auth extends Component {
   };
 
   toSubmit = () => {
-    fetch("http://10.58.7.159:8000/user/authSMS", {
+    fetch("http://13.125.154.100:8000/user/authSMS", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ class Auth extends Component {
   toServer = () => {
     console.log(this.state.userNumber, this.state.validation);
     fetch(
-      `http://10.58.7.159:8000/user/authSMS?phone_number=${this.state.userNumber}&auth_number=${this.state.validation}`,
+      `http://13.125.154.100:8000/user/authSMS?phone_number=${this.state.userNumber}&auth_number=${this.state.validation}`,
       {
         method: "GET",
         headers: {
@@ -71,6 +71,7 @@ class Auth extends Component {
           />
           <h1> 문자 인증 </h1>
         </section>
+        <Alert />
         <section className="login-body">
           <div className="label">
             <div className="email-label">

@@ -17,26 +17,14 @@ class DetailSlider extends Component {
     offset: 0,
   };
 
-  componentDidMount() {
-    console.log("ReviewList CDM");
-
-    // this.setState({
-    //   place_id: this.props.place_id,
-    //   ratings: this.props.ratings,
-    // });
-  }
-
   componentDidUpdate(prevProps) {
-    console.log("ReviewList CDUpadate");
-    console.log(prevProps.ratings.length, this.props.ratings.length, "length");
     if (
       prevProps.place_id !== this.props.place_id ||
       (prevProps.isShowModal === true && this.props.isShowModal === false) ||
       prevProps.ratings.length !== this.props.ratings.length
     ) {
-      console.log(prevProps.isShowModal, this.props.isShowModal);
       fetch(
-        `${YA401_API}/place/${
+        `${API}/place/${
           this.props.place_id && this.props.place_id
         }/ratings?limit=${LIMIT}`,
         {
@@ -46,10 +34,9 @@ class DetailSlider extends Component {
       )
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
+          console.log(res, "컴디업 결과");
           if (res.message === "SUCCESS") {
             this.setState({
-              totalLength: res.informations,
               reviewLists: res.informations,
             });
           }
@@ -57,19 +44,11 @@ class DetailSlider extends Component {
     }
   }
 
-  // paginate = (pageNumber) => {
-  //   this.setState({
-  //     currentPage: pageNumber,
-  //   });
-  // };
-
   fetchProduct = (e) => {
-    console.log("fetchProduct execute");
     let offset = e?.target.dataset.idx * LIMIT;
-    // let offset = cur * LIMIT;
 
     fetch(
-      `${YA401_API}/place/${
+      `${API}/place/${
         this.props.place_id && this.props.place_id
       }/ratings?offset=${offset}&limit=${LIMIT}`,
       {
@@ -88,67 +67,30 @@ class DetailSlider extends Component {
   render() {
     const { handleDelete, isHover, ratings } = this.props;
     const { currentPage, postsPerPage, reviewLists, totalLength } = this.state;
-    // const indexOfLastPost = currentPage * postsPerPage;
-    // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    // const currentPosts = ratings.slice(indexOfFirstPost, indexOfLastPost);
-
-    // console.log(reviewLists && reviewLists, "reviewLIST, review list");
-    // console.log(
-    //   ratings && ratings,
-    //   "props",
-    //   this.state.ratings && this.state.ratings,
-    //   "state"
-    // );
+    console.log("review list", reviewLists);
 
     return (
       <div className="product-detail-review-contents">
         <div className="product-detail-review-content">
-          {" "}
           {reviewLists &&
             reviewLists.map((rating) => {
               return (
                 <ReviewElement
                   isHover={isHover}
+                  id_for_delete={reviewLists}
                   data={rating}
                   handleDelete={() => {
                     handleDelete(rating.id);
                   }}
                 />
               );
-            })}{" "}
-          {/* {currentPosts &&
-                                                                            currentPosts.map((rating) => {
-                                                                              return (
-                                                                                <ReviewElement
-                                                                                  isHover={isHover}
-                                                                                  data={rating}
-                                                                                  handleDelete={() => {
-                                                                                    handleDelete(rating.id);
-                                                                                  }}
-                                                                                />
-                                                                              );
-                                                                            })} */}{" "}
-          {/* {comments.map((comment) => {
-                                                                                                                            return (
-                                                                                                                              <ReviewElement
-                                                                                                                                ratings={ratings}
-                                                                                                                                isHover={isHover}
-                                                                                                                                data={comment}
-                                                                                                                                handleDelete={() => {
-                                                                                                                                  handleDelete(comment.id);
-                                                                                                                                }}
-                                                                                                                              />
-                                                                                                                            );
-                                                                                                                          })}{ */}{" "}
-        </div>{" "}
+            })}
+        </div>
         <Pagination
           fetchProduct={this.fetchProduct}
           total={ratings && ratings.length}
           limit={LIMIT}
-          // postsPerPage={postsPerPage}
-          // totalPosts={ratings.length}
-          // paginate={this.paginate}
-        />{" "}
+        />
       </div>
     );
   }

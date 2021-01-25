@@ -5,7 +5,7 @@ class Reservated extends Component {
   state = { isStatus: false };
 
   handleCancel = (_id) => {
-    fetch(`${YA401_API}/reservation`, {
+    fetch(`${API}/reservation`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

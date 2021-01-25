@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Slider from "./Slider";
 import Loading from "../../../Components/Loading/Loading";
-import { YA_API, API, YA401_API } from "../../../config";
+import { API } from "../../../config";
 import "./Sliders.scss";
 
 class Sliders extends Component {
@@ -20,8 +20,8 @@ class Sliders extends Component {
       .then((res) => res.json())
       .then((res) =>
         this.setState({
-          information: res.information,
-          target: res.information[0],
+          information: res?.information,
+          target: res ? res.information[0] : null,
         })
       );
   };

@@ -7,7 +7,9 @@ const text = [
   "무엇을 도와드릴까요?",
   "예약 가능한 날짜가 아닙니다.",
   "확인 도와드리겠습니다.",
+  "읽어주셔서",
 ];
+
 class ChatBot extends Component {
   state = {
     userComment: "",

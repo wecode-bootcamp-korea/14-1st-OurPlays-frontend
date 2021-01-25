@@ -1,18 +1,6 @@
 import React from "react";
 
-const Pagination = ({
-  postsPerPage,
-  totalPosts,
-  paginate,
-  fetchProduct,
-  total,
-  limit,
-}) => {
-  // const pageNumber = [];
-  // for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-  //   pageNumber.push(i);
-  // }
-
+const Pagination = ({ fetchProduct, total, limit }) => {
   const pageNumber = [];
   for (let i = 1; i <= Math.ceil(total / limit); i++) {
     pageNumber.push(i);
@@ -29,7 +17,6 @@ const Pagination = ({
               className="page-link"
               onClick={(e) => {
                 e.preventDefault();
-                // paginate(number);
                 fetchProduct(e);
               }}
             >
@@ -43,3 +30,8 @@ const Pagination = ({
 };
 
 export default Pagination;
+
+// const pageNumber = [];
+// for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+//   pageNumber.push(i);
+// }

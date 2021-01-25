@@ -7,6 +7,7 @@ import { API } from "../../config";
 class Login extends Component {
   state = {
     data: [],
+    change: "",
   };
 
   constructor() {
@@ -31,7 +32,7 @@ class Login extends Component {
         if (res.token) {
           localStorage.setItem("token", res.token);
           alert(res.message);
-          this.props.history.push("/");
+          this.props.history.push("/Main");
         } else {
           alert(res.message);
         }
@@ -55,7 +56,7 @@ class Login extends Component {
   };
 
   sendToSignUp = (e) => {
-    this.props.history.push("/Signup");
+    this.props.history.push("/SignUp");
   };
 
   sendToMain = () => {

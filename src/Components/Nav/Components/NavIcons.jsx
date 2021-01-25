@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../Nav.scss";
-
 class NavIcons extends Component {
   constructor() {
     super();
@@ -18,7 +17,6 @@ class NavIcons extends Component {
       this.setState({ login: false });
     }
   }
-
   render() {
     return (
       <div className="nav-icons">
@@ -71,5 +69,4 @@ class NavIcons extends Component {
     );
   }
 }
-
 export default NavIcons;
