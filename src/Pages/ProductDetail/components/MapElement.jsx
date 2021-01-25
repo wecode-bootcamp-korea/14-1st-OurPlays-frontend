@@ -31,11 +31,7 @@ class MapElement extends Component {
     };
   }
   render() {
-    return (
-      <div id={"map"} className="Map">
-        {" "}
-      </div>
-    );
+    return <div id={"map"} className="Map"></div>;
   }
 }
 

@@ -16,15 +16,16 @@ class CategoryItems extends Component {
         <Link
           className="link"
           to={`/place?category_id=${categoryItem.categoryName}`}
+          style={{ textDecoration: "none" }}
         >
           <div
             key={categoryItem.id}
             className="category-item"
             info={this.state.productlists}
           >
-            <img src={categoryItem.src} alt={categoryItem.alt} />{" "}
-            <div className="category-name"> {categoryItem.categoryName} </div>{" "}
-          </div>{" "}
+            <img src={categoryItem.src} alt={categoryItem.alt} />
+            <div className="category-name"> {categoryItem.categoryName} </div>
+          </div>
         </Link>
       </div>
     );

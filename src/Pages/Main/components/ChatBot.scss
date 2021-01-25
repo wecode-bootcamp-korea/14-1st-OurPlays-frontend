@@ -33,18 +33,41 @@
             height: 330px;
             background-color: white;
             border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            overflow: scroll;
             .board-container {
                 width: 100%;
                 .wrap {
                     display: flex;
+                    width: 100%;
                     flex-direction: row-reverse;
                     justify-content: space-between;
                     padding-bottom: 40px;
                     .user-div {
                         width: 100px;
+                        float: right;
                         align-self: flex-end;
-                        color: rgb(0, 106, 213);
+                        color: black;
+                        padding-right: 10px;
                         font-weight: bold;
+                        font-size: 14px;
+                        .user-name-col {
+                            justify-self: end;
+                            padding-bottom: 10px;
+                            color: black;
+                            font-size: 14px;
+                        }
+                        .user-comment-col {
+                            width: 100%;
+                            padding: 10px;
+                            border-radius: 5px;
+                            background-color: #0095f6;
+                            font-size: 13px;
+                            color: white;
+                        }
+                        .time {
+                            padding-top: 10px;
+                            font-size: 10px;
+                        }
                     }
                     .chat-div {
                         display: flex;
@@ -55,10 +78,10 @@
                             padding-bottom: 8px;
                         }
                         .chat-content {
-                            height: 100%;
                             background-color: rgba(0, 0, 0, 0.2);
-                            padding: 10px;
-                            margin-left: 20px;
+                            padding: 13px;
+                            justify-self: center;
+                            margin-left: 25px;
                             border-radius: 7px;
                             font-size: 14px;
                         }
@@ -83,8 +106,10 @@
                 border: none;
                 background-color: transparent;
                 outline: none;
+                cursor: pointer;
                 &:hover {
                     color: rgb(0, 106, 213);
+                    font-weight: 800;
                     transition: 0.5s;
                 }
             }

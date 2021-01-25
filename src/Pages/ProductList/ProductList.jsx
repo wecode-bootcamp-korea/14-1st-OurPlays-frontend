@@ -22,9 +22,7 @@ class ProductList extends Component {
       스튜디오: 7,
       카페식당: 8,
     };
-    console.log(get_category_id[newParams]);
-    console.log(newParams);
-    console.log("productList");
+
     fetch(`${API}/place?category_id=${get_category_id[newParams]}`, {
       headers: {
         Authorization: localStorage.getItem("token") || "",

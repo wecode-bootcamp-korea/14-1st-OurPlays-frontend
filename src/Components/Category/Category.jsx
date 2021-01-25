@@ -9,7 +9,7 @@ class Category extends Component {
       <div className="Category">
         {CATEGORYITEMS.map((categoryItem) => {
           return <CategoryItems categoryItem={categoryItem} />;
-        })}{" "}
+        })}
       </div>
     );
   }

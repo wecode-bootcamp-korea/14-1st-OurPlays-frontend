@@ -1,65 +1,3 @@
-// import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-// import "../Nav.scss";
-
-// class NavIcons extends Component {
-//   state = {
-//     change: false,
-//   };
-//   componentDidMount() {
-//     const is = localStorage.getItem("token");
-//     this.setState({
-//       change: is,
-//     });
-//   }
-
-//   render() {
-//     return (
-//       <div className="nav-icons">
-//         {" "}
-//         {NAVICONS.map((navIcon) => {
-//           return (
-//             <Link key={navIcon.id} className="nav-icon" to={navIcon.linkTo}>
-//               {" "}
-//               {navIcon.name}{" "}
-//             </Link>
-//           );
-//         })}{" "}
-//       </div>
-//     );
-//   }
-// }
-
-// export default NavIcons;
-
-// const NAVICONS = [
-//   {
-//     id: 0,
-//     name: "아워플레이스 소개",
-//     linkTo: "/Introduce",
-//   },
-//   {
-//     id: 1,
-//     name: "관심 장소",
-//     linkTo: "/BookMarkList",
-//   },
-//   {
-//     id: 2,
-//     name: "예약 관리",
-//     linkTo: "/Reservation",
-//   },
-//   {
-//     id: 3,
-//     name: "회원가입",
-//     linkTo: "/Auth",
-//   },
-//   {
-//     id: 4,
-//     name: "로그인",
-//     linkTo: "/Login",
-//   },
-// ];
-
 /* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -72,7 +10,7 @@ class NavIcons extends Component {
     };
   }
   componentDidMount() {
-    const isToken = localStorage.getItem("token");
+    const isToken = localStorage.setItem("token");
     if (isToken) {
       this.setState({ login: true });
     } else {
@@ -83,25 +21,29 @@ class NavIcons extends Component {
     return (
       <div className="nav-icons">
         {this.state.login ? (
-          <Link className="nav-icon">아워플레이스 소개</Link>
-        ) : (
-          <Link className="nav-icon">아워플레이스 소개</Link>
-        )}
-        {this.state.login ? (
-          <Link className="nav-icon" to="/BookMarkList">
-            관심장소
+          <Link className="nav-icon" to="/">
+            아워플레이스 소개
           </Link>
         ) : (
-          <Link className="nav-icon" to="/BookMarkList">
-            관심장소
+          <Link className="nav-icon" to="/">
+            아워플레이스 소개
           </Link>
         )}
         {this.state.login ? (
-          <Link className="nav-icon" to="/Reservation">
+          <Link className="nav-icon" to="/">
+            관심장소
+          </Link>
+        ) : (
+          <Link className="nav-icon" to="/">
+            관심장소
+          </Link>
+        )}
+        {this.state.login ? (
+          <Link className="nav-icon" to="/">
             예약관리
           </Link>
         ) : (
-          <Link className="nav-icon" to="/Reservation">
+          <Link className="nav-icon" to="/">
             예약관리
           </Link>
         )}
@@ -115,7 +57,9 @@ class NavIcons extends Component {
           </Link>
         )}
         {this.state.login ? (
-          <Link className="nav-icon">로그아웃</Link>
+          <Link onClick={this.changeMode} className="nav-icon" to="/">
+            로그아웃
+          </Link>
         ) : (
           <Link className="nav-icon" to="/Login">
             로그인
