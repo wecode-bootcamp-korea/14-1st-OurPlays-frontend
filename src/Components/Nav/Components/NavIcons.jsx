@@ -9,14 +9,7 @@ class NavIcons extends Component {
       login: false,
     };
   }
-  componentDidMount() {
-    const isToken = localStorage.setItem("token");
-    if (isToken) {
-      this.setState({ login: true });
-    } else {
-      this.setState({ login: false });
-    }
-  }
+  componentDidMount() {}
   render() {
     return (
       <div className="nav-icons">
